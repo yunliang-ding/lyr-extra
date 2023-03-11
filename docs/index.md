@@ -11,11 +11,11 @@ nav:
   <span style="font-size:30px;font-weight:600;display:inline-block;">react-core-form-tools</span>
 </div>
 <p style="display:flex;justify-content:space-between;width:220px">
-  <a href="https://web.npm.alibaba-inc.com/package/react-core-form-tools">
-    <img alt="npm" src="https://web.npm.alibaba-inc.com/badge/v/react-core-form-tools.svg">
+  <a href="https://npmmirror.com/package/react-core-form-tools">
+    <img alt="npm" src="https://npmmirror.com/badge/v/react-core-form-tools.svg?version=0.0.2">
   </a>
-  <a href="https://web.npm.alibaba-inc.com/package/react-core-form-tools">
-    <img alt="NPM downloads" src="https://web.npm.alibaba-inc.com/badge/d/react-core-form-tools.svg">
+  <a href="https://npmmirror.com/package/react-core-form-tools">
+    <img alt="NPM downloads" src="https://npmmirror.com/badge/d/react-core-form-tools.svg">
   </a>
 </p>
 

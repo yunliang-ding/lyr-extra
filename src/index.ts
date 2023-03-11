@@ -121,9 +121,9 @@ export const copyToClipBoard = async (text: string) => {
   } else {
     const textArea = document.createElement('textarea');
     textArea.value = text;
-    textArea.style.position = 'absolute';
+    textArea.style.position = 'fixed'; // 解决跳动问题
     textArea.style.opacity = '0';
-    textArea.style.left = '-999999px';
+    textArea.style.display = '-999999px';
     textArea.style.top = '-999999px';
     document.body.appendChild(textArea);
     textArea.focus();

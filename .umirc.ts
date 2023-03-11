@@ -1,10 +1,29 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: 'react-core-form-tools',
+  title: '工具集',
   favicon:
     'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
   logo: 'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
   outputPath: 'docs-dist',
+  extraBabelPlugins: [
+    [
+      'import',
+      {
+        libraryName: 'antd',
+        libraryDirectory: 'lib',
+        style: true,
+      },
+      'antd',
+    ],
+  ],
+  theme: {
+    '@primary-background-color': '#f0f6ff',
+    '@text-color': '#6a6a6a',
+    '@font-size-base': '13px',
+    '@font-size-small': '12px',
+    '@primary-color': '#2f54eb',
+  },
+  history: { type: 'hash' },
   // more config: https://d.umijs.org/config
 });

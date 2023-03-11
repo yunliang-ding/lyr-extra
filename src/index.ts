@@ -2,6 +2,7 @@ import * as _BigNumber from 'bignumber.js';
 import html2canvas from 'html2canvas';
 import { message } from 'antd';
 import { useReactToPrint as doPrintElement } from 'react-to-print';
+import './index.less';
 
 const BigNumberjs: any = _BigNumber;
 
@@ -120,7 +121,6 @@ export const copyToClipBoard = async (text: string) => {
   } else {
     const textArea = document.createElement('textarea');
     textArea.value = text;
-
     textArea.style.position = 'absolute';
     textArea.style.opacity = '0';
     textArea.style.left = '-999999px';
@@ -139,7 +139,11 @@ export const copyToClipBoard = async (text: string) => {
 };
 
 /** 获取元素快照 */
-export const getElementSnapshot = (element: string) => {
+export const getElementSnapshot = (element: string): {
+  printImg: any;
+  downloadImg: any;
+  getDataURL: any;
+} => {
   return {
     printImg: doPrintElement({
       bodyClass: 'print-class',
@@ -171,3 +175,7 @@ export const getElementSnapshot = (element: string) => {
       }),
   };
 };
+
+export { default as CheckAppVersion } from './check-app-version';
+
+export { default as ConsoleRender } from './console-render';

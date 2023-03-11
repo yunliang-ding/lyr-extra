@@ -179,3 +179,5 @@ export const getElementSnapshot = (element: string): {
 export { default as CheckAppVersion } from './check-app-version';
 
 export { default as ConsoleRender } from './console-render';
+
+export { default as usePureRequest } from './hooks/usePureRequest';

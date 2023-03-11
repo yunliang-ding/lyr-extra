@@ -75,3 +75,8 @@ const destroy = CheckAppVersion({
   },
 });
 ```
+
+## 使用 usePureRequest 解决请求竞争
+
+<code src='./demo/use-pure-request.tsx' />
+

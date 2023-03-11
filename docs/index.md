@@ -7,6 +7,19 @@ nav:
   order: 1
 ---
 
+<div style="display:flex;align-items:center;margin-bottom:24px">
+  <span style="font-size:30px;font-weight:600;display:inline-block;">react-core-form-tools</span>
+</div>
+<p style="display:flex;justify-content:space-between;width:220px">
+  <a href="https://web.npm.alibaba-inc.com/package/react-core-form-tools">
+    <img alt="npm" src="https://web.npm.alibaba-inc.com/badge/v/react-core-form-tools.svg">
+  </a>
+  <a href="https://web.npm.alibaba-inc.com/package/react-core-form-tools">
+    <img alt="NPM downloads" src="https://web.npm.alibaba-inc.com/badge/d/react-core-form-tools.svg">
+  </a>
+</p>
+
+
 ## BigNumber.add 加法
 
 <code src='./demo/number-add.tsx' />
@@ -76,7 +89,7 @@ const destroy = CheckAppVersion({
 });
 ```
 
-## 使用 usePureRequest 解决请求竞争
+## usePureRequest 解决请求竞争
 
 <code src='./demo/use-pure-request.tsx' />
 

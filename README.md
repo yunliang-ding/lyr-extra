@@ -1,25 +1,27 @@
 # react-core-form-tools
 
-## BigNumber.add 加法
+- BigNumber.add 加法
 
-## BigNumber.minus 减法
+- BigNumber.minus 减法
 
-## BigNumber.multiplie 乘法
+- BigNumber.multiplie 乘法
 
-## BigNumber.divided 除法
+- BigNumber.divided 除法
 
-## isEmpty 判断空
+- isEmpty 判断空
 
-## NumberFormat 金额千分位
+- NumberFormat 金额千分位
 
-## getUrlSearchParams 获取 url 参数
+- getUrlSearchParams 获取 url 参数
 
-## downloadFile 下载文件
+- downloadFile 下载文件
 
-## copyToClipBoard 复制到剪切板
+- copyToClipBoard 复制到剪切板
 
-## getElementSnapshot 获取元素快照
+- getElementSnapshot 获取元素快照
 
-## ConsoleRender 渲染日志
+- ConsoleRender 渲染日志
 
-## CheckAppVersion 版本更新提示
+- CheckAppVersion 版本更新提示
+
+- usePureRequest  解决请求竞争

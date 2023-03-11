@@ -1,4 +1,16 @@
+// 配置参考 https://github.com/umijs/father/tree/father-build@1.18.2
 export default {
-  // more father 4 config: https://github.com/umijs/father-next/blob/master/docs/config.md
-  esm: {},
+  esm: {
+    type: 'rollup',
+    // minify: true,
+  },
+  cjs: {
+    type: 'rollup',
+    minify: true,
+  },
+  // umd: {
+  //   name: 'ReactCoreForm',
+  //   minFile: true,
+  // },
+  // extractCSS: true,
 };

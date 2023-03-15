@@ -12,10 +12,10 @@ nav:
 </div>
 <p style="display:flex;justify-content:space-between;width:220px">
   <a href="https://npmmirror.com/package/react-core-form-tools">
-    <img alt="npm" src="https://npmmirror.com/badge/v/react-core-form-tools.svg?version=0.0.2">
+    <img alt="npm" src="http://121.4.49.147:8360/npm/version?package=react-core-form-tools">
   </a>
   <a href="https://npmmirror.com/package/react-core-form-tools">
-    <img alt="NPM downloads" src="https://npmmirror.com/badge/d/react-core-form-tools.svg">
+    <img alt="npm" src="http://121.4.49.147:8360/npm/downloads?package=react-core-form-tools">
   </a>
 </p>
 

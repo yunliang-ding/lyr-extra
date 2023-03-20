@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import { useState } from 'react';
 import { getJSType, RenderChildren } from '../';
+import { Svg } from './object';
 
 export default ({ value, log }) => {
   const { length } = Object.keys(value);
@@ -8,15 +9,9 @@ export default ({ value, log }) => {
   return (
     <>
       <div className="self-node">
-        <i
-          className="iconfont spicon-jiantou arrow"
-          onClick={() => {
-            setExpand(!expand);
-          }}
-          style={{
-            transform: expand ? 'rotate(90deg)' : 'rotate(0deg)',
-          }}
-        />
+        <Svg rotate={expand ? 90 : 0} onClick={() => {
+          setExpand(!expand)
+        }} />
         <span className="value array">Array({length})</span>
       </div>
       {expand && (

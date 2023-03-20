@@ -2,7 +2,6 @@ import * as _BigNumber from 'bignumber.js';
 import html2canvas from 'html2canvas';
 import { message } from 'antd';
 import { useReactToPrint as doPrintElement } from 'react-to-print';
-import './index.less';
 
 const BigNumberjs: any = _BigNumber;
 

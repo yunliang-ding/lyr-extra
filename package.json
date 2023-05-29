@@ -18,8 +18,12 @@
   "dependencies": {
     "lodash": "4.17.21",
     "bignumber.js": "9.1.0",
-    "html2canvas":"1.4.1",
-    "react-to-print": "2.13.0"
+    "html2canvas": "1.4.1",
+    "react-to-print": "2.13.0",
+    "pizzip": "^3.1.4",
+    "jszip": "3.10.1",
+    "docxtemplater": "^3.34.3",
+    "file-saver": "^2.0.5"
   },
   "peerDependencies": {
     "antd": ">=4.22.0",

@@ -1,7 +1,8 @@
 import * as _BigNumber from 'bignumber.js';
 import html2canvas from 'html2canvas';
 import { message } from 'antd';
-import { useReactToPrint as doPrintElement } from 'react-to-print';
+
+const ReactToPrint = require('react-to-print')
 
 const BigNumberjs: any = _BigNumber;
 
@@ -144,7 +145,7 @@ export const getElementSnapshot = (element: string): {
   getDataURL: any;
 } => {
   return {
-    printImg: doPrintElement({
+    printImg: ReactToPrint.useReactToPrint({
       bodyClass: 'print-class',
       content: () => document.querySelector(element),
     }),

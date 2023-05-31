@@ -4,7 +4,7 @@ import { Space, Button } from 'antd';
 
 export default () => {
   const { printImg, downloadImg, getDataURL } = getElementSnapshot(
-    '.__dumi-default-menu-logo',
+    '.__dumi-default-layout-content',
   );
   const [base64, setBase64]: any = React.useState();
   return (

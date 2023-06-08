@@ -181,3 +181,8 @@ export { default as CheckAppVersion } from './check-app-version';
 export { default as ConsoleRender } from './console-render';
 
 export { default as usePureRequest } from './hooks/usePureRequest';
+
+export { default as docxReplace } from './docx-replace';
+
+export { default as docxReplaceBatch } from './docx-replace';
+

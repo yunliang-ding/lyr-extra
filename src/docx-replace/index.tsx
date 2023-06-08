@@ -25,7 +25,7 @@ export interface DocxReplaceOptions extends DXT.Options {
  * @param {AnyObj} data 数据源
  * @param {DocxReplaceOptions} options 配置项
  */
-export const docxReplace = async (
+export default async (
   file: File,
   data: AnyObj,
   {

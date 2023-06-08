@@ -93,3 +93,7 @@ const destroy = CheckAppVersion({
 
 <code src='./demo/use-pure-request.tsx' />
 
+## docxReplace 替换word文档
+
+<code src='./demo/docx-replace.tsx' />
+

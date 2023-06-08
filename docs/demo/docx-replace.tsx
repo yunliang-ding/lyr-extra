@@ -31,7 +31,7 @@ export default () => {
 
   const onDownloadDemo = () => {
     downloadFile(
-      '',
+      'http://react-core-form.oss-cn-beijing.aliyuncs.com/assets/demo.docx',
       'demo.docx',
     );
   };
@@ -43,7 +43,7 @@ export default () => {
           替换
         </Button>
         <Button type="link" onClick={onDownloadDemo}>
-          文件模版
+          下载文件模版
         </Button>
       </div>
       <Upload

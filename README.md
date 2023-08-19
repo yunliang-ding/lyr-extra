@@ -25,3 +25,7 @@
 - CheckAppVersion 版本更新提示
 
 - usePureRequest  解决请求竞争
+
+- docxReplace 替换word文档
+
+- babelParse 编译 es6 代码片段

@@ -97,3 +97,16 @@ const destroy = CheckAppVersion({
 
 <code src='./demo/docx-replace.tsx' />
 
+## babelParse 编译 es6 代码片段
+
+### 依赖 cdn
+
+```js
+https://g.alicdn.com/code/lib/babel-standalone/7.21.3/babel.min.js,
+```
+
+<code src='./demo/babel.tsx' />
+
+### API
+
+<API src="../src/babel-parse/type.tsx" hideTitle></API>

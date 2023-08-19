@@ -24,6 +24,9 @@ export default defineConfig({
     '@font-size-small': '12px',
     '@primary-color': '#2f54eb',
   },
+  scripts: [
+    'https://g.alicdn.com/code/lib/babel-standalone/7.21.2/babel.min.js',
+  ],
   history: { type: 'hash' },
   navs: [
     null, // null 值代表保留约定式生成的导航，只做增量配置

@@ -12,10 +12,10 @@ nav:
 </div>
 <p style="display:flex;justify-content:space-between;width:220px">
   <a href="https://npmmirror.com/package/react-core-form-tools">
-    <img alt="npm" src="http://server.yunliang.cloud/npm/version?package=react-core-form-tools">
+    <img alt="npm" src="http://dev-ops.yunliang.cloud/npm/version?package=react-core-form-tools">
   </a>
   <a href="https://npmmirror.com/package/react-core-form-tools">
-    <img alt="npm" src="http://server.yunliang.cloud/npm/downloads?package=react-core-form-tools">
+    <img alt="npm" src="http://dev-ops.yunliang.cloud/npm/downloads?package=react-core-form-tools">
   </a>
 </p>
 
@@ -88,6 +88,8 @@ const destroy = CheckAppVersion({
   },
 });
 ```
+
+![](http://react-core-form.oss-cn-beijing.aliyuncs.com/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230826165101.png)
 
 ## usePureRequest 解决请求竞争
 

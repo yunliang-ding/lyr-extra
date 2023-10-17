@@ -2,7 +2,7 @@
   "name": "react-core-form-tools",
   "description": "工具函数集合",
   "author": "yunliang-ding",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -16,7 +16,6 @@
     "url": "https://github.com/yunliang-ding/react-core-form-tools"
   },
   "dependencies": {
-    "lodash": "4.17.21",
     "bignumber.js": "9.1.0",
     "html2canvas": "1.4.1",
     "react-to-print": "2.13.0",
@@ -24,7 +23,8 @@
     "jszip": "3.10.1",
     "docxtemplater": "^3.34.3",
     "file-saver": "^2.0.5",
-    "eval5":"1.4.7"
+    "eval5":"1.4.7",
+    "moment": "2.29.4"
   },
   "peerDependencies": {
     "antd": ">=4.22.0",

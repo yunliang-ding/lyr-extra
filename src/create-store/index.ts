@@ -5,7 +5,7 @@ const { useSyncExternalStore } = useSyncExternalStoreExports;
 class InitStore {
   public state = {};
   public listeners = new Set();
-  constructor(initialStore) {
+  constructor(initialStore: any) {
     this.state = initialStore;
   }
   dispatch = (payload: any) => {
@@ -41,7 +41,7 @@ export const CreateStore = <T>(initialStore: T) => {
       return Reflect.get(target, propKey, receiver);
     },
     set: (target, propKey, value, receiver) => {
-      console.log('render');
+      // 数据发生更新
       if (target[propKey] !== value) {
         store.dispatch({ [propKey]: value })
       }

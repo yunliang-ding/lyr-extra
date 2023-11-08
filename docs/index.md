@@ -112,3 +112,8 @@ https://g.alicdn.com/code/lib/babel-standalone/7.21.3/babel.min.js,
 ### API
 
 <API src="../src/babel-parse/type.tsx" hideTitle></API>
+
+
+## 使用 CreateStore 创建 全局状态管理
+
+<code src='./demo/create-store.tsx' />

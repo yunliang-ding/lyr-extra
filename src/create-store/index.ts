@@ -1,6 +1,6 @@
 import useSyncExternalStoreExports from 'use-sync-external-store/shim';
 
-interface InitProps{
+interface InitProps {
   state?: any,
   subscribe?: any,
   getSnapshot?: any,
@@ -31,16 +31,12 @@ class InitStore {
   };
 }
 
-export type Store<S> = S;
-
-export type InitialStateType<S> = S & ThisType<Store<S>>;
-
-export const CreateStore = <T>(initialStore: InitialStateType<T>) => {
+export const CreateStore = <T>(initialStore: T & ThisType<T>) => {
   const initStore = new InitStore(initialStore);
-   /** 对 initStore 取值进行监听 */
+  /** 对 initStore 取值进行监听 */
   const store: InitProps = new Proxy(initStore, {
     get: (target, propKey, receiver) => {
-      if(!['subscribe', 'getSnapshot'].includes(propKey as string)){
+      if (!['subscribe', 'getSnapshot'].includes(propKey as string)) {
         return initStore.state[propKey];
       }
       return Reflect.get(target, propKey, receiver);
@@ -59,7 +55,7 @@ export const CreateStore = <T>(initialStore: InitialStateType<T>) => {
 export const useStore = <T>(store: T & InitProps): T => {
   const initStore = useSyncExternalStore(store.subscribe, store.getSnapshot);
   Object.keys(initStore).forEach(key => {
-    if(typeof initStore[key] === 'function'){
+    if (typeof initStore[key] === 'function') {
       initStore[key] = initStore[key].bind(store); // bind this
     }
   })

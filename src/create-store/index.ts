@@ -1,5 +1,13 @@
 import useSyncExternalStoreExports from 'use-sync-external-store/shim';
 
+interface InitProps{
+  state?: any,
+  subscribe?: any,
+  getSnapshot?: any,
+  dispatch?: any
+  listeners?: any;
+}
+
 const { useSyncExternalStore } = useSyncExternalStoreExports;
 
 class InitStore {
@@ -9,14 +17,7 @@ class InitStore {
     this.state = initialStore;
   }
   dispatch = (payload: any) => {
-    const newState = new Proxy({ ...this.state, ...payload }, {
-      set: (target, propKey, value, receiver) => {
-        if (target[propKey] !== value) {
-          this.dispatch({ [propKey]: value })
-        }
-        return Reflect.set(target, propKey, value, receiver);
-      },
-    });
+    const newState = { ...this.state, ...payload };
     this.state = newState;
     this.listeners.forEach((fn: any) => fn()); // 更新试图
   }
@@ -31,25 +32,39 @@ class InitStore {
   };
 }
 
-export const CreateStore = <T>(initialStore: T) => {
-  const store = new InitStore(initialStore)
-  return new Proxy(store, {
+export type Store<S> = S;
+
+export type InitialStateType<S> = S & ThisType<Store<S>>;
+
+export const CreateStore = <T>(initialStore: InitialStateType<T>) => {
+  const initStore = new InitStore(initialStore);
+   /** 对 initStore 取值进行监听 */
+  const store: InitProps = new Proxy(initStore, {
     get: (target, propKey, receiver) => {
       if(!['subscribe', 'getSnapshot'].includes(propKey as string)){
-        return store.state[propKey];
+        return initStore.state[propKey];
       }
       return Reflect.get(target, propKey, receiver);
     },
     set: (target, propKey, value, receiver) => {
       // 数据发生更新
-      if (target[propKey] !== value) {
-        store.dispatch({ [propKey]: value })
+      if (target.state[propKey] !== value) {
+        initStore.dispatch({ [propKey]: value })
       }
       return Reflect.set(target, propKey, value, receiver);
     },
-  }) as T;
+  });
+  return store as T;
 };
 
-export const useStore = function (store) {
-  return useSyncExternalStore(store.subscribe, store.getSnapshot);
+export const useStore = <T>(store: T & InitProps): T => {
+  /** 对传入的 store 进行代理操作 */
+  const initStore = useSyncExternalStore(store.subscribe, store.getSnapshot);
+  console.log('initStore', initStore)
+  Object.keys(initStore).forEach(key => {
+    if(typeof initStore[key] === 'function'){
+      initStore[key] = initStore[key].bind(store); // bind this
+    }
+  })
+  return initStore as T
 }

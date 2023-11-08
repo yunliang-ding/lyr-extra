@@ -17,8 +17,7 @@ class InitStore {
     this.state = initialStore;
   }
   dispatch = (payload: any) => {
-    const newState = { ...this.state, ...payload };
-    this.state = newState;
+    this.state = { ...this.state, ...payload };
     this.listeners.forEach((fn: any) => fn()); // 更新试图
   }
   subscribe = (listener) => {
@@ -58,9 +57,7 @@ export const CreateStore = <T>(initialStore: InitialStateType<T>) => {
 };
 
 export const useStore = <T>(store: T & InitProps): T => {
-  /** 对传入的 store 进行代理操作 */
   const initStore = useSyncExternalStore(store.subscribe, store.getSnapshot);
-  console.log('initStore', initStore)
   Object.keys(initStore).forEach(key => {
     if(typeof initStore[key] === 'function'){
       initStore[key] = initStore[key].bind(store); // bind this

@@ -28,6 +28,7 @@ export default defineConfig({
     'https://g.alicdn.com/code/lib/babel-standalone/7.21.2/babel.min.js',
   ],
   history: { type: 'hash' },
+  hash: false,
   navs: [
     null, // null 值代表保留约定式生成的导航，只做增量配置
     {

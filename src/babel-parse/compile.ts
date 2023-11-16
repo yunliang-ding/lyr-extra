@@ -1,5 +1,3 @@
-import * as antd from 'antd/es/index.js';
-import moment from 'moment';
 import axios from 'axios';
 import react from 'react';
 import ReactDOM from 'react-dom';
@@ -12,8 +10,6 @@ class BabelCompile {
     this.scope = {
       'react-dom': ReactDOM,
       react,
-      moment,
-      antd,
       axios,
       ...scope,
     };

@@ -23,16 +23,16 @@
     "jszip": "3.10.1",
     "docxtemplater": "^3.34.3",
     "file-saver": "^2.0.5",
-    "eval5":"1.4.7",
-    "moment": "2.29.4"
+    "eval5":"1.4.7"
   },
   "peerDependencies": {
-    "antd": ">=4.22.0",
+    "@arco-design/web-react": "2.55.2",
+    "axios": ">=0.21.1",
     "react": ">=17.0.2",
-    "react-dom": ">=17.0.2",
-    "axios": ">=0.21.1"
+    "react-dom": ">=17.0.2"
   },
   "devDependencies": {
+    "@arco-design/web-react": "2.55.2",
     "antd": "4.22.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",

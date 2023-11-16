@@ -1,6 +1,6 @@
 import React from 'react';
 import { copyToClipBoard } from 'react-core-form-tools';
-import { Space } from 'antd';
+import { Space } from '@arco-design/web-react';
 
 export default () => {
   const text = '这是要复制的文本呀呀呀这是要复制的文本呀呀呀';

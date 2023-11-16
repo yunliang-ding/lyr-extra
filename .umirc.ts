@@ -10,20 +10,13 @@ export default defineConfig({
     [
       'import',
       {
-        libraryName: 'antd',
-        libraryDirectory: 'lib',
-        style: true,
+        libraryName: '@arco-design/web-react',
+        libraryDirectory: 'es',
+        camel2DashComponentName: false,
+        style: true, // 样式按需加载
       },
-      'antd',
     ],
   ],
-  theme: {
-    '@primary-background-color': '#f0f6ff',
-    '@text-color': '#6a6a6a',
-    '@font-size-base': '13px',
-    '@font-size-small': '12px',
-    '@primary-color': '#2f54eb',
-  },
   scripts: [
     'https://g.alicdn.com/code/lib/babel-standalone/7.21.2/babel.min.js',
   ],

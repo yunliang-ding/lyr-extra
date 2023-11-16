@@ -7,10 +7,9 @@ import { babelParseProps } from './type';
  */
 export default ({
   code = '',
-  // 默认依赖 react、antd
+  // 默认依赖 react
   dependencies = {
     React: 'react',
-    antd: 'antd',
   },
   // 默认 default 导出
   exportDefault = true,

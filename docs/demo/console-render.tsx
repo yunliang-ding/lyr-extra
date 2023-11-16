@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { ConsoleRender } from 'react-core-form-tools';
-import { Button } from 'antd';
+import { Button } from '@arco-design/web-react';
+
 
 export default () => {
   const consoleInstance = ConsoleRender.create({
@@ -21,7 +22,6 @@ export default () => {
   return (
     <>
       <Button
-        type='primary'
         onClick={() => {
           consoleInstance.clear();
         }}

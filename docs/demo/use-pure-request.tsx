@@ -3,7 +3,7 @@ import axios from 'axios';
 import { usePureRequest } from 'react-core-form-tools';
 import { Button, Space } from '@arco-design/web-react';
 
-const url = 'http://api.yunliang.cloud/react-core-form/table';
+const url = 'http://api-online.yunliang.cloud/react-core-form/table';
 
 export default () => {
   const [loading, fetchData] = usePureRequest(axios);

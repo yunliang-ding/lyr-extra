@@ -5,7 +5,7 @@ export interface babelParseProps {
   code: string;
   /**
    * 自动添加 import
-   * @default { React: 'react', antd: 'antd' }
+   * @default { React: 'react'}
    */
   dependencies?: Object;
   /**

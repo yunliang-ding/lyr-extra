@@ -1,6 +1,6 @@
 import React from 'react';
 import { downloadFile } from 'react-core-form-tools';
-import { Button } from 'antd';
+import { Button } from '@arco-design/web-react';
 
 export default () => {
   return (

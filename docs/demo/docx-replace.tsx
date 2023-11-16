@@ -1,21 +1,21 @@
-import React from 'react';
-import { downloadFile, docxReplace } from 'react-core-form-tools'
-import { Button, Space, Upload } from 'antd';
+import React from "react";
+import { downloadFile, docxReplace } from "react-core-form-tools";
+import { Button, Space, Upload } from "@arco-design/web-react";
 
 const data = {
-  field1: 'zhangsan',
-  field2: 'lisi',
-  field3: '这是描述信息',
-}
+  field1: "zhangsan",
+  field2: "lisi",
+  field3: "这是描述信息",
+};
 
 export default () => {
   const [files, setFiles]: any = React.useState([]);
   const onReplace = () => {
-    docxReplace(files[0]?.originFileObj, data, {
-      filename: '自定义文件名称',
+    docxReplace(files[0]?.originFile, data, {
+      filename: "自定义文件名称",
       delimiters: {
-        start: '{',
-        end: '}',
+        start: "{",
+        end: "}",
       },
     });
 
@@ -31,25 +31,23 @@ export default () => {
 
   const onDownloadDemo = () => {
     downloadFile(
-      'http://react-core-form.oss-cn-beijing.aliyuncs.com/assets/demo.docx',
-      'demo.docx',
+      "http://react-core-form.oss-cn-beijing.aliyuncs.com/assets/demo.docx",
+      "demo.docx"
     );
   };
 
   return (
-    <Space direction={'vertical'} style={{ width: '100%' }}>
-      <div>
+    <Space direction={"vertical"} style={{ width: "100%" }}>
+      <Space>
         <Button onClick={onReplace} disabled={!files?.length} type="primary">
           替换
         </Button>
-        <Button type="link" onClick={onDownloadDemo}>
-          下载文件模版
-        </Button>
-      </div>
+        <Button onClick={onDownloadDemo}>下载文件模版</Button>
+      </Space>
       <Upload
-        maxCount={1}
+        limit={1}
         accept=".docx"
-        onChange={({ fileList }) => {
+        onChange={(fileList) => {
           setFiles(fileList);
         }}
       >

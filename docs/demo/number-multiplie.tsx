@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
+import { Button } from '@arco-design/web-react';
 import { BigNumber } from 'react-core-form-tools';
 
 export default () => {

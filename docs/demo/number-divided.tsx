@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BigNumber } from 'react-core-form-tools';
-import { Button } from 'antd';
+import { Button } from '@arco-design/web-react';
 
 export default () => {
   const [total, setTotal] = useState(null);

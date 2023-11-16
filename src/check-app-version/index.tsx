@@ -1,4 +1,4 @@
-import { Button, notification, Space } from 'antd';
+import { Button, Notification, Space } from '@arco-design/web-react';
 import CheckAppVersionProps from './type';
 import './index.less';
 
@@ -8,7 +8,7 @@ const VNode = (text) => (
     <div className="app-version-notifi-footer">
       <Button
         onClick={() => {
-          notification.close('app-version-notifi');
+          Notification.remove('app-version-notifi');
         }}
       >
         取消
@@ -30,15 +30,15 @@ export default ({
   time = 5,
   remoteCdnUpdateTime,
   text = '系统检测有新版本更新，是否重新加载?',
-  placement = 'bottomRight',
+  position = 'bottomRight',
   onMessage = () => {
-    notification.info({
-      key: 'app-version-notifi',
-      message: '提示',
+    Notification.info({
+      id: 'app-version-notifi',
+      title: '提示',
       duration: 6000,
       className: 'app-version-notifi',
-      description: VNode(text),
-      placement,
+      content: VNode(text),
+      position,
     });
   },
 }: CheckAppVersionProps) => {

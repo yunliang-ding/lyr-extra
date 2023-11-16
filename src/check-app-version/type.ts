@@ -6,7 +6,7 @@ export default interface CheckAppVersionProps {
   /** 远程资源地址更新时间 */
   remoteCdnUpdateTime: () => Promise<number>;
   /** 可选位置 */
-  placement?: 'topRight' | 'bottomRight';
+  position?: 'topRight' | 'bottomRight';
   /** 展示提示 */
   onMessage?: Function;
 }

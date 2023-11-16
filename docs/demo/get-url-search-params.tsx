@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getUrlSearchParams } from 'react-core-form-tools';
-import { Input, Space } from 'antd';
+import { Input, Space } from '@arco-design/web-react';
 
 export default () => {
   const [value, setValue] = useState(
@@ -10,8 +10,8 @@ export default () => {
     <Space direction="vertical">
       <Input
         value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
+        onChange={(value) => {
+          setValue(value);
         }}
         style={{ width: 400 }}
       />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { getElementSnapshot } from 'react-core-form-tools';
-import { Space, Button } from 'antd';
+import { Space, Button } from '@arco-design/web-react';
 
 export default () => {
   const { printImg, downloadImg, getDataURL } = getElementSnapshot(

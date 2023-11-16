@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NumberFormat } from 'react-core-form-tools';
-import { InputNumber, Space } from 'antd';
+import { InputNumber, Space } from '@arco-design/web-react';
 
 export default () => {
   const [value, setValue]: any = useState(1201201212.32);

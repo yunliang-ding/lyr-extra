@@ -1,6 +1,6 @@
 import * as _BigNumber from 'bignumber.js';
 import html2canvas from 'html2canvas';
-import { message } from 'antd';
+import { Message } from '@arco-design/web-react';
 
 const ReactToPrint = require('react-to-print')
 
@@ -117,7 +117,7 @@ export const copyToClipBoard = async (text: string) => {
   /** navigator clipboard 需要https等安全上下文 */
   if (navigator.clipboard && window.isSecureContext) {
     await navigator.clipboard.writeText(text);
-    message.success('已复制到剪切板');
+    Message.success('已复制到剪切板');
   } else {
     const textArea = document.createElement('textarea');
     textArea.value = text;
@@ -133,7 +133,7 @@ export const copyToClipBoard = async (text: string) => {
       textArea.remove();
     });
     if (res) {
-      message.success('已复制到剪切板');
+      Message.success('已复制到剪切板');
     }
   }
 };

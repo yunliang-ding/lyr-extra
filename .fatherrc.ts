@@ -2,7 +2,7 @@
 export default {
   esm: {
     type: 'rollup',
-    // minify: true,
+    minify: true,
   },
   cjs: {
     type: 'rollup',

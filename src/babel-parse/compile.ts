@@ -1,4 +1,3 @@
-import axios from 'axios';
 import react from 'react';
 import ReactDOM from 'react-dom';
 import { Interpreter } from 'eval5';
@@ -8,9 +7,8 @@ class BabelCompile {
   exports = {};
   constructor(scope = {}) {
     this.scope = {
-      'react-dom': ReactDOM,
       react,
-      axios,
+      'react-dom': ReactDOM,
       ...scope,
     };
   }

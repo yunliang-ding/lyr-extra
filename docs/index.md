@@ -112,3 +112,11 @@ https://g.alicdn.com/code/lib/babel-standalone/7.21.3/babel.min.js,
 ### API
 
 <API src="../src/babel-parse/type.tsx" hideTitle></API>
+
+## MarkdownViewer 渲染 markdown
+
+<code src='./demo/markdown-viewer.tsx' />
+
+### API
+
+<API src="../src/markdown-viewer/index.tsx" hideTitle></API>

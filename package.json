@@ -23,7 +23,10 @@
     "jszip": "3.10.1",
     "docxtemplater": "^3.34.3",
     "file-saver": "^2.0.5",
-    "eval5":"1.4.7"
+    "eval5":"1.4.7",
+    "react-syntax-highlighter": "15.5.0",
+    "react-markdown": "8.0.7",
+    "remark-gfm": "3.0.1"
   },
   "peerDependencies": {
     "@arco-design/web-react": "2.55.2",

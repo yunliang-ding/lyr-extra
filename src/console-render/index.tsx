@@ -1,7 +1,7 @@
 import ObjectRender from './render/object';
 import ArrayRender from './render/array';
 import BasicRender from './render/basic';
-import * as ReactDom from 'react-dom';
+import ReactDom from 'react-dom';
 import './index.less';
 
 interface ConsoleRenderProps {

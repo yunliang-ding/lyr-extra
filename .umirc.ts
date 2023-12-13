@@ -1,12 +1,13 @@
-import { defineConfig } from 'dumi';
+import { defineConfig } from "dumi";
 
 export default defineConfig({
-  title: '工具集',
+  title: "工具集",
   favicon:
-    'https://unpkg.byted-static.com/latest/byted/arco-config/assets/favicon.ico',
-  outputPath: 'docs-dist',
+    "https://react-core-form.oss-cn-beijing.aliyuncs.com/assets/favicon.ico",
+  logo: "https://react-core-form.oss-cn-beijing.aliyuncs.com/assets/favicon.ico",
+  outputPath: "docs-dist",
   theme: {
-    '@c-primary': '#165dff',
+    "@c-primary": "#165dff",
   },
   styles: [
     `
@@ -43,27 +44,22 @@ export default defineConfig({
       }
   `,
   ],
-  extraBabelPlugins: [
-    [
-      'import',
-      {
-        libraryName: '@arco-design/web-react',
-        libraryDirectory: 'es',
-        camel2DashComponentName: false,
-        style: true, // 样式按需加载
-      },
-    ],
+  links: [
+    {
+      href: "https://unpkg.com/@arco-design/web-react@latest/dist/css/arco.min.css",
+      rel: "stylesheet",
+    },
   ],
   scripts: [
-    'https://g.alicdn.com/code/lib/babel-standalone/7.21.2/babel.min.js',
+    "https://g.alicdn.com/code/lib/babel-standalone/7.21.2/babel.min.js",
   ],
-  history: { type: 'hash' },
+  history: { type: "hash" },
   hash: false,
   navs: [
     null, // null 值代表保留约定式生成的导航，只做增量配置
     {
-      title: 'GitHub',
-      path: 'https://github.com/yunliang-ding/react-core-form-tools',
+      title: "GitHub",
+      path: "https://github.com/yunliang-ding/react-core-form-tools",
     },
   ],
   // more config: https://d.umijs.org/config

@@ -11,11 +11,17 @@
     "strict": false,
     "noImplicitThis": true,
     "paths": {
-      "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@@/*": [
+        "src/.umi/*"
+      ],
+      "react": [
+        "./node_modules/@types/react"
+      ]
     },
     "allowSyntheticDefaultImports": true
-    // "suppressImplicitAnyIndexErrors": true
   },
   "exclude": [
     "node_modules",

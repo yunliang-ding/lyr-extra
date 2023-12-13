@@ -2,7 +2,7 @@
   "name": "react-core-form-tools",
   "description": "工具函数集合",
   "author": "yunliang-ding",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",

@@ -46,12 +46,12 @@ export default defineConfig({
   ],
   links: [
     {
-      href: "https://unpkg.com/@arco-design/web-react@latest/dist/css/arco.min.css",
+      href: "https://react-core-form.oss-cn-beijing.aliyuncs.com/cdn/arco.min.css",
       rel: "stylesheet",
     },
   ],
   scripts: [
-    "https://g.alicdn.com/code/lib/babel-standalone/7.21.2/babel.min.js",
+    "https://react-core-form.oss-cn-beijing.aliyuncs.com/cdn/babel-standalone.min.js",
   ],
   history: { type: "hash" },
   hash: false,

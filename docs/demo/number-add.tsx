@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@arco-design/web-react';
-import { BigNumber } from 'react-core-form-tools';
+import { BigNumber } from 'lyr-extra';
 
 export default () => {
   const [total, setTotal] = useState(null);

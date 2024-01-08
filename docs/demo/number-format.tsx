@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NumberFormat } from 'react-core-form-tools';
+import { NumberFormat } from 'lyr-extra';
 import { InputNumber, Space } from '@arco-design/web-react';
 
 export default () => {

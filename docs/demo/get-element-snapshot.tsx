@@ -1,5 +1,5 @@
 import React from 'react';
-import { getElementSnapshot } from 'react-core-form-tools';
+import { getElementSnapshot } from 'lyr-extra';
 import { Space, Button } from '@arco-design/web-react';
 
 export default () => {

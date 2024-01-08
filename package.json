@@ -1,8 +1,8 @@
 {
-  "name": "react-core-form-tools",
-  "description": "工具函数集合",
+  "name": "lyr-extra",
+  "description": "功能特性额外的",
   "author": "yunliang-ding",
-  "version": "1.0.1",
+  "version": "0.0.1",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -13,7 +13,7 @@
   "typings": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yunliang-ding/react-core-form-tools"
+    "url": "https://github.com/yunliang-ding/lyr-extra"
   },
   "dependencies": {
     "bignumber.js": "9.1.0",

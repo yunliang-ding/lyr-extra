@@ -1,5 +1,5 @@
 import React from 'react';
-import { copyToClipBoard } from 'react-core-form-tools';
+import { copyToClipBoard } from 'lyr-extra';
 import { Space } from '@arco-design/web-react';
 
 export default () => {

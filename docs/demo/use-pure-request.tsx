@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { usePureRequest } from 'react-core-form-tools';
+import { usePureRequest } from 'lyr-extra';
 import { Button, Space } from '@arco-design/web-react';
 
 const url = 'http://api-online.yunliang.cloud/react-core-form/table';

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@arco-design/web-react";
-import { MarkdownViewer } from "react-core-form-tools";
+import { MarkdownViewer } from "lyr-extra";
 
 export default () => {
   const [codeTheme, setCodeTheme] = React.useState("dark");

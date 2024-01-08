@@ -1,5 +1,5 @@
 import React from "react";
-import { downloadFile, docxReplace } from "react-core-form-tools";
+import { downloadFile, docxReplace } from "lyr-extra";
 import { Button, Space, Upload } from "@arco-design/web-react";
 
 const data = {

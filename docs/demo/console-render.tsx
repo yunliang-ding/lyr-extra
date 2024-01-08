@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ConsoleRender } from 'react-core-form-tools';
+import { ConsoleRender } from 'lyr-extra';
 import { Button } from '@arco-design/web-react';
 
 

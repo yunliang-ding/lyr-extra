@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getUrlSearchParams } from 'react-core-form-tools';
+import { getUrlSearchParams } from 'lyr-extra';
 import { Input, Space } from '@arco-design/web-react';
 
 export default () => {

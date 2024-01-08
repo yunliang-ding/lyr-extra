@@ -1,5 +1,5 @@
 import React from 'react';
-import { babelParse } from 'react-core-form-tools';
+import { babelParse } from 'lyr-extra';
 
 export default () => {
   const Vdom = babelParse({

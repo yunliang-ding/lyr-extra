@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BigNumber } from 'react-core-form-tools';
+import { BigNumber } from 'lyr-extra';
 import { Button } from '@arco-design/web-react';
 
 export default () => {

@@ -3,8 +3,8 @@ import { defineConfig } from "dumi";
 export default defineConfig({
   title: "工具集",
   favicon:
-    "https://react-core-form.oss-cn-beijing.aliyuncs.com/assets/favicon.ico",
-  logo: "https://react-core-form.oss-cn-beijing.aliyuncs.com/assets/favicon.ico",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/assets/favicon.ico",
+  logo: "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/assets/favicon.ico",
   outputPath: "docs-dist",
   theme: {
     "@c-primary": "#165dff",
@@ -46,12 +46,12 @@ export default defineConfig({
   ],
   links: [
     {
-      href: "https://react-core-form.oss-cn-beijing.aliyuncs.com/cdn/arco.min.css",
+      href: "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco.min.css",
       rel: "stylesheet",
     },
   ],
   scripts: [
-    "https://react-core-form.oss-cn-beijing.aliyuncs.com/cdn/babel-standalone.min.js",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/babel-standalone.min.js",
   ],
   history: { type: "hash" },
   hash: false,

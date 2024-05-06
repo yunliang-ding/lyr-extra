@@ -12,7 +12,7 @@ nav:
 </div>
 <p style="display:flex;justify-content:space-between;width:220px">
   <a href="https://npmmirror.com/package/lyr-extra">
-    <img alt="npm" src="https://img.shields.io/npm/dw/lyr-extra">
+    <img alt="npm" src="https://img.shields.io/npm/dt/lyr-extra.svg">
   </a>
   <a href="https://npmmirror.com/package/lyr-extra">
     <img alt="NPM downloads" src="https://img.shields.io/npm/v/lyr-extra.svg">

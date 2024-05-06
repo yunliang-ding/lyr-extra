@@ -3,7 +3,7 @@ import axios from 'axios';
 import { usePureRequest } from 'lyr-extra';
 import { Button, Space } from '@arco-design/web-react';
 
-const url = 'http://api-online.yunliang.cloud/lyr-design/table';
+const url = 'http://api-online.yunliang.cloud/lyr-component/table';
 
 export default () => {
   const [loading, fetchData] = usePureRequest(axios);

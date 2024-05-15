@@ -1,6 +1,6 @@
 import * as _BigNumber from "bignumber.js";
 import html2canvas from "html2canvas";
-import { Message } from "@arco-design/web-react";
+import { Message, Notification } from "@arco-design/web-react";
 
 const ReactToPrint = require("react-to-print");
 
@@ -148,15 +148,52 @@ export const getElementSnapshot = (
   printImg: any;
   downloadImg: any;
   getDataURL: any;
+  copyImg: any;
 } => {
   return {
     printImg: ReactToPrint.useReactToPrint({
       bodyClass: "print-class",
       content: () => document.querySelector(element),
     }),
+    copyImg: () => {
+      const el: any = document.querySelector(element);
+      return new Promise((res) => {
+        html2canvas(el, {
+          useCORS: true,
+        }).then((canvas) => {
+          canvas.toBlob(async (blob) => {
+            // 将blob对象放入剪切板item中
+            const type: any = blob?.type;
+            if (navigator.clipboard) {
+              await navigator.clipboard
+                .write([new ClipboardItem({ [type]: blob } as any)])
+                .then(
+                  () => {
+                    res(true);
+                    Notification.success({
+                      title: "提示",
+                      content: "已保存到粘贴板",
+                    });
+                  },
+                  () => {
+                    res(true);
+                    Notification.warning({
+                      title: "提示",
+                      content: "保存截图失败",
+                    });
+                  }
+                );
+            } else {
+              Message.error("请在安全域名下使用");
+              res(true);
+            }
+          }, "image/png");
+        });
+      });
+    },
     // 直接下载
-    downloadImg: (filename: string) =>
-      new Promise((res) => {
+    downloadImg: (filename: string) => {
+      return new Promise((res) => {
         html2canvas(document.querySelector(element) as any, {
           useCORS: true,
         }).then((canvas) => {
@@ -169,15 +206,17 @@ export const getElementSnapshot = (
           document.body.removeChild(a);
           res(true);
         });
-      }),
-    getDataURL: async () =>
-      new Promise((res) => {
+      });
+    },
+    getDataURL: async () => {
+      return new Promise((res) => {
         html2canvas(document.querySelector(element) as any, {
           useCORS: true,
         }).then((canvas) => {
           res(canvas.toDataURL());
         });
-      }),
+      });
+    },
   };
 };
 

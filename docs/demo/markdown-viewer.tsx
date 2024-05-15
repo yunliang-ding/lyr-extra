@@ -33,10 +33,17 @@ export default () => {
 ### 代码块
 
 \`\`\`\jsx
-import React from 'react';
-
 export default () => {
-  return <div className='app'>react</div>
+  return <div className='app'>代码块</div>
+}
+\`\`\`
+
+
+### 组件解析
+
+\`\`\`\tsx | react
+export default () => {
+  return <div className='app'>我是渲染结果</div>
 }
 \`\`\`
 

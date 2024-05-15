@@ -3,8 +3,8 @@ import { getElementSnapshot } from 'lyr-extra';
 import { Space, Button } from '@arco-design/web-react';
 
 export default () => {
-  const { printImg, downloadImg, getDataURL } = getElementSnapshot(
-    '.__dumi-default-layout-content',
+  const { printImg, downloadImg, getDataURL, copyImg } = getElementSnapshot(
+    '.__dumi-default-menu-header',
   );
   const [base64, setBase64]: any = React.useState();
   return (
@@ -24,6 +24,14 @@ export default () => {
         <Button
           type="primary"
           onClick={async () => {
+            await copyImg();
+          }}
+        >
+          一键截图
+        </Button>
+        <Button
+          type="primary"
+          onClick={async () => {
             setBase64(await getDataURL());
           }}
         >
@@ -32,7 +40,7 @@ export default () => {
       </Space>
       <br />
       <br />
-      {base64 && <img src={base64} style={{ width: 1000 }} />}
+      {base64 && <img src={base64} style={{ width: 200 }} />}
     </>
   );
 };

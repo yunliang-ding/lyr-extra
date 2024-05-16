@@ -6,13 +6,10 @@ import js from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
 import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
 import ts from "react-syntax-highlighter/dist/esm/languages/prism/typescript";
 import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
-import {
-  oneLight,
-  oneDark,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
-import "./index.less";
 import { babelParse } from "..";
 import CodeWrap from "./code-wrap";
+import SyntaxLighter from "./syntax-lighter";
+import "./index.css";
 
 SyntaxHighlighter.registerLanguage("js", js);
 SyntaxHighlighter.registerLanguage("javascript", js);
@@ -36,7 +33,7 @@ export interface MarkDownViewerProps {
 export default ({
   content,
   require = {},
-  codeTheme = "dark",
+  codeTheme = "",
 }: MarkDownViewerProps) => {
   const [spin, setSpin] = useState(true);
   useEffect(() => {
@@ -83,26 +80,22 @@ export default ({
                 require,
               });
               return (
-                <CodeWrap code={children[0]}>
+                <CodeWrap code={children[0]} codeTheme={codeTheme}>
                   <Comp />
                 </CodeWrap>
               );
             }
             const match = /language-(\w+)/.exec(className || "");
+            const code = String(children).replace(/\n$/, "");
             return !inline && match ? (
-              <SyntaxHighlighter
-                PreTag="div"
-                style={codeTheme === "dark" ? oneDark : oneLight}
-                language={match[1]}
-                className={
-                  codeTheme === "dark"
-                    ? "markdown-viewer-code markdown-viewer-code-dark"
-                    : "markdown-viewer-code"
-                }
-                {...props}
-              >
-                {String(children).replace(/\n$/, "")}
-              </SyntaxHighlighter>
+              <div style={{ position: "relative" }}>
+                <SyntaxLighter
+                  codeTheme={codeTheme}
+                  code={code}
+                  language={match[1]}
+                  {...props}
+                />
+              </div>
             ) : (
               <code className={className} {...props}>
                 {children}

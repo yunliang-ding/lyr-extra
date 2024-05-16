@@ -1,0 +1,95 @@
+.markdown-viewer-code {
+  position: relative;
+  padding-top: 30px !important;
+  box-sizing: border-box;
+  font-size: 12px;
+  padding: 5px;
+  width: 100%;
+}
+.markdown-viewer-code-dark:not(pre) > code[class*="language-"],
+.markdown-viewer-code-dark pre[class*="language-"]::selection,
+.markdown-viewer-code-dark pre[class*="language-"] ::selection,
+.markdown-viewer-code-dark code[class*="language-"]::selection,
+.markdown-viewer-code-dark code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #46515f;
+}
+.markdown-viewer-code::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 12px;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fc625d;
+  box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+}
+.markdown-viewer-code-wrap {
+  border: 1px solid #eee;
+  height: 100%;
+}
+.markdown-viewer-code-wrap-body {
+  padding: 12px;
+  height: fit-content;
+}
+.markdown-viewer-code-wrap-extra {
+  height: 36px;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  gap: 10px;
+}
+.markdown-viewer-code-wrap-footer {
+  height: fit-content;
+}
+.markdown-viewer-ul {
+  list-style-type: disc;
+  padding-left: 15px;
+}
+.markdown-viewer-ol {
+  list-style-type: disc;
+  padding-left: 15px;
+}
+.markdown-viewer-li {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+.markdown-viewer-h3 {
+  border-left: 4px solid rgb(var(--primary-6));
+  padding-left: 10px;
+}
+.markdown-viewer-strong {
+  padding: 1px;
+  color: rgb(var(--primary-6));
+  font-weight: 600;
+  font-size: 13px;
+}
+.markdown-viewer-blockquote {
+  padding: 6px 10px;
+  color: #555;
+  border-left: 4px solid rgb(var(--primary-6));
+  background: #fff9f9;
+  font-size: 1rem;
+}
+.markdown-viewer-blockquote p {
+  margin: 0;
+}
+.markdown-viewer-table {
+  width: 100%;
+  border: 1px solid #eee;
+}
+.markdown-viewer-table thead {
+  background-color: #f7f8f9;
+  height: 30px;
+}
+.markdown-viewer-table th,
+.markdown-viewer-table td {
+  text-align: left;
+  padding-left: 10px;
+  border: 1px solid #eee;
+  height: 32px;
+}

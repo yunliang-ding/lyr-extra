@@ -1,3 +1,7 @@
+## getElementSnapshot 元素快照
+
+### 基本使用
+
 ```tsx | react
 import { getElementSnapshot } from "lyr-extra";
 
@@ -9,9 +13,7 @@ export default () => {
   return (
     <div>
       <div>
-        <button onClick={printImg}>
-          打印元素
-        </button>
+        <button onClick={printImg}>打印元素</button>
         <button
           onClick={async () => {
             await downloadImg("元素预览图");

@@ -1,6 +1,6 @@
-## copyToClipBoard 
+## copyToClipBoard 复制到剪切板
 
-### 复制到剪切板
+### 基本使用
 
 ```tsx | react
 import { copyToClipBoard } from "lyr-extra";

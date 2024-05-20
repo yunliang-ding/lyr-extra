@@ -1,6 +1,6 @@
-## downloadFile 
+## downloadFile 下载文件
 
-### 下载文件
+### 基本使用
 
 ```tsx | react
 import { downloadFile } from 'lyr-extra';

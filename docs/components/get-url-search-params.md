@@ -1,6 +1,6 @@
-## getUrlSearchParams
+## getUrlSearchParams 获取 url 参数
 
-### 获取 url 参数
+### 基本使用
 
 ```tsx | react
 import { useState } from "react";

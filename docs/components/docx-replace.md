@@ -1,6 +1,6 @@
-## docxReplace
+## docxReplace 替换 word 文档
 
-### 替换 word 文档
+### 基本使用
 
 ```tsx | react
 import { downloadFile, docxReplace } from "lyr-extra";

@@ -1,6 +1,6 @@
-## ConsoleRender
+## ConsoleRender 渲染日志
 
-### 渲染日志
+### 基本使用
 
 ```tsx | react
 import { useEffect } from "react";

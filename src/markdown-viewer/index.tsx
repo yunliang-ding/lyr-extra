@@ -42,7 +42,6 @@ export default ({
       setSpin(false);
     }, 500);
   }, []);
-  console.log("content", content);
   return spin ? null : (
     <div className="markdown-viewer">
       <ReactMarkDown
@@ -71,6 +70,9 @@ export default ({
           },
           blockquote({ children }) {
             return <div className="markdown-viewer-blockquote">{children}</div>;
+          },
+          pre({children}) {
+            return <div className="markdown-viewer-pre">{children}</div>
           },
           code({ node, inline, className, children, ...props }) {
             // 仅渲染代码

@@ -33,6 +33,7 @@
 .markdown-viewer-code-wrap-body {
   padding: 12px;
   height: fit-content;
+  overflow: auto;
 }
 .markdown-viewer-code-wrap-extra {
   height: 36px;

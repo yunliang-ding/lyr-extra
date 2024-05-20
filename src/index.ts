@@ -1,10 +1,8 @@
-import * as _BigNumber from "bignumber.js";
+import * as BigNumberJS from "bignumber.js";
 import html2canvas from "html2canvas";
 import { Message, Notification } from "@arco-design/web-react";
 
 const ReactToPrint = require("react-to-print");
-
-const BigNumberjs: any = _BigNumber;
 
 const calculate: any = (
   args: any[],
@@ -13,7 +11,7 @@ const calculate: any = (
   return Number(
     args
       .reduce((a, b) => {
-        return new BigNumberjs(a)[type](new BigNumberjs(b));
+        return new BigNumberJS.BigNumber(a)[type](new BigNumberJS.BigNumber(b));
       })
       .toString()
   );
@@ -223,8 +221,6 @@ export const getElementSnapshot = (
 export { default as CheckAppVersion } from "./check-app-version";
 
 export { default as ConsoleRender } from "./console-render";
-
-export { default as usePureRequest } from "./hooks/usePureRequest";
 
 export { default as docxReplace } from "./docx-replace";
 

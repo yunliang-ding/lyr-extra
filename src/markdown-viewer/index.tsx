@@ -42,6 +42,7 @@ export default ({
       setSpin(false);
     }, 500);
   }, []);
+  console.log("content", content);
   return spin ? null : (
     <div className="markdown-viewer">
       <ReactMarkDown

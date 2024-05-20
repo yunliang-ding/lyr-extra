@@ -2,8 +2,6 @@
 !/dist
 /src
 /docs
-/mock
-/.dumi
 /.github
 /docs-dist
 /.editorconfig                                      
@@ -11,7 +9,6 @@
 /.eslintrc.js                                       
 /.fatherrc.ts                                       
 /.prettierignore                                    
-/.prettierrc.js                                      
-/.umirc.ts
+/.prettierrc     
 tsconfig.json
 typings.d.ts

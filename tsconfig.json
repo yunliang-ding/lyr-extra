@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["es6", "dom", "es2021"],
+    "lib": ["es6", "dom"],
     "target": "es2016",
     "module": "esnext",
     "esModuleInterop": true,
@@ -17,6 +17,5 @@
       "react": ["./node_modules/@types/react"]
     }
   },
-  "include": ["src"],
   "exclude": ["node_modules"]
 }

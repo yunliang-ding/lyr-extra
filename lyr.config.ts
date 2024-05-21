@@ -41,6 +41,9 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prettier-parser-typescript.min.js',
   ],
   serverPath: '/apis',
+  docsRequire: {
+    ArcoDesign: '@arco-design/web-react',
+  },
   menus: [
     {
       label: '介绍',

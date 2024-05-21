@@ -33,6 +33,7 @@ export default defineConfig({
     commonjs(),
     less({
       insert: true,
+      output: "dist/index.min.css",
       option: {
         compress: true,
       },

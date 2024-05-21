@@ -1,11 +1,11 @@
 import { useState } from "react";
 import SyntaxLighter from "./syntax-lighter";
 
-export default ({ code, children, codeTheme }) => {
+export default ({ style = {}, code, children, codeTheme }) => {
   const [open, setOpen] = useState(false);
   return (
     <div className="markdown-viewer-code-wrap">
-      <div className="markdown-viewer-code-wrap-body">{children}</div>
+      <div className="markdown-viewer-code-wrap-body" style={style}>{children}</div>
       <div className="markdown-viewer-code-wrap-extra">
         <svg
           viewBox="0 0 1024 1024"

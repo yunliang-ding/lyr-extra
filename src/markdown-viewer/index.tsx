@@ -76,14 +76,19 @@ export default ({
           },
           code({ node, inline, className, children, ...props }) {
             // 仅渲染代码
-            if (node?.data?.meta === "| react") {
+            if ((node?.data?.meta as string)?.startsWith?.("| react")) {
               // 渲染 React 组件
               const Comp = babelParse({
                 code: (children[0] as string).replaceAll("\n", ""),
                 require,
               });
+              const style: any = {};
+              const splitString = (node?.data?.meta as string).split?.(" | ");
+              if(splitString.length > 1){
+                style.backgroundColor = splitString[1];
+              }
               return (
-                <CodeWrap code={children[0]} codeTheme={codeTheme}>
+                <CodeWrap code={children[0]} codeTheme={codeTheme} style={style}>
                   <Comp />
                 </CodeWrap>
               );

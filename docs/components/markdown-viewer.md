@@ -31,7 +31,7 @@ export default () => {\n
 }\n
 \`\`\`\n
 ### 组件解析\n
-\`\`\`\tsx | react\n
+\`\`\`\jsx | react | #f5f5f5\n
 export default () => {\n
   return <div className='app'>我是渲染结果</div>\n
 }\n

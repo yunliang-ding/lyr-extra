@@ -1,5 +1,6 @@
 export { default as uuid } from "./uuid";
 export { default as isEmpty } from "./is-empty";
+export { default as BigNumber } from "./big-number";
 export { default as NumberFormat } from "./number-format";
 export { default as getUrlSearchParams } from "./get-url-search-params";
 export { default as downloadFile } from "./download-file";

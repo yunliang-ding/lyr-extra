@@ -16,7 +16,9 @@ export default () => {
       >
         切换代码主题
       </button>
-      <MarkdownViewer codeTheme={codeTheme} content={`
+      <MarkdownViewer
+        codeTheme={codeTheme}
+        content={`
 # 一级标题\n
 ## 二级标题\n
 ### 三级标题\n
@@ -42,7 +44,8 @@ export default () => {\n
 |1|\`\`\`张三\`\`\`|20|地址地址地址|\n
 |2|李四|18|地址地址地址|\n
 |3|王五|23|地址地址地址|\n
-`} />
+`}
+      />
     </div>
   );
 };

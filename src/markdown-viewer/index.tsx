@@ -47,6 +47,32 @@ export default ({
       <ReactMarkDown
         remarkPlugins={[remarkGfm]}
         components={{
+          a({ children, href }) {
+            return (
+              <a target="_blank" href={href}>
+                {children}
+                <svg
+                  viewBox="0 0 100 100"
+                  width="15"
+                  height="15"
+                  style={{
+                    position: "relative",
+                    top: 3,
+                    marginLeft: 4,
+                  }}
+                >
+                  <path
+                    fill="currentColor"
+                    d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"
+                  ></path>
+                  <polygon
+                    fill="currentColor"
+                    points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"
+                  ></polygon>
+                </svg>
+              </a>
+            );
+          },
           h1({ children }) {
             return <h1 className="markdown-viewer-h1">{children}</h1>;
           },
@@ -71,27 +97,43 @@ export default ({
           blockquote({ children }) {
             return <div className="markdown-viewer-blockquote">{children}</div>;
           },
-          pre({children}) {
-            return <div className="markdown-viewer-pre">{children}</div>
+          pre({ children }) {
+            return <div className="markdown-viewer-pre">{children}</div>;
           },
           code({ node, inline, className, children, ...props }) {
-            // 仅渲染代码
+            // 渲染 React 组件
             if ((node?.data?.meta as string)?.startsWith?.("| react")) {
-              // 渲染 React 组件
               const Comp = babelParse({
                 code: (children[0] as string).replaceAll("\n", ""),
                 require,
               });
               const style: any = {};
               const splitString = (node?.data?.meta as string).split?.(" | ");
-              if(splitString.length > 1){
+              if (splitString.length > 1) {
                 style.backgroundColor = splitString[1];
               }
               return (
-                <CodeWrap code={children[0]} codeTheme={codeTheme} style={style}>
+                <CodeWrap
+                  code={children[0]}
+                  codeTheme={codeTheme}
+                  style={style}
+                >
                   <Comp />
                 </CodeWrap>
               );
+            }
+            // 仅 渲染 React 组件
+            if((node?.data?.meta as string)?.startsWith?.("| pureReact")){
+              const Comp = babelParse({
+                code: (children[0] as string).replaceAll("\n", ""),
+                require,
+              });
+              const style: any = {};
+              const splitString = (node?.data?.meta as string).split?.(" | ");
+              if (splitString.length > 1) {
+                style.backgroundColor = splitString[1];
+              }
+              return <Comp />
             }
             const match = /language-(\w+)/.exec(className || "");
             const code = String(children).replace(/\n$/, "");

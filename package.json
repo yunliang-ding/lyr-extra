@@ -2,14 +2,15 @@
   "name": "lyr-extra",
   "description": "功能特性额外的",
   "author": "yunliang-ding",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "scripts": {
     "start": "lyr-docs dev",
     "build": "rollup -c",
     "docs:build": "lyr-docs build"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "type": "commonjs",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.umd.js",
   "typings": "dist/index.d.ts",
   "keywords": [
     "lyr-extra"
@@ -18,41 +19,28 @@
     "type": "git",
     "url": "https://github.com/yunliang-ding/lyr-extra"
   },
-  "dependencies": {
-    "bignumber.js": "9.1.0",
-    "html2canvas": "1.4.1",
-    "react-to-print": "2.13.0",
-    "pizzip": "^3.1.4",
-    "jszip": "3.10.1",
-    "docxtemplater": "^3.34.3",
-    "file-saver": "^2.0.5",
-    "eval5": "1.4.7",
-    "react-syntax-highlighter": "15.5.0",
-    "react-markdown": "8.0.7",
-    "remark-gfm": "3.0.1"
-  },
-  "resolutions": {
-    "@types/react": "17.0.2"
-  },
   "peerDependencies": {
-    "jszip": "3.10.1",
-    "pizzip": "^3.1.4",
-    "bignumber.js": "9.1.0",
-    "html2canvas": "1.4.1",
-    "react-to-print": "2.13.0",
-    "docxtemplater": "^3.34.3",
-    "file-saver": "^2.0.5",
-    "eval5": "1.4.7",
-    "react-syntax-highlighter": "15.5.0",
-    "react-markdown": "8.0.7",
-    "remark-gfm": "3.0.1",
-    "react": "17.0.2",
-    "react-dom": ">=17.0.2"
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2",
+    "html2canvas": "1.4.1"
   },
   "devDependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "bignumber.js": "9.1.0",
+    "html2canvas": "1.4.1",
+    "react-to-print": "2.13.0",
+    "pizzip": "^3.1.4",
+    "jszip": "3.10.1",
+    "docxtemplater": "^3.34.3",
+    "file-saver": "^2.0.5",
+    "eval5": "1.4.7",
+    "react-markdown": "8.0.7",
+    "remark-gfm": "3.0.1",
+    "react-syntax-highlighter": "15.5.0",
     "lyr-docs": "0.0.27",
+    "rollup-plugin-replace": "2.2.0",
+    "@rollup/plugin-json": "6.1.0",
     "typescript": "5.3.2",
     "@types/react": "17.0.2",
     "@types/react-dom": "17.0.2"

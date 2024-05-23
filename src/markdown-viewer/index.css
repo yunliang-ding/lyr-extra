@@ -27,7 +27,7 @@
   box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
 }
 .markdown-viewer-code-wrap {
-  border: 1px solid #eee;
+  border: 1px solid var(--color-fill-3);
   height: 100%;
 }
 .markdown-viewer-code-wrap-body {
@@ -37,7 +37,7 @@
 }
 .markdown-viewer-code-wrap-extra {
   height: 36px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--color-fill-3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,16 +81,16 @@
 }
 .markdown-viewer-table {
   width: 100%;
-  border: 1px solid #eee;
+  border: 1px solid var(--color-fill-3);
 }
 .markdown-viewer-table thead {
-  background-color: #f7f8f9;
+  background-color: var(--color-bg-5);;
   height: 30px;
 }
 .markdown-viewer-table th,
 .markdown-viewer-table td {
   text-align: left;
   padding-left: 10px;
-  border: 1px solid #eee;
+  border: 1px solid var(--color-fill-3);
   height: 32px;
 }

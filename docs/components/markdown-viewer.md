@@ -6,19 +6,10 @@
 import { MarkdownViewer } from "lyr-extra";
 
 export default () => {
-  const [codeTheme, setCodeTheme] = React.useState("dark");
   return (
-    <div>
-      <button
-        onClick={() => {
-          setCodeTheme(codeTheme === "dark" ? "light" : "dark");
-        }}
-      >
-        切换代码主题
-      </button>
-      <MarkdownViewer
-        codeTheme={codeTheme}
-        content={`
+    <MarkdownViewer
+      codeTheme="dark"
+      content={`
 # 一级标题\n
 ## 二级标题\n
 ### 三级标题\n
@@ -33,7 +24,7 @@ export default () => {\n
 }\n
 \`\`\`\n
 ### 组件解析\n
-\`\`\`\jsx | react | #f5f5f5\n
+\`\`\`\jsx | react | var(--color-fill-2)\n
 export default () => {\n
   return <div className='app'>我是渲染结果</div>\n
 }\n
@@ -41,12 +32,11 @@ export default () => {\n
 ### 数据表格\n
 |学号|姓名|年龄|地址|\n
 |----|----|----|----|\n
-|1|\`\`\`张三\`\`\`|20|地址地址地址|\n
+|1|张三|20|地址地址地址|\n
 |2|李四|18|地址地址地址|\n
 |3|王五|23|地址地址地址|\n
 `}
-      />
-    </div>
+    />
   );
 };
 ```

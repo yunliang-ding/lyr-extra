@@ -6,9 +6,9 @@ import less from "rollup-plugin-less";
 import external from "rollup-plugin-peer-deps-external";
 import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
-import replace from 'rollup-plugin-replace';
+import replace from "rollup-plugin-replace";
 
-const env = process.env.NODE_ENV
+const env = process.env.NODE_ENV;
 
 export default defineConfig({
   input: "./src/index.ts",
@@ -22,14 +22,15 @@ export default defineConfig({
     //   format: "cjs",
     // },
     {
-      file: 'dist/index.umd.js',
-      format: 'umd',
-      name: 'lyrExtra',
+      file: "dist/index.umd.js",
+      format: "umd",
+      name: "lyrExtra",
       globals: {
-        react: 'React',
+        react: "React",
         html2canvas: "html2canvas",
-        'react-dom': 'ReactDOM',
-        'react/jsx-runtime': 'jsxRuntime',
+        jszip: "JSZip",
+        "react-dom": "ReactDOM",
+        "react/jsx-runtime": "jsxRuntime",
       },
     },
   ],
@@ -39,7 +40,7 @@ export default defineConfig({
     external(),
     commonjs(),
     replace({
-      'process.env.NODE_ENV': JSON.stringify(env)
+      "process.env.NODE_ENV": JSON.stringify(env),
     }),
     less({
       insert: true,

@@ -18,6 +18,8 @@
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jsx-runtime.polyfill.js"></script>
 <!-- window.html2canvas -->
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js"></script>
+<!-- window.JSZip -->
+<script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js"></script>
 ```
 
 - BigNumber 解决精度问题

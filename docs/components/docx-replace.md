@@ -24,7 +24,7 @@ export default () => {
   };
   const onDownloadDemo = () => {
     downloadFile(
-      "http://react-core-form.oss-cn-beijing.aliyuncs.com/assets/demo.docx",
+      "//react-core-form.oss-cn-beijing.aliyuncs.com/assets/demo.docx",
       "demo.docx"
     );
   };

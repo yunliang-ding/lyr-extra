@@ -6,9 +6,16 @@
 import { MarkdownViewer } from "lyr-extra";
 
 export default () => {
+  const user = { name: 'zhangsan', age: 12 };
   return (
     <MarkdownViewer
       codeTheme="dark"
+      source={{
+        'user.ts': `export default ${JSON.stringify(user, null, 2)}`
+      }}
+      require={{
+        'user.ts': user,
+      }}
       content={`
 # 一级标题\n
 ## 二级标题\n
@@ -25,8 +32,9 @@ export default () => {\n
 \`\`\`\n
 ### 组件解析\n
 \`\`\`\jsx | react | var(--color-fill-2)\n
+import userInfo from "user.ts";\n\n
 export default () => {\n
-  return <div className='app'>我是渲染结果</div>\n
+  return <div className='app'>{userInfo.name}</div>\n
 }\n
 \`\`\`\n
 ### 数据表格\n

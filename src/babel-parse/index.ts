@@ -14,8 +14,9 @@ export default ({
   // 默认 default 导出
   exportDefault = true,
   require = {},
+  onRequire = () => null,
 }: babelParseProps) => {
-  const babel = new BabelCompile(require);
+  const babel = new BabelCompile(require, onRequire);
   try {
     let dependenciesString = '';
     if (!isEmpty(dependencies)) {

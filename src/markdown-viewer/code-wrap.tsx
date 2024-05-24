@@ -1,11 +1,21 @@
 import { useState } from "react";
 import SyntaxLighter from "./syntax-lighter";
+import { Tabs } from "@arco-design/web-react";
 
-export default ({ style = {}, code, children, codeTheme }) => {
+export default ({
+  style = {},
+  code,
+  children,
+  codeTheme,
+  tabs = [],
+  source = {},
+}) => {
   const [open, setOpen] = useState(false);
   return (
     <div className="markdown-viewer-code-wrap">
-      <div className="markdown-viewer-code-wrap-body" style={style}>{children}</div>
+      <div className="markdown-viewer-code-wrap-body" style={style}>
+        {children}
+      </div>
       <div className="markdown-viewer-code-wrap-extra">
         <svg
           viewBox="0 0 1024 1024"
@@ -24,11 +34,30 @@ export default ({ style = {}, code, children, codeTheme }) => {
       </div>
       {open && (
         <div className="markdown-viewer-code-wrap-footer">
-          <SyntaxLighter
-            language={"tsx"}
-            code={String(code).replace(/\n$/, "")}
-            codeTheme={codeTheme}
-          />
+          {tabs.length > 0 ? (
+            <Tabs size="mini">
+              {tabs.map((tab, index) => {
+                return (
+                  <Tabs.TabPane key={tab} title={tab} style={{ padding: 10 }}>
+                    <SyntaxLighter
+                      language={"tsx"}
+                      code={String(index === 0 ? code : source[tab]).replace(
+                        /\n$/,
+                        ""
+                      )}
+                      codeTheme={codeTheme}
+                    />
+                  </Tabs.TabPane>
+                );
+              })}
+            </Tabs>
+          ) : (
+            <SyntaxLighter
+              language={"tsx"}
+              code={String(code).replace(/\n$/, "")}
+              codeTheme={codeTheme}
+            />
+          )}
         </div>
       )}
     </div>

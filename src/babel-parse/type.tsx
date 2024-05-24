@@ -15,6 +15,7 @@ export interface babelParseProps {
   exportDefault?: boolean;
   /** 第三方依赖 */
   require?: Object;
+  onRequire?(key: string): void;
 }
 
 const Hello: React.FC<babelParseProps> = () => null;

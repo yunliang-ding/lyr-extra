@@ -1,5 +1,6 @@
 import html2canvas from "html2canvas";
 import { useReactToPrint } from "react-to-print";
+import { Message } from "@arco-design/web-react";
 
 /** 获取元素快照 */
 export default (
@@ -30,13 +31,14 @@ export default (
                 .then(
                   () => {
                     res(true);
+                    Message.success("已复制");
                   },
                   () => {
                     res(false);
                   }
                 );
             } else {
-              alert("请在安全域名下使用");
+              Message.info("请在安全域名下使用");
               res(true);
             }
           }, "image/png");

@@ -1,8 +1,11 @@
+import { Message } from "@arco-design/web-react";
+
 /** 拷贝到剪切板 */
 export default async (text: string) => {
   /** navigator clipboard 需要https等安全上下文 */
   if (navigator.clipboard && window.isSecureContext) {
     await navigator.clipboard.writeText(text);
+    Message.success("已复制");
   } else {
     const textArea = document.createElement("textarea");
     textArea.value = text;
@@ -17,5 +20,6 @@ export default async (text: string) => {
       document.execCommand("copy") ? resolve(true) : reject();
       textArea.remove();
     });
+    Message.success("已复制");
   }
 };

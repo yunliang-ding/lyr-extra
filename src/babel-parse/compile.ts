@@ -5,15 +5,18 @@ import { Interpreter } from 'eval5';
 class BabelCompile {
   scope: any = {};
   exports = {};
-  constructor(scope = {}) {
+  onRequire: any;
+  constructor(scope = {}, onRequire?) {
     this.scope = {
       react,
       'react-dom': ReactDOM,
       ...scope,
     };
+    this.onRequire = onRequire;
   }
   require = (key: string) => {
     if (this.scope[key] === undefined) throw new Error(`${key} is not define`);
+    this.onRequire?.(key);
     return this.scope[key];
   };
   excuteCode = (code: string): any => {

@@ -9,7 +9,7 @@ import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
 import { babelParse } from "..";
 import CodeWrap from "./code-wrap";
 import SyntaxLighter from "./syntax-lighter";
-import "./index.css";
+import "./index.less";
 
 SyntaxHighlighter.registerLanguage("js", js);
 SyntaxHighlighter.registerLanguage("javascript", js);
@@ -28,12 +28,15 @@ export interface MarkDownViewerProps {
   codeTheme?: string;
   /** 解析 React 组件的依赖 */
   require?: any;
+  /** 依赖的源码 */
+  source?: any;
 }
 
 export default ({
   content,
   require = {},
   codeTheme = "",
+  source = {},
 }: MarkDownViewerProps) => {
   const [spin, setSpin] = useState(true);
   useEffect(() => {
@@ -103,12 +106,24 @@ export default ({
           code({ node, inline, className, children, ...props }) {
             // 渲染 React 组件
             if ((node?.data?.meta as string)?.startsWith?.("| react")) {
+              const tabs = ['index.tsx'];
               const Comp = babelParse({
                 code: (children[0] as string).replaceAll("\n", ""),
                 require,
+                onRequire: (requireName: string) => {
+                  if (
+                    requireName.endsWith(".ts") ||
+                    requireName.endsWith(".tsx")
+                  ) {
+                    tabs.push(requireName);
+                  }
+                },
               });
               const style: any = {};
               const splitString = (node?.data?.meta as string).split?.(" | ");
+              if (splitString.length > 1) {
+                style.backgroundColor = splitString[1];
+              }
               if (splitString.length > 1) {
                 style.backgroundColor = splitString[1];
               }
@@ -117,13 +132,15 @@ export default ({
                   code={children[0]}
                   codeTheme={codeTheme}
                   style={style}
+                  tabs={tabs.filter(Boolean)}
+                  source={source}
                 >
                   <Comp />
                 </CodeWrap>
               );
             }
             // 仅 渲染 React 组件
-            if((node?.data?.meta as string)?.startsWith?.("| pureReact")){
+            if ((node?.data?.meta as string)?.startsWith?.("| pureReact")) {
               const Comp = babelParse({
                 code: (children[0] as string).replaceAll("\n", ""),
                 require,
@@ -133,7 +150,7 @@ export default ({
               if (splitString.length > 1) {
                 style.backgroundColor = splitString[1];
               }
-              return <Comp />
+              return <Comp />;
             }
             const match = /language-(\w+)/.exec(className || "");
             const code = String(children).replace(/\n$/, "");

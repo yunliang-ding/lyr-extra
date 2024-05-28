@@ -17,7 +17,3 @@ export interface babelParseProps {
   require?: Object;
   onRequire?(key: string): void;
 }
-
-const Hello: React.FC<babelParseProps> = () => null;
-
-export default Hello;

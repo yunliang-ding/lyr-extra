@@ -75,7 +75,7 @@ export default defineConfig({
           path: '/components/big-number',
         },
         {
-          label: 'BabelParse',
+          label: 'babelParse',
           path: '/components/babel-parse',
         },
         {

@@ -6,15 +6,15 @@
 import { MarkdownViewer } from "lyr-extra";
 
 export default () => {
-  const user = { name: 'zhangsan', age: 12 };
+  const user = { name: "zhangsan", age: 12 };
   return (
     <MarkdownViewer
       codeTheme="dark"
       source={{
-        'user.ts': `export default ${JSON.stringify(user, null, 2)}`
+        "user.ts": `export default ${JSON.stringify(user, null, 2)}`,
       }}
       require={{
-        'user.ts': user,
+        "user.ts": user,
       }}
       content={`
 # 一级标题\n
@@ -47,4 +47,22 @@ export default () => {\n
     />
   );
 };
+```
+
+## API
+
+```ts
+export interface MarkDownViewerProps {
+  /** 文件内容 */
+  content: string;
+  /**
+   * 代码主题色
+   * @default dark
+   */
+  codeTheme?: string;
+  /** 解析 React 组件的依赖 */
+  require?: any;
+  /** 依赖的源码 */
+  source?: any;
+}
 ```

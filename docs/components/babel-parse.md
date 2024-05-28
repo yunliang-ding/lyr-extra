@@ -1,4 +1,4 @@
-## 编译 es6 代码片段
+## 编译 tsx 代码片段
 
 ### 基本使用
 
@@ -43,4 +43,28 @@ export default () => {
   });
   return <Comp />;
 };
+```
+
+
+## API
+
+```ts
+export interface babelParseProps {
+  /**
+   * es6 module 代码片段
+   */
+  code: string;
+  /**
+   * 自动添加 import
+   * @default { React: 'react'}
+   */
+  dependencies?: Object;
+  /**
+   * 是否采用默认导出解析
+   * @default true
+   */
+  exportDefault?: boolean;
+  /** 第三方依赖 */
+  require?: Object;
+}
 ```

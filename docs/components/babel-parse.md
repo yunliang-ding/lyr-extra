@@ -5,7 +5,11 @@
 ```tsx | react
 import { babelParse } from "lyr-extra";
 
-const code = `export default (props) => {
+const code = `interface UserProps{
+  name: string
+};
+
+export default (props: UserProps) => {
   return <button>{props.name}</button>
 }
 `;

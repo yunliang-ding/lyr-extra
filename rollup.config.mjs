@@ -28,6 +28,7 @@ export default defineConfig({
       globals: {
         react: "React",
         html2canvas: "html2canvas",
+        '@arco-design/web-react': 'arco',
         jszip: "JSZip",
         "react-dom": "ReactDOM",
         "react/jsx-runtime": "jsxRuntime",

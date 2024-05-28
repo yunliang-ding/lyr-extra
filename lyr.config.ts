@@ -25,6 +25,7 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-extra.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/eval5.min.js',
   ],
   buildScript: [
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.production.min.js',
@@ -45,10 +46,12 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-extra.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/eval5.min.js',
   ],
   webpackConfig: () => {
     return {
       externals: {
+        eval5: "eval5",
         html2canvas: 'html2canvas',
         jszip: 'JSZip',
       },

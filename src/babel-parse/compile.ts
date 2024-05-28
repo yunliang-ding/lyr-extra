@@ -40,7 +40,8 @@ class BabelCompile {
     const { transform } = (window as any).Babel;
     try {
       const es5 = transform(code, {
-        presets: ['env', 'react'],
+        presets: ['env', 'react', 'typescript'],
+        filename: "main.tsx"
       }).code;
       return transform(
         `(require, exports) => {

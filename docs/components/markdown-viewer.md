@@ -1,6 +1,6 @@
 ## MarkdownViewer 解析 md
 
-### 基本使用
+## 基本使用
 
 ```tsx | react
 import { MarkdownViewer } from "lyr-extra";
@@ -24,20 +24,20 @@ export default () => {
 1. 描述1\n
 2. 描述2\n
 3. 描述3\n
-### 代码块\n
+## 代码块\n
 \`\`\`\jsx\n
 export default () => {\n
   return <div className='app'>代码块</div>\n
 }\n
 \`\`\`\n
-### 组件解析\n
+## 组件解析\n
 \`\`\`\jsx | react | var(--color-fill-2)\n
 import userInfo from "user.ts";\n\n
 export default () => {\n
   return <div className='app'>{userInfo.name}</div>\n
 }\n
 \`\`\`\n
-### 数据表格\n
+## 数据表格\n
 |学号|姓名|年龄|地址|\n
 |----|----|----|----|\n
 |1|张三|20|地址地址地址|\n

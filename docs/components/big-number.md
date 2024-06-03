@@ -1,6 +1,6 @@
-## 解决精度问题
+# 解决精度问题
 
-### BigNumber.add
+## BigNumber.add
 
 ```tsx | react
 import { useState } from 'react';
@@ -23,7 +23,7 @@ export default () => {
 };
 ```
 
-### BigNumber.minus
+## BigNumber.minus
 
 ```tsx | react
 import { useState } from 'react';
@@ -46,7 +46,7 @@ export default () => {
 };
 ```
 
-### BigNumber.multiplie
+## BigNumber.multiplie
 
 ```tsx | react
 import { useState } from 'react';
@@ -69,7 +69,7 @@ export default () => {
 };
 ```
 
-### BigNumber.divided
+## BigNumber.divided
 
 ```tsx | react
 import { useState } from 'react';

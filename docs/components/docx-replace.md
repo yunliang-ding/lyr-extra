@@ -1,6 +1,6 @@
-## docxReplace 替换 word 文档
+# docxReplace 替换 word 文档
 
-### 基本使用
+## 基本使用
 
 ```tsx | react
 import { downloadFile, docxReplace } from "lyr-extra";
@@ -48,7 +48,7 @@ export default () => {
 };
 ```
 
-### 支持同时替换多个，并下载 zip
+## 支持同时替换多个，并下载 zip
 
 ```ts
 docxReplaceBatch(files, data, {

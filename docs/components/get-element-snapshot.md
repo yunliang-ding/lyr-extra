@@ -1,6 +1,6 @@
-## getElementSnapshot 元素快照
+# getElementSnapshot 元素快照
 
-### 基本使用
+## 基本使用
 
 ```tsx | react
 import { getElementSnapshot } from "lyr-extra";

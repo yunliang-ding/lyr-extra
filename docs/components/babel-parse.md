@@ -1,6 +1,6 @@
-## 编译 tsx 代码片段
+# 编译 tsx 代码片段
 
-### 基本使用
+## 基本使用
 
 ```tsx | react
 import { babelParse } from "lyr-extra";
@@ -21,7 +21,7 @@ export default () => {
 };
 ```
 
-### 注入依赖
+## 注入依赖
 
 ```tsx | react
 import { babelParse } from "lyr-extra";

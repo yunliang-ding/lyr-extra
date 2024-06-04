@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   oneDark,
@@ -5,12 +6,21 @@ import {
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { copyToClipBoard } from "..";
 
-export default ({ code, language, codeTheme, ...props }) => {
+export default ({ code, language, codeTheme, slRef, ...props }) => {
+  const [theme, setTheme] = useState(codeTheme);
+  useEffect(() => {
+    slRef.current = {
+      setTheme: (theme: string) => {
+        setTheme(theme);
+      },
+    };
+  }, []);
+  console.log("theme", theme)
   return (
     <div style={{ position: "relative" }}>
       <SyntaxHighlighter
         PreTag="div"
-        style={codeTheme === "dark" ? oneDark : oneLight}
+        style={theme === "dark" ? oneDark : oneLight}
         language={language}
         className={
           codeTheme === "dark"

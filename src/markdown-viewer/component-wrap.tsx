@@ -9,6 +9,7 @@ export default ({
   codeTheme,
   tabs = [],
   source = {},
+  slRef,
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -34,30 +35,23 @@ export default ({
       </div>
       {open && (
         <div className="markdown-viewer-code-wrap-footer">
-          {tabs.length > 0 ? (
-            <Tabs size="mini">
-              {tabs.map((tab, index) => {
-                return (
-                  <Tabs.TabPane key={tab} title={tab} style={{ padding: 10 }}>
-                    <SyntaxLighter
-                      language={"tsx"}
-                      code={String(index === 0 ? code : source[tab]).replace(
-                        /\n$/,
-                        ""
-                      )}
-                      codeTheme={codeTheme}
-                    />
-                  </Tabs.TabPane>
-                );
-              })}
-            </Tabs>
-          ) : (
-            <SyntaxLighter
-              language={"tsx"}
-              code={String(code).replace(/\n$/, "")}
-              codeTheme={codeTheme}
-            />
-          )}
+          <Tabs size="mini">
+            {tabs.map((tab, index) => {
+              return (
+                <Tabs.TabPane key={tab} title={tab} style={{ padding: 10 }}>
+                  <SyntaxLighter
+                    language={"tsx"}
+                    slRef={slRef}
+                    code={String(index === 0 ? code : source[tab]).replace(
+                      /\n$/,
+                      ""
+                    )}
+                    codeTheme={codeTheme}
+                  />
+                </Tabs.TabPane>
+              );
+            })}
+          </Tabs>
         </div>
       )}
     </div>

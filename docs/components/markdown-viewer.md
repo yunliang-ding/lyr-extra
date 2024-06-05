@@ -39,8 +39,9 @@ export default () => {\n
 ```tsx | react
 import { MarkdownViewer } from "lyr-extra";
 
+const user = { name: "zhangsan", age: 12 };
+
 export default () => {
-  const user = { name: "zhangsan", age: 12 };
   return (
     <MarkdownViewer
       source={{
@@ -89,6 +90,8 @@ export default () => {\n
 ```tsx | react
 import { MarkdownViewer } from "lyr-extra";
 
+const user = { name: "zhangsan", age: 12 };
+
 export default () => {
   const mdRef = React.useRef({});
   return (
@@ -100,8 +103,21 @@ export default () => {
       >
         dark 主题
       </button>
+      <button
+        onClick={() => {
+          mdRef.current.setTheme("light");
+        }}
+      >
+        light 主题
+      </button>
       <MarkdownViewer
         ref={mdRef}
+        source={{
+          "user.ts": `export default ${JSON.stringify(user, null, 2)}`,
+        }}
+        require={{
+          "user.ts": user,
+        }}
         content={`
 ## 依赖脚本\n
 \`\`\`\html\n
@@ -114,6 +130,13 @@ export default () => {\n
   return <button>代码段</button>\n
 }\n
 \`\`\`\n
+
+## 渲染组件\n
+\`\`\`\jsx | react | var(--color-fill-2)\n
+import userInfo from "user.ts";\n
+export default () => {\n
+  return <div className='app'>{userInfo.name}</div>\n
+}\n
 `}
       />
     </div>

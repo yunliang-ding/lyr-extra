@@ -22,6 +22,15 @@ export default () => {\n
   return <div className='app'>代码块</div>\n
 }\n
 \`\`\`\n
+## 脚本\n
+\`\`\`\shell\n
+yarn add @arco-design/web-react\n
+yarn add lyr-component\n
+\`\`\`\n
+## 样式\n
+\`\`\`\less\n
+@import "@arco-design/web-react/dist/css/arco.css";\n
+\`\`\`\n
 ## 数据表格\n
 |学号|姓名|年龄|地址|\n
 |----|----|----|----|\n

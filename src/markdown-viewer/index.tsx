@@ -13,6 +13,8 @@ import js from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
 import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
 import ts from "react-syntax-highlighter/dist/esm/languages/prism/typescript";
 import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
+import less from "react-syntax-highlighter/dist/esm/languages/prism/less";
+import bash from "react-syntax-highlighter/dist/esm/languages/prism/bash";
 import { babelParse } from "..";
 import ComponentWrap from "./component-wrap";
 import SyntaxLighter from "./syntax-lighter";
@@ -24,6 +26,8 @@ SyntaxHighlighter.registerLanguage("jsx", jsx);
 SyntaxHighlighter.registerLanguage("ts", ts);
 SyntaxHighlighter.registerLanguage("typescript", ts);
 SyntaxHighlighter.registerLanguage("tsx", tsx);
+SyntaxHighlighter.registerLanguage("less", less);
+SyntaxHighlighter.registerLanguage("bash", bash);
 
 export interface MarkDownViewerProps {
   /** 文件内容 */

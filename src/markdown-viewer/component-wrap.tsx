@@ -9,9 +9,9 @@ export default ({
   codeTheme,
   tabs = [],
   source = {},
-  slRef,
+  expand = false
 }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(expand);
   return (
     <div className="markdown-viewer-code-wrap">
       <div className="markdown-viewer-code-wrap-body" style={style}>
@@ -41,12 +41,11 @@ export default ({
                 <Tabs.TabPane key={tab} title={tab} style={{ padding: 10 }}>
                   <SyntaxLighter
                     language={"tsx"}
-                    slRef={slRef}
+                    codeTheme={codeTheme}
                     code={String(index === 0 ? code : source[tab]).replace(
                       /\n$/,
                       ""
                     )}
-                    codeTheme={codeTheme}
                   />
                 </Tabs.TabPane>
               );

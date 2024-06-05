@@ -55,8 +55,8 @@ export default forwardRef(
     useImperativeHandle(ref, () => {
       return {
         setTheme: (theme: string) => {
-          slRef.current.forEach((item: any) => {
-            item.current.setTheme?.(theme);
+          slRef.current.forEach((fn: any) => {
+            fn?.(theme);
           });
         },
         getNavs: () => {
@@ -131,9 +131,11 @@ export default forwardRef(
               return <div className="markdown-viewer-pre">{children}</div>;
             },
             code({ node, inline, className, children, ...props }) {
+              const [theme, setTheme] = useState(codeTheme);
+              useEffect(() => {
+                slRef.current.push(setTheme);
+              }, []);
               // 渲染 React 组件
-              const innerSlRef = useRef({});
-              slRef.current.push(innerSlRef);
               if ((node?.data?.meta as string)?.startsWith?.("| react")) {
                 const tabs = ["index.tsx"];
                 const Comp = babelParse({
@@ -159,11 +161,13 @@ export default forwardRef(
                 return (
                   <ComponentWrap
                     code={children[0]}
-                    codeTheme={codeTheme}
-                    slRef={innerSlRef}
+                    codeTheme={theme}
                     style={style}
                     tabs={tabs.filter(Boolean)}
                     source={source}
+                    expand={(node?.data?.meta as string)?.startsWith?.(
+                      "| reactExpand"
+                    )}
                   >
                     <Comp />
                   </ComponentWrap>
@@ -187,8 +191,7 @@ export default forwardRef(
               return !inline && match ? (
                 <div style={{ position: "relative" }}>
                   <SyntaxLighter
-                    codeTheme={codeTheme}
-                    slRef={innerSlRef}
+                    codeTheme={theme}
                     code={code}
                     language={match[1]}
                     {...props}

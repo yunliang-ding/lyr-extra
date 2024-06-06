@@ -165,6 +165,7 @@ export default forwardRef(
                 return (
                   <ComponentWrap
                     code={children[0]}
+                    require={require}
                     codeTheme={theme}
                     style={style}
                     tabs={tabs.filter(Boolean)}

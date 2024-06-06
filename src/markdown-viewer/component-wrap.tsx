@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SyntaxLighter from "./syntax-lighter";
-import { Tabs } from "@arco-design/web-react";
+import { Message, Tabs } from "@arco-design/web-react";
+import { CodeEditor } from "lyr-code-editor";
 
 export default ({
   style = {},
@@ -9,7 +9,8 @@ export default ({
   codeTheme,
   tabs = [],
   source = {},
-  expand = false
+  expand = false,
+  require,
 }) => {
   const [open, setOpen] = useState(expand);
   return (
@@ -35,17 +36,40 @@ export default ({
       </div>
       {open && (
         <div className="markdown-viewer-code-wrap-footer">
-          <Tabs size="mini">
+          <Tabs
+            size="mini"
+            extra={[
+              <svg
+                viewBox="0 0 1024 1024"
+                width="12"
+                height="12"
+                style={{
+                  marginRight: 10,
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  Message.info("开发中!");
+                }}
+              >
+                <path
+                  d="M886.784 512a25.6 25.6 0 0 1-11.4944 21.3504l-698.368 460.8a25.6512 25.6512 0 0 1-26.24 1.2032A25.6256 25.6256 0 0 1 137.216 972.8V51.2a25.5744 25.5744 0 0 1 39.7056-21.3504l698.368 460.8a25.6 25.6 0 0 1 11.4944 21.3504z"
+                  fill="#8a8a8a"
+                ></path>
+              </svg>,
+            ]}
+          >
             {tabs.map((tab, index) => {
               return (
-                <Tabs.TabPane key={tab} title={tab} style={{ padding: 10 }}>
-                  <SyntaxLighter
-                    language={"tsx"}
-                    codeTheme={codeTheme}
-                    code={String(index === 0 ? code : source[tab]).replace(
+                <Tabs.TabPane key={tab} title={tab} style={{ padding: 0 }}>
+                  <CodeEditor
+                    require={require}
+                    value={String(index === 0 ? code : source[tab]).replace(
                       /\n$/,
                       ""
                     )}
+                    style={{ height: 200 }}
+                    theme={codeTheme === "dark" ? "vs-dark" : "vs"}
+                    mode="function"
                   />
                 </Tabs.TabPane>
               );

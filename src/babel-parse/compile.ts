@@ -1,5 +1,4 @@
 import react from 'react';
-import ReactDOM from 'react-dom';
 import { Interpreter } from 'eval5';
 
 class BabelCompile {
@@ -9,7 +8,6 @@ class BabelCompile {
   constructor(scope = {}, onRequire?) {
     this.scope = {
       react,
-      'react-dom': ReactDOM,
       ...scope,
     };
     this.onRequire = onRequire;
@@ -31,7 +29,7 @@ class BabelCompile {
       interpreter.evaluate(this.getES5Code(code))(this.require, this.exports);
       res.exports = this.exports;
     } catch (error) {
-      console.log('catch transform error:', error);
+      console.log('catch run evaluate error:', error);
       throw error;
     }
     return res;

@@ -16,10 +16,10 @@ export default ({
   const [reload, setReload] = useState(Math.random());
   const [innerCode] = useState({ code });
   const [updateRequire] = useState({});
-  const tabs = useMemo(() => ["index.tsx"], [reload]);
-  const Comp = useMemo(
-    () =>
-      babelParse({
+  const tabs = useMemo(() => ["index.tsx"], []);
+  const Comp = useMemo(() => {
+    try {
+      return babelParse({
         code: innerCode.code,
         require: {
           ...require,
@@ -27,16 +27,20 @@ export default ({
         },
         onRequire: (requireName: string) => {
           if (requireName.endsWith(".ts") || requireName.endsWith(".tsx")) {
-            tabs.push(requireName);
+            if (!tabs.includes(requireName)) {
+              tabs.push(requireName);
+            }
           }
         },
-      }),
-    [reload]
-  );
+      })();
+    } catch (error) {
+      return <pre style={{ color: "red", margin: 0 }}>{String(error)}</pre>;
+    }
+  }, [reload]);
   return (
     <div className="markdown-viewer-code-wrap">
       <div className="markdown-viewer-code-wrap-body" style={style}>
-        <Comp />
+        {Comp}
       </div>
       <div className="markdown-viewer-code-wrap-extra">
         <Tooltip content={openType === 2 ? "取消编辑" : "编辑代码"}>
@@ -82,7 +86,6 @@ export default ({
       )}
       {openType === 2 && (
         <MonacoEditor
-          code={code}
           innerCode={innerCode}
           updateRequire={updateRequire}
           tabs={tabs}

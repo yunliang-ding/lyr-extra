@@ -1,10 +1,9 @@
-import { Button, Tabs } from "@arco-design/web-react";
+import { Tabs } from "@arco-design/web-react";
 import { CodeEditor } from "lyr-code-editor";
 import { babelParse } from "@/index";
 
 export default ({
   tabs,
-  code,
   innerCode,
   source,
   setReload,
@@ -14,21 +13,6 @@ export default ({
 }) => {
   return (
     <div className="markdown-viewer-code-wrap-footer">
-      <Button
-        title="点击运行"
-        type="primary"
-        style={{
-          position: "absolute",
-          bottom: 10,
-          right: 10,
-          zIndex: 9,
-        }}
-        onClick={() => {
-          setReload(Math.random());
-        }}
-      >
-        点击运行
-      </Button>
       {tabs.length > 1 ? (
         <Tabs size="mini">
           {tabs.map((tab: any, index: number) => {
@@ -36,19 +20,30 @@ export default ({
               <Tabs.TabPane key={tab} title={tab} style={{ padding: 0 }}>
                 <CodeEditor
                   require={require}
-                  value={String(index === 0 ? code : source[tab]).replace(
-                    /\n$/,
-                    ""
-                  )}
+                  value={String(
+                    index === 0 ? innerCode.code : source[tab]
+                  ).replace(/\n$/, "")}
                   onChange={(value: string) => {
                     if (index === 0) {
                       innerCode.code = value;
                     } else {
-                      updateRequire[tab] = babelParse({
-                        code: value,
-                        require,
-                      });
+                      try {
+                        const result = babelParse({
+                          code: value,
+                          require,
+                          exportDefault: false,
+                        });
+                        updateRequire[tab] = result.default
+                          ? result.default
+                          : result;
+                      } catch (error) {
+                        console.log(error);
+                      }
                     }
+                    // render 一次
+                    setTimeout(() => {
+                      setReload(Math.random());
+                    }, 500);
                   }}
                   style={{ height: 260 }}
                   theme={codeTheme === "dark" ? "vs-dark" : "vs"}
@@ -61,9 +56,13 @@ export default ({
       ) : (
         <CodeEditor
           require={require}
-          value={String(code).replace(/\n$/, "")}
+          value={String(innerCode.code).replace(/\n$/, "")}
           onChange={(value: string) => {
             innerCode.code = value;
+            // render 一次
+            setTimeout(() => {
+              setReload(Math.random());
+            }, 500);
           }}
           style={{ height: 260 }}
           theme={codeTheme === "dark" ? "vs-dark" : "vs"}

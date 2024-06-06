@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
-import { Button, Tabs } from "@arco-design/web-react";
-import { CodeEditor } from "lyr-code-editor";
+import { Tooltip } from "@arco-design/web-react";
 import { babelParse } from "..";
+import Highlighter from "./wrap/highlighter";
+import MonacoEditor from "./wrap/monaco-editor";
 
 export default ({
   style = {},
@@ -11,7 +12,7 @@ export default ({
   expand = false,
   require,
 }) => {
-  const [open, setOpen] = useState(expand);
+  const [openType, setOpenType] = useState(expand ? 1 : 0);
   const [reload, setReload] = useState(Math.random());
   const [innerCode] = useState({ code });
   const [updateRequire] = useState({});
@@ -38,78 +39,58 @@ export default ({
         <Comp />
       </div>
       <div className="markdown-viewer-code-wrap-extra">
-        <svg
-          viewBox="0 0 1024 1024"
-          width="18"
-          height="18"
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            setOpen(!open);
-          }}
-        >
-          <path
-            fill="#8a8a8a"
-            d="M153.770667 517.558857l200.387047-197.241905L302.86019 268.190476 48.761905 518.290286l254.439619 243.614476 50.590476-52.833524-200.021333-191.512381zM658.285714 320.316952L709.583238 268.190476l254.098286 250.09981L709.241905 761.904762l-50.590476-52.833524 200.021333-191.512381L658.285714 320.316952z m-112.981333-86.186666L393.99619 785.554286l70.534096 19.358476 151.30819-551.399619-70.534095-19.358476z"
-          ></path>
-        </svg>
-      </div>
-      {open && (
-        <div className="markdown-viewer-code-wrap-footer">
-          <Tabs
-            size="mini"
-            extra={[
-              <Button
-                size="mini"
-                title="点击运行"
-                type="text"
-                style={{
-                  marginRight: 4,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: 4,
-                }}
-                onClick={() => {
-                  setReload(Math.random());
-                }}
-              >
-                <svg viewBox="0 0 1024 1024" width="18" height="18">
-                  <path
-                    d="M510.976 64.64a446.72 446.72 0 1 1 0 893.504 446.72 446.72 0 0 1 0-893.44z m0 69.568a375.296 375.296 0 0 0-266.688 110.464A376.96 376.96 0 0 0 364.16 858.88a374.016 374.016 0 0 0 146.816 29.632 375.296 375.296 0 0 0 266.688-110.464 375.808 375.808 0 0 0 110.4-266.688 375.296 375.296 0 0 0-110.464-266.688 376.96 376.96 0 0 0-266.624-110.464zM435.584 300.736a34.816 34.816 0 0 1 36.864 4.48l215.04 175.232a34.56 34.56 0 0 1 0 53.888l-215.04 175.168a34.816 34.816 0 0 1-56.768-26.88V332.16c0-13.44 7.744-25.6 19.84-31.36z m49.728 104.704V609.28l125.056-101.888-125.056-101.952z"
-                    fill="#8a8a8a"
-                  />
-                </svg>
-              </Button>,
-            ]}
+        <Tooltip content={openType === 2 ? "取消编辑" : "编辑代码"}>
+          <svg
+            viewBox="0 0 1024 1024"
+            width="16"
+            height="16"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setOpenType(openType === 2 ? 0 : 2);
+            }}
           >
-            {tabs.map((tab, index) => {
-              return (
-                <Tabs.TabPane key={tab} title={tab} style={{ padding: 0 }}>
-                  <CodeEditor
-                    require={require}
-                    value={String(index === 0 ? code : source[tab]).replace(
-                      /\n$/,
-                      ""
-                    )}
-                    onChange={(value: string) => {
-                      if (index === 0) {
-                        innerCode.code = value;
-                      } else {
-                        updateRequire[tab] = babelParse({
-                          code: value,
-                          require,
-                        });
-                      }
-                    }}
-                    style={{ height: 200 }}
-                    theme={codeTheme === "dark" ? "vs-dark" : "vs"}
-                    mode="function"
-                  />
-                </Tabs.TabPane>
-              );
-            })}
-          </Tabs>
-        </div>
+            <path
+              d="M665.088 131.584L354.304 415.744 220.16 314.368c-11.264-8.704-27.136-8.192-38.4 0.512L133.12 354.304c-14.848 11.776-15.36 34.304-1.536 47.104L250.88 510.464 131.584 619.52c-14.336 12.8-13.312 35.328 1.536 47.104l48.64 39.424c11.264 9.216 27.136 9.216 38.4 0.512l134.144-101.376 310.784 284.672c17.92 16.384 44.032 19.456 65.536 8.192l147.968-79.36c18.432-9.728 30.208-29.184 30.208-50.176V252.928c0-20.992-11.776-40.448-30.208-50.176l-147.968-79.36c-21.504-11.264-47.616-8.192-65.536 8.192z m-185.856 378.88l233.984-177.152v354.816L479.232 510.464z"
+              fill="#8a8a8a"
+            />
+          </svg>
+        </Tooltip>
+        <Tooltip content={openType === 1 ? "收起代码" : "展开代码"}>
+          <svg
+            viewBox="0 0 1024 1024"
+            width="18"
+            height="18"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setOpenType(openType === 1 ? 0 : 1);
+            }}
+          >
+            <path
+              fill="#8a8a8a"
+              d="M153.770667 517.558857l200.387047-197.241905L302.86019 268.190476 48.761905 518.290286l254.439619 243.614476 50.590476-52.833524-200.021333-191.512381zM658.285714 320.316952L709.583238 268.190476l254.098286 250.09981L709.241905 761.904762l-50.590476-52.833524 200.021333-191.512381L658.285714 320.316952z m-112.981333-86.186666L393.99619 785.554286l70.534096 19.358476 151.30819-551.399619-70.534095-19.358476z"
+            ></path>
+          </svg>
+        </Tooltip>
+      </div>
+      {openType === 1 && (
+        <Highlighter
+          code={code}
+          tabs={tabs}
+          source={source}
+          codeTheme={codeTheme}
+        />
+      )}
+      {openType === 2 && (
+        <MonacoEditor
+          code={code}
+          innerCode={innerCode}
+          updateRequire={updateRequire}
+          tabs={tabs}
+          source={source}
+          require={require}
+          codeTheme={codeTheme}
+          setReload={setReload}
+        />
       )}
     </div>
   );

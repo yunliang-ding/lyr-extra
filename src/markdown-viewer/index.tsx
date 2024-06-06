@@ -141,19 +141,6 @@ export default forwardRef(
               }, []);
               // 渲染 React 组件
               if ((node?.data?.meta as string)?.startsWith?.("| react")) {
-                const tabs = ["index.tsx"];
-                const Comp = babelParse({
-                  code: (children[0] as string).replaceAll("\n", ""),
-                  require,
-                  onRequire: (requireName: string) => {
-                    if (
-                      requireName.endsWith(".ts") ||
-                      requireName.endsWith(".tsx")
-                    ) {
-                      tabs.push(requireName);
-                    }
-                  },
-                });
                 const style: any = {};
                 const splitString = (node?.data?.meta as string).split?.(" | ");
                 if (splitString.length > 1) {
@@ -168,14 +155,11 @@ export default forwardRef(
                     require={require}
                     codeTheme={theme}
                     style={style}
-                    tabs={tabs.filter(Boolean)}
                     source={source}
                     expand={(node?.data?.meta as string)?.startsWith?.(
                       "| reactExpand"
                     )}
-                  >
-                    <Comp />
-                  </ComponentWrap>
+                  />
                 );
               }
               // 仅 渲染 React 组件

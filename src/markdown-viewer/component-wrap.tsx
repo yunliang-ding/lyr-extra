@@ -1,22 +1,41 @@
-import { useState } from "react";
-import { Message, Tabs } from "@arco-design/web-react";
+import { useMemo, useRef, useState } from "react";
+import { Message, Tabs, Tooltip } from "@arco-design/web-react";
 import { CodeEditor } from "lyr-code-editor";
+import { babelParse } from "..";
 
 export default ({
   style = {},
   code,
-  children,
   codeTheme,
-  tabs = [],
   source = {},
   expand = false,
   require,
 }) => {
+  const tabs = ["index.tsx"];
   const [open, setOpen] = useState(expand);
+  const [reload, setReload] = useState(Math.random());
+  const [innerCode] = useState({ code });
+  const [updateRequire] = useState({});
+  const Comp = useMemo(
+    () =>
+      babelParse({
+        code: innerCode.code,
+        require: {
+          ...require,
+          ...updateRequire,
+        },
+        onRequire: (requireName: string) => {
+          if (requireName.endsWith(".ts") || requireName.endsWith(".tsx")) {
+            tabs.push(requireName);
+          }
+        },
+      }),
+    [reload]
+  );
   return (
     <div className="markdown-viewer-code-wrap">
       <div className="markdown-viewer-code-wrap-body" style={style}>
-        {children}
+        <Comp />
       </div>
       <div className="markdown-viewer-code-wrap-extra">
         <svg
@@ -39,23 +58,25 @@ export default ({
           <Tabs
             size="mini"
             extra={[
-              <svg
-                viewBox="0 0 1024 1024"
-                width="12"
-                height="12"
-                style={{
-                  marginRight: 10,
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  Message.info("开发中!");
-                }}
-              >
-                <path
-                  d="M886.784 512a25.6 25.6 0 0 1-11.4944 21.3504l-698.368 460.8a25.6512 25.6512 0 0 1-26.24 1.2032A25.6256 25.6256 0 0 1 137.216 972.8V51.2a25.5744 25.5744 0 0 1 39.7056-21.3504l698.368 460.8a25.6 25.6 0 0 1 11.4944 21.3504z"
-                  fill="#8a8a8a"
-                ></path>
-              </svg>,
+              <Tooltip content="点击运行" position="left">
+                <svg
+                  viewBox="0 0 1024 1024"
+                  width="18"
+                  height="18"
+                  style={{
+                    marginRight: 10,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    setReload(Math.random());
+                  }}
+                >
+                  <path
+                    d="M510.976 64.64a446.72 446.72 0 1 1 0 893.504 446.72 446.72 0 0 1 0-893.44z m0 69.568a375.296 375.296 0 0 0-266.688 110.464A376.96 376.96 0 0 0 364.16 858.88a374.016 374.016 0 0 0 146.816 29.632 375.296 375.296 0 0 0 266.688-110.464 375.808 375.808 0 0 0 110.4-266.688 375.296 375.296 0 0 0-110.464-266.688 376.96 376.96 0 0 0-266.624-110.464zM435.584 300.736a34.816 34.816 0 0 1 36.864 4.48l215.04 175.232a34.56 34.56 0 0 1 0 53.888l-215.04 175.168a34.816 34.816 0 0 1-56.768-26.88V332.16c0-13.44 7.744-25.6 19.84-31.36z m49.728 104.704V609.28l125.056-101.888-125.056-101.952z"
+                    fill="#8a8a8a"
+                  ></path>
+                </svg>
+              </Tooltip>,
             ]}
           >
             {tabs.map((tab, index) => {
@@ -67,6 +88,22 @@ export default ({
                       /\n$/,
                       ""
                     )}
+                    onChange={(value) => {
+                      if (index === 0) {
+                        innerCode.code = value;
+                      } else {
+                        console.log(
+                          babelParse({
+                            code: value,
+                            require,
+                          })
+                        );
+                        updateRequire[tab] = babelParse({
+                          code: value,
+                          require,
+                        });
+                      }
+                    }}
                     style={{ height: 200 }}
                     theme={codeTheme === "dark" ? "vs-dark" : "vs"}
                     mode="function"

@@ -5,6 +5,7 @@
 ```tsx | react
 import { useEffect } from "react";
 import { ConsoleRender } from "lyr-extra";
+import { Button } from "@arco-design/web-react";
 
 export default () => {
   const consoleInstance = ConsoleRender.create({
@@ -22,18 +23,18 @@ export default () => {
     return consoleInstance.destory;
   }, []);
   return (
-    <>
-      <button
+    <div>
+      <Button
         onClick={() => {
           consoleInstance.clear();
         }}
       >
         清空日志
-      </button>
+      </Button>
       <br />
       <br />
       <div id="console-container" />
-    </>
+    </div>
   );
 };
 ```

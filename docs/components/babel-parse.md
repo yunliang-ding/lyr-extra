@@ -10,7 +10,7 @@ const code = `interface UserProps{
 };
 
 export default (props: UserProps) => {
-  return <button>{props.name}</button>
+  return <button type="primary" >{props.name}</button>
 }
 `;
 export default () => {
@@ -45,6 +45,32 @@ export default () => {
 };
 ```
 
+## 使用 ui 库
+
+```tsx | react
+import { babelParse } from "lyr-extra";
+import * as arco from "@arco-design/web-react";
+
+const code = `interface UserProps{
+  name: string
+};
+
+import { Button } from "@arco-design/web-react";
+
+export default (props: UserProps) => {
+  return <Button type="primary" >{props.name}</Button>
+}
+`;
+export default () => {
+  const Comp = babelParse({
+    code,
+    require: {
+      "@arco-design/web-react": arco,
+    },
+  });
+  return <Comp name="Hello World" />;
+};
+```
 
 ## API
 

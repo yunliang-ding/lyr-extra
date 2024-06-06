@@ -10,6 +10,7 @@ export default () => {
   return (
     <div>
       <span>{text}</span>
+      &nbsp;&nbsp;&nbsp;
       <a
         onClick={async () => {
           await copyToClipBoard(text);

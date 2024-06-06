@@ -9,34 +9,34 @@ export default () => {
   return (
     <MarkdownViewer
       content={`
-# 一级标题\n
-## 二级标题\n
-### 三级标题\n
-> 区块信息\n
-1. 描述1\n
-2. 描述2\n
-3. 描述3\n
-## 代码块\n
-\`\`\`\jsx\n
-export default () => {\n
-  return <div className='app'>代码块</div>\n
-}\n
-\`\`\`\n
-## 脚本\n
-\`\`\`\shell\n
-yarn add @arco-design/web-react\n
-yarn add lyr-component\n
-\`\`\`\n
-## 样式\n
-\`\`\`\less\n
-@import "@arco-design/web-react/dist/css/arco.css";\n
-\`\`\`\n
-## 数据表格\n
-|学号|姓名|年龄|地址|\n
-|----|----|----|----|\n
-|1|张三|20|地址地址地址|\n
-|2|李四|18|地址地址地址|\n
-|3|王五|23|地址地址地址|\n
+# 一级标题
+## 二级标题
+### 三级标题
+> 区块信息
+1. 描述1
+2. 描述2
+3. 描述3
+## 代码块
+\`\`\`\jsx
+export default () => {
+  return <div className='app'>代码块</div>
+}
+\`\`\`
+## 脚本
+\`\`\`\shell
+yarn add @arco-design/web-react
+yarn add lyr-component
+\`\`\`
+## 样式
+\`\`\`\less
+@import "@arco-design/web-react/dist/css/arco.css";
+\`\`\`
+## 数据表格
+|学号|姓名|年龄|地址|
+|----|----|----|----|
+|1|张三|20|地址地址地址|
+|2|李四|18|地址地址地址|
+|3|王五|23|地址地址地址|
 `}
     />
   );
@@ -60,12 +60,12 @@ export default () => {
         "user.ts": user,
       }}
       content={`
-## 渲染组件\n
-\`\`\`\jsx | react | var(--color-fill-2)\n
-import userInfo from "user.ts";\n\n
-export default () => {\n
-  return <div className='app'>{userInfo.name}</div>\n
-}\n
+## 渲染组件
+\`\`\`\jsx | react | var(--color-fill-2)
+import userInfo from "user.ts";\n
+export default () => {
+  return <div className='app'>{userInfo.name}</div>
+}
 `}
     />
   );
@@ -82,12 +82,12 @@ export default () => {
   return (
     <MarkdownViewer
       content={`
-## 仅展示\n
-\`\`\`\jsx | pureReact\n
-export default () => {\n
-  return <button>仅展示渲染结果</button>\n
-}\n
-\`\`\`\n
+## 仅展示
+\`\`\`\jsx | pureReact
+export default () => {
+  return <button>仅展示渲染结果</button>
+}
+\`\`\`
 `}
     />
   );
@@ -112,6 +112,7 @@ export default () => {
       >
         dark 主题
       </button>
+      &nbsp; &nbsp;&nbsp;
       <button
         onClick={() => {
           mdRef.current.setTheme("light");
@@ -128,24 +129,24 @@ export default () => {
           "user.ts": user,
         }}
         content={`
-## 依赖脚本\n
-\`\`\`\html\n
-<script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.js"></script>\n
-\`\`\`\n
+## 依赖脚本
+\`\`\`\html
+<script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.js"></script>
+\`\`\`
 
-## 代码段\n
-\`\`\`\jsx\n
-export default () => {\n
-  return <button>代码段</button>\n
-}\n
-\`\`\`\n
+## 代码段
+\`\`\`\jsx
+export default () => {
+  return <button>代码段</button>
+}
+\`\`\`
 
-## 渲染组件\n
-\`\`\`\jsx | reactExpand | var(--color-fill-2)\n
-import userInfo from "user.ts";\n\n
-export default () => {\n
-  return <div className='app'>{userInfo.name}</div>\n
-}\n
+## 渲染组件
+\`\`\`\jsx | reactExpand | var(--color-fill-2)
+import userInfo from "user.ts";\n
+export default () => {
+  return <div className='app'>{userInfo.name}</div>
+}
 `}
       />
     </div>

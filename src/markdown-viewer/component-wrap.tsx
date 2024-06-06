@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState } from "react";
-import { Message, Tabs, Tooltip } from "@arco-design/web-react";
+import { useMemo, useState } from "react";
+import { Tabs, Tooltip } from "@arco-design/web-react";
 import { CodeEditor } from "lyr-code-editor";
 import { babelParse } from "..";
 
@@ -11,11 +11,11 @@ export default ({
   expand = false,
   require,
 }) => {
-  const tabs = ["index.tsx"];
   const [open, setOpen] = useState(expand);
   const [reload, setReload] = useState(Math.random());
   const [innerCode] = useState({ code });
   const [updateRequire] = useState({});
+  const tabs = useMemo(() => ["index.tsx"], [reload]);
   const Comp = useMemo(
     () =>
       babelParse({
@@ -88,16 +88,10 @@ export default ({
                       /\n$/,
                       ""
                     )}
-                    onChange={(value) => {
+                    onChange={(value: string) => {
                       if (index === 0) {
                         innerCode.code = value;
                       } else {
-                        console.log(
-                          babelParse({
-                            code: value,
-                            require,
-                          })
-                        );
                         updateRequire[tab] = babelParse({
                           code: value,
                           require,

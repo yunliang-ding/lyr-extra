@@ -5,6 +5,7 @@
 ```tsx | react
 import { useState } from "react";
 import { getUrlSearchParams } from "lyr-extra";
+import { Input } from "@arco-design/web-react";
 
 export default () => {
   const [value, setValue] = useState(
@@ -12,12 +13,12 @@ export default () => {
   );
   return (
     <div>
-      <input
+      <Input
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
         }}
-        style={{ width: 400 }}
+        style={{ width: 400, marginBottom: 10 }}
       />
       <div>解析: {JSON.stringify(getUrlSearchParams(value))}</div>
     </div>

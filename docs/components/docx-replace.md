@@ -4,6 +4,7 @@
 
 ```tsx | react
 import { downloadFile, docxReplace } from "lyr-extra";
+import { Button, Input } from "@arco-design/web-react";
 
 const data = {
   field1: "zhangsan",
@@ -30,13 +31,13 @@ export default () => {
   };
   return (
     <div style={{ width: "100%" }}>
-      <div>
-        <button onClick={onReplace} disabled={!files?.length} type="primary">
+      <div style={{ marginBottom: 10, gap: 10, display: "flex" }}>
+        <Button onClick={onReplace} disabled={!files?.length} type="primary">
           替换
-        </button>
-        <button onClick={onDownloadDemo}>下载文件模版</button>
+        </Button>
+        <Button onClick={onDownloadDemo}>下载文件模版</Button>
       </div>
-      <input
+      <Input
         type="file"
         accept=".docx"
         onChange={(e) => {

@@ -23,11 +23,11 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prettier-standalone.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prettier-parser-typescript.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/eval5.min.js",
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-code-editor.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-extra.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js",
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
   ],
   buildScript: [
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.production.min.js",
@@ -46,11 +46,11 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prettier-standalone.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prettier-parser-typescript.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/eval5.min.js",
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-code-editor.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-extra.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js",
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
   ],
   webpackConfig: () => {
     return {

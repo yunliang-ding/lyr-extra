@@ -17,9 +17,9 @@ export default ({
   const [innerCode] = useState({ code });
   const [updateRequire] = useState({});
   const tabs = useMemo(() => ["index.tsx"], []);
-  const Comp = useMemo(() => {
-    try {
-      return babelParse({
+  const Comp = useMemo(
+    () =>
+      babelParse({
         code: innerCode.code,
         require: {
           ...require,
@@ -32,18 +32,22 @@ export default ({
             }
           }
         },
-      })();
-    } catch (error) {
-      return <pre style={{ color: "red", margin: 0 }}>{String(error)}</pre>;
-    }
-  }, [reload]);
+      }),
+    [reload]
+  );
+  let VNode = null;
+  try {
+    VNode = Comp();
+  } catch (error) {
+    VNode = <pre style={{ color: "red", margin: 0 }}>{String(error)}</pre>;
+  }
   return (
     <div className="markdown-viewer-code-wrap">
       <div className="markdown-viewer-code-wrap-body" style={style}>
-        {Comp}
+        {VNode}
       </div>
       <div className="markdown-viewer-code-wrap-extra">
-        <Tooltip content={openType === 2 ? "取消编辑" : "编辑代码"}>
+        <Tooltip content="编辑代码可实时预览">
           <svg
             viewBox="0 0 1024 1024"
             width="16"
@@ -59,7 +63,7 @@ export default ({
             />
           </svg>
         </Tooltip>
-        <Tooltip content={openType === 1 ? "收起代码" : "展开代码"}>
+        <Tooltip content="查看代码">
           <svg
             viewBox="0 0 1024 1024"
             width="18"

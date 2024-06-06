@@ -1,4 +1,5 @@
 import react from 'react';
+import ReactDOM from 'react-dom';
 import { Interpreter } from 'eval5';
 
 class BabelCompile {
@@ -8,6 +9,7 @@ class BabelCompile {
   constructor(scope = {}, onRequire?) {
     this.scope = {
       react,
+      'react-dom': ReactDOM,
       ...scope,
     };
     this.onRequire = onRequire;

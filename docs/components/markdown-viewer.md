@@ -62,7 +62,8 @@ export default () => {
       content={`
 ## 渲染组件
 \`\`\`\jsx | react | var(--color-fill-2)
-import userInfo from "user.ts";\n
+import userInfo from "user.ts";
+
 export default () => {
   return <div className='app'>{userInfo.name}</div>
 }
@@ -143,7 +144,8 @@ export default () => {
 
 ## 渲染组件
 \`\`\`\jsx | reactExpand | var(--color-fill-2)
-import userInfo from "user.ts";\n
+import userInfo from "user.ts";
+
 export default () => {
   return <div className='app'>{userInfo.name}</div>
 }

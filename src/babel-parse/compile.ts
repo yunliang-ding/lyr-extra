@@ -1,6 +1,5 @@
 import react from 'react';
 import ReactDOM from 'react-dom';
-import { Interpreter } from 'eval5';
 
 class BabelCompile {
   scope: any = {};
@@ -26,12 +25,13 @@ class BabelCompile {
       exports: {},
     };
     try {
-      // 采用 eval5 的包
-      const interpreter = new Interpreter(window);
-      interpreter.evaluate(this.getES5Code(code))(this.require, this.exports);
+      new Function('require', 'exports', this.getES5Code(code))(
+        this.require,
+        this.exports,
+      );
       res.exports = this.exports;
     } catch (error) {
-      console.log('catch run evaluate error:', error);
+      console.log('catch run es5 code error:', error);
       throw error;
     }
     return res;
@@ -41,18 +41,14 @@ class BabelCompile {
     try {
       const es5 = transform(code, {
         presets: ['env', 'react', 'typescript'],
-        filename: "main.tsx"
+        filename: 'main.tsx',
       }).code;
-      return transform(
-        `(require, exports) => {
-          ${es5};
-        }`,
-        {
-          presets: ['env', 'react'],
-        },
-      ).code;
+      // 这里需要将 es5 代码包一下作为iife
+      return `((require, exports) => {
+        ${es5};
+      })(require, exports)`;
     } catch (error) {
-      console.log('catch transform error:', error);
+      console.log('catch transform es5 error:', error);
       throw error;
     }
   };

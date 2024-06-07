@@ -20,8 +20,6 @@
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js"></script>
 <!-- window.JSZip -->
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js"></script>
-<!-- window.eval5 -->
-<script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/eval5.min.js"></script>
 <!-- window.Babel -->
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/babel-standalone.min.js"></script>
 ```

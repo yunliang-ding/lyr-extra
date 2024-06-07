@@ -1,10 +1,10 @@
-import html2canvas from "html2canvas";
-import { useReactToPrint } from "react-to-print";
-import { Message } from "@arco-design/web-react";
+import html2canvas from 'html2canvas';
+import { useReactToPrint } from 'react-to-print';
+import { Message } from '@arco-design/web-react';
 
 /** 获取元素快照 */
 export default (
-  element: string
+  element: string,
 ): {
   printImg: any;
   downloadImg: any;
@@ -13,7 +13,7 @@ export default (
 } => {
   return {
     printImg: useReactToPrint({
-      bodyClass: "print-class",
+      bodyClass: 'print-class',
       content: () => document.querySelector(element),
     }),
     copyImg: () => {
@@ -31,17 +31,17 @@ export default (
                 .then(
                   () => {
                     res(true);
-                    Message.success("已复制");
+                    Message.success('已复制');
                   },
                   () => {
                     res(false);
-                  }
+                  },
                 );
             } else {
-              Message.info("请在安全域名下使用");
+              Message.info('请在安全域名下使用');
               res(true);
             }
-          }, "image/png");
+          }, 'image/png');
         });
       });
     },
@@ -51,8 +51,8 @@ export default (
         html2canvas(document.querySelector(element) as any, {
           useCORS: true,
         }).then((canvas) => {
-          document.documentElement.classList.remove("html2canvas");
-          const a = document.createElement("a");
+          document.documentElement.classList.remove('html2canvas');
+          const a = document.createElement('a');
           a.download = filename;
           a.href = canvas.toDataURL();
           document.body.appendChild(a);

@@ -90,15 +90,18 @@ export const docxReplaceBatch = async (
       console.log('Docx Replace Render Error', e);
       throw Error('文档渲染失败');
     }
-    jszip.file(file.name, docx.getZip().generate({
-      type: 'blob',
-      mimeType:
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      ...generateProps,
-    }));
+    jszip.file(
+      file.name,
+      docx.getZip().generate({
+        type: 'blob',
+        mimeType:
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        ...generateProps,
+      }),
+    );
   }
   // 下载压缩包
-  jszip.generateAsync({ type: 'blob' }).then(res => {
-    saveAs(res, filename)
-  })
+  jszip.generateAsync({ type: 'blob' }).then((res) => {
+    saveAs(res, filename);
+  });
 };

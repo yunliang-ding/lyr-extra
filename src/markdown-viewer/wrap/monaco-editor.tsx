@@ -1,6 +1,6 @@
-import { Tabs } from "@arco-design/web-react";
-import { CodeEditor } from "lyr-code-editor";
-import { babelParse } from "@/index";
+import { Tabs } from '@arco-design/web-react';
+import { CodeEditor } from 'lyr-code-editor';
+import { babelParse } from '@/index';
 
 export default ({
   tabs,
@@ -21,8 +21,8 @@ export default ({
                 <CodeEditor
                   require={require}
                   value={String(
-                    index === 0 ? innerCode.code : source[tab]
-                  ).replace(/\n$/, "")}
+                    index === 0 ? innerCode.code : source[tab],
+                  ).replace(/\n$/, '')}
                   onChange={(value: string) => {
                     if (index === 0) {
                       innerCode.code = value;
@@ -46,7 +46,7 @@ export default ({
                     }, 500);
                   }}
                   style={{ height: 260 }}
-                  theme={codeTheme === "dark" ? "vs-dark" : "vs"}
+                  theme={codeTheme === 'dark' ? 'vs-dark' : 'vs'}
                   mode="function"
                 />
               </Tabs.TabPane>
@@ -56,7 +56,7 @@ export default ({
       ) : (
         <CodeEditor
           require={require}
-          value={String(innerCode.code).replace(/\n$/, "")}
+          value={String(innerCode.code).replace(/\n$/, '')}
           onChange={(value: string) => {
             innerCode.code = value;
             // render 一次
@@ -65,7 +65,7 @@ export default ({
             }, 500);
           }}
           style={{ height: 260 }}
-          theme={codeTheme === "dark" ? "vs-dark" : "vs"}
+          theme={codeTheme === 'dark' ? 'vs-dark' : 'vs'}
           mode="function"
         />
       )}

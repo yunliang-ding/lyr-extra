@@ -1,5 +1,5 @@
-import { Tabs } from "@arco-design/web-react";
-import SyntaxLighter from "../syntax-lighter";
+import { Tabs } from '@arco-design/web-react';
+import SyntaxLighter from '../syntax-lighter';
 
 export default ({ tabs, codeTheme, code, source }) => {
   return (
@@ -13,9 +13,9 @@ export default ({ tabs, codeTheme, code, source }) => {
                   codeTheme={codeTheme}
                   code={String(index === 0 ? code : source[tab]).replace(
                     /\n$/,
-                    ""
+                    '',
                   )}
-                  language={"tsx"}
+                  language={'tsx'}
                 />
               </Tabs.TabPane>
             );
@@ -24,8 +24,8 @@ export default ({ tabs, codeTheme, code, source }) => {
       ) : (
         <SyntaxLighter
           codeTheme={codeTheme}
-          code={String(code).replace(/\n$/, "")}
-          language={"tsx"}
+          code={String(code).replace(/\n$/, '')}
+          language={'tsx'}
         />
       )}
     </div>

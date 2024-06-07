@@ -4,10 +4,10 @@ export default (
   options = {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }
+  },
 ) => {
   if (isNaN(Number.parseFloat(number))) {
-    return "-";
+    return '-';
   }
-  return Number(number).toLocaleString("zh-CH", options);
+  return Number(number).toLocaleString('zh-CH', options);
 };

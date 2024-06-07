@@ -1,8 +1,8 @@
-import { useMemo, useState } from "react";
-import { Tooltip } from "@arco-design/web-react";
-import { babelParse } from "..";
-import Highlighter from "./wrap/highlighter";
-import MonacoEditor from "./wrap/monaco-editor";
+import { useMemo, useState } from 'react';
+import { Tooltip } from '@arco-design/web-react';
+import { babelParse } from '..';
+import Highlighter from './wrap/highlighter';
+import MonacoEditor from './wrap/monaco-editor';
 
 export default ({
   style = {},
@@ -16,7 +16,7 @@ export default ({
   const [reload, setReload] = useState(Math.random());
   const [innerCode] = useState({ code });
   const [updateRequire] = useState({});
-  const tabs = useMemo(() => ["index.tsx"], []);
+  const tabs = useMemo(() => ['index.tsx'], []);
   const Comp = useMemo(
     () =>
       babelParse({
@@ -26,20 +26,20 @@ export default ({
           ...updateRequire,
         },
         onRequire: (requireName: string) => {
-          if (requireName.endsWith(".ts") || requireName.endsWith(".tsx")) {
+          if (requireName.endsWith('.ts') || requireName.endsWith('.tsx')) {
             if (!tabs.includes(requireName)) {
               tabs.push(requireName);
             }
           }
         },
       }),
-    [reload]
+    [reload],
   );
   let VNode = null;
   try {
     VNode = Comp();
   } catch (error) {
-    VNode = <pre style={{ color: "red", margin: 0 }}>{String(error)}</pre>;
+    VNode = <pre style={{ color: 'red', margin: 0 }}>{String(error)}</pre>;
   }
   return (
     <div className="markdown-viewer-code-wrap">
@@ -52,7 +52,7 @@ export default ({
             viewBox="0 0 1024 1024"
             width="16"
             height="16"
-            style={{ cursor: "pointer" }}
+            style={{ cursor: 'pointer' }}
             onClick={() => {
               setOpenType(openType === 2 ? 0 : 2);
             }}
@@ -68,7 +68,7 @@ export default ({
             viewBox="0 0 1024 1024"
             width="18"
             height="18"
-            style={{ cursor: "pointer" }}
+            style={{ cursor: 'pointer' }}
             onClick={() => {
               setOpenType(openType === 1 ? 0 : 1);
             }}

@@ -1,21 +1,21 @@
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
   oneDark,
   oneLight,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
-import { copyToClipBoard } from "..";
+} from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { copyToClipBoard } from '..';
 
 export default ({ code, language, codeTheme, ...props }) => {
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: 'relative' }}>
       <SyntaxHighlighter
         PreTag="div"
-        style={codeTheme === "dark" ? oneDark : oneLight}
+        style={codeTheme === 'dark' ? oneDark : oneLight}
         language={language}
         className={
-          codeTheme === "dark"
-            ? "markdown-viewer-code markdown-viewer-code-dark"
-            : "markdown-viewer-code"
+          codeTheme === 'dark'
+            ? 'markdown-viewer-code markdown-viewer-code-dark'
+            : 'markdown-viewer-code'
         }
         {...props}
       >
@@ -26,8 +26,8 @@ export default ({ code, language, codeTheme, ...props }) => {
         width="16"
         height="16"
         style={{
-          cursor: "pointer",
-          position: "absolute",
+          cursor: 'pointer',
+          position: 'absolute',
           top: 6,
           right: 6,
         }}

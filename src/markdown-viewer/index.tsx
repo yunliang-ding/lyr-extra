@@ -5,29 +5,29 @@ import {
   useMemo,
   useState,
   useRef,
-} from "react";
-import ReactMarkDown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import js from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
-import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
-import ts from "react-syntax-highlighter/dist/esm/languages/prism/typescript";
-import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
-import less from "react-syntax-highlighter/dist/esm/languages/prism/less";
-import bash from "react-syntax-highlighter/dist/esm/languages/prism/bash";
-import { babelParse } from "..";
-import ComponentWrap from "./component-wrap";
-import SyntaxLighter from "./syntax-lighter";
-import "./index.less";
+} from 'react';
+import ReactMarkDown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
+import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
+import ts from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
+import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
+import less from 'react-syntax-highlighter/dist/esm/languages/prism/less';
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
+import { babelParse } from '..';
+import ComponentWrap from './component-wrap';
+import SyntaxLighter from './syntax-lighter';
+import './index.less';
 
-SyntaxHighlighter.registerLanguage("js", js);
-SyntaxHighlighter.registerLanguage("javascript", js);
-SyntaxHighlighter.registerLanguage("jsx", jsx);
-SyntaxHighlighter.registerLanguage("ts", ts);
-SyntaxHighlighter.registerLanguage("typescript", ts);
-SyntaxHighlighter.registerLanguage("tsx", tsx);
-SyntaxHighlighter.registerLanguage("less", less);
-SyntaxHighlighter.registerLanguage("bash", bash);
+SyntaxHighlighter.registerLanguage('js', js);
+SyntaxHighlighter.registerLanguage('javascript', js);
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('ts', ts);
+SyntaxHighlighter.registerLanguage('typescript', ts);
+SyntaxHighlighter.registerLanguage('tsx', tsx);
+SyntaxHighlighter.registerLanguage('less', less);
+SyntaxHighlighter.registerLanguage('bash', bash);
 
 export interface MarkDownViewerProps {
   /** 文件内容 */
@@ -45,8 +45,8 @@ export interface MarkDownViewerProps {
 
 export default forwardRef(
   (
-    { content, require = {}, codeTheme = "", source = {} }: MarkDownViewerProps,
-    ref
+    { content, require = {}, codeTheme = '', source = {} }: MarkDownViewerProps,
+    ref,
   ) => {
     const slRef: any = useRef([]);
     const [spin, setSpin] = useState(true);
@@ -69,7 +69,7 @@ export default forwardRef(
       };
     });
     return spin ? null : (
-      <div className="markdown-viewer" style={{ position: "relative" }}>
+      <div className="markdown-viewer" style={{ position: 'relative' }}>
         <ReactMarkDown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -82,7 +82,7 @@ export default forwardRef(
                     width="15"
                     height="15"
                     style={{
-                      position: "relative",
+                      position: 'relative',
                       top: 3,
                       marginLeft: 4,
                     }}
@@ -103,7 +103,7 @@ export default forwardRef(
               return <h1 className="markdown-viewer-h1">{children}</h1>;
             },
             h2({ children }) {
-              const title = (children[0] as string).replaceAll(" ", "");
+              const title = (children[0] as string).replaceAll(' ', '');
               navs.push(title);
               return (
                 <h2 className="markdown-viewer-h2" id={title}>
@@ -140,9 +140,9 @@ export default forwardRef(
                 slRef.current.push(setTheme);
               }, []);
               // 渲染 React 组件
-              if ((node?.data?.meta as string)?.startsWith?.("| react")) {
+              if ((node?.data?.meta as string)?.startsWith?.('| react')) {
                 const style: any = {};
-                const splitString = (node?.data?.meta as string).split?.(" | ");
+                const splitString = (node?.data?.meta as string).split?.(' | ');
                 if (splitString.length > 1) {
                   style.backgroundColor = splitString[1];
                 }
@@ -157,28 +157,28 @@ export default forwardRef(
                     style={style}
                     source={source}
                     expand={(node?.data?.meta as string)?.startsWith?.(
-                      "| reactExpand"
+                      '| reactExpand',
                     )}
                   />
                 );
               }
               // 仅 渲染 React 组件
-              if ((node?.data?.meta as string)?.startsWith?.("| pureReact")) {
+              if ((node?.data?.meta as string)?.startsWith?.('| pureReact')) {
                 const Comp = babelParse({
-                  code: (children[0] as string).replaceAll("\n", ""),
+                  code: (children[0] as string).replaceAll('\n', ''),
                   require,
                 });
                 const style: any = {};
-                const splitString = (node?.data?.meta as string).split?.(" | ");
+                const splitString = (node?.data?.meta as string).split?.(' | ');
                 if (splitString.length > 1) {
                   style.backgroundColor = splitString[1];
                 }
                 return <Comp />;
               }
-              const match = /language-(\w+)/.exec(className || "");
-              const code = String(children).replace(/\n$/, "");
+              const match = /language-(\w+)/.exec(className || '');
+              const code = String(children).replace(/\n$/, '');
               return !inline && match ? (
-                <div style={{ position: "relative" }}>
+                <div style={{ position: 'relative' }}>
                   <SyntaxLighter
                     codeTheme={theme}
                     code={code}
@@ -203,5 +203,5 @@ export default forwardRef(
         </ReactMarkDown>
       </div>
     );
-  }
+  },
 );

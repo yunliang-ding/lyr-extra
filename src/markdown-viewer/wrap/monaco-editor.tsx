@@ -23,19 +23,12 @@ export default ({
                   value={String(
                     index === 0 ? innerCode.code : source[tab],
                   ).replace(/\n$/, '')}
-                  onChange={(value: string) => {
+                  onChange={(value: string, parseResult: any) => {
                     if (index === 0) {
                       innerCode.code = value;
                     } else {
                       try {
-                        const result = babelParse({
-                          code: value,
-                          require,
-                          exportDefault: false,
-                        });
-                        updateRequire[tab] = result.default
-                          ? result.default
-                          : result;
+                        updateRequire[tab] = parseResult;
                       } catch (error) {
                         console.log(error);
                       }

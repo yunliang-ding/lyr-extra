@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 
 class BabelCompile {
   scope: any = {};
-  exports = {};
+  exports = {
+    default: undefined,
+  };
   onRequire: any;
   constructor(scope = {}, onRequire?) {
     this.scope = {
@@ -19,22 +21,16 @@ class BabelCompile {
     return this.scope[key];
   };
   excuteCode = (code: string): any => {
-    const res: any = {
-      isError: false,
-      error: '',
-      exports: {},
-    };
     try {
       new Function('require', 'exports', this.getES5Code(code))(
         this.require,
         this.exports,
       );
-      res.exports = this.exports;
+      return this.exports?.default ? this.exports?.default : this.exports;
     } catch (error) {
       console.log('catch run es5 code error:', error);
       throw error;
     }
-    return res;
   };
   getES5Code = (code: string): any => {
     const { transform } = (window as any).Babel;

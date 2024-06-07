@@ -85,11 +85,6 @@ export interface babelParseProps {
    * @default { React: 'react'}
    */
   dependencies?: Object;
-  /**
-   * 是否采用默认导出解析
-   * @default true
-   */
-  exportDefault?: boolean;
   /** 第三方依赖 */
   require?: Object;
 }

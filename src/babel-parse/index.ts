@@ -11,8 +11,6 @@ export default ({
   dependencies = {
     React: 'react',
   },
-  // 默认 default 导出
-  exportDefault = true,
   require = {},
   onRequire = () => null,
 }: babelParseProps) => {
@@ -27,18 +25,9 @@ export default ({
           })
           .join('\n') + '\n';
     }
-    const res = babel.excuteCode(
+    return babel.excuteCode(
       `${dependenciesString}${code.replaceAll('↵', '')}`,
     );
-    if (!res?.isError) {
-      if (exportDefault) {
-        return res?.exports.default;
-      } else {
-        return res?.exports;
-      }
-    } else {
-      throw res?.error;
-    }
   } catch (error) {
     console.log('catch parse error:', error);
     throw error;

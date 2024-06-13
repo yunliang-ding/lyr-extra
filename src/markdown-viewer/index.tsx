@@ -18,6 +18,7 @@ import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import { babelParse } from '..';
 import ComponentWrap from './component-wrap';
 import SyntaxLighter from './syntax-lighter';
+import { Table, Tag } from '@arco-design/web-react';
 import './index.less';
 
 SyntaxHighlighter.registerLanguage('js', js);
@@ -41,11 +42,19 @@ export interface MarkDownViewerProps {
   require?: any;
   /** 依赖的源码 */
   source?: any;
+  /** 类型数据源 */
+  types?: any;
 }
 
 export default forwardRef(
   (
-    { content, require = {}, codeTheme = '', source = {} }: MarkDownViewerProps,
+    {
+      content,
+      require = {},
+      codeTheme = '',
+      source = {},
+      types = {},
+    }: MarkDownViewerProps,
     ref,
   ) => {
     const slRef: any = useRef([]);
@@ -177,6 +186,82 @@ export default forwardRef(
               }
               const match = /language-(\w+)/.exec(className || '');
               const code = String(children).replace(/\n$/, '');
+              // 渲染API表格
+              if (match?.[1] === 'API') {
+                const data =
+                  types[(children[0] as string).replaceAll('\n', '')];
+                return (
+                  <Table
+                    pagination={false}
+                    data={data}
+                    border
+                    columns={[
+                      {
+                        title: '属性名',
+                        dataIndex: 'name',
+                        width: 160,
+                      },
+                      {
+                        title: '描述',
+                        dataIndex: 'description',
+                        width: 180,
+                      },
+                      {
+                        title: '类型',
+                        dataIndex: 'type',
+                        render(type) {
+                          return (
+                            <code
+                              style={{
+                                padding: '2px 5px',
+                                color: '#d56161',
+                                background: ' #f0f4f8',
+                                borderRadius: 2,
+                              }}
+                            >
+                              {type}
+                            </code>
+                          );
+                        },
+                      },
+                      {
+                        title: '默认值',
+                        dataIndex: 'defaultValue',
+                        width: 120,
+                        render(defaultValue) {
+                          return defaultValue ? (
+                            <code
+                              style={{
+                                padding: '2px 5px',
+                                color: '#d56161',
+                                background: ' #f0f4f8',
+                                borderRadius: 2,
+                              }}
+                            >
+                              {defaultValue}
+                            </code>
+                          ) : (
+                            '-'
+                          );
+                        },
+                      },
+                      {
+                        title: '是否必选',
+                        dataIndex: 'required',
+                        width: 100,
+                        align: "right",
+                        render(required) {
+                          return required ? (
+                            <Tag color="#35cd4b" size="small">是</Tag>
+                          ) : (
+                            <Tag color="#fdbc40" size="small">否</Tag>
+                          );
+                        },
+                      },
+                    ]}
+                  />
+                );
+              }
               return !inline && match ? (
                 <div style={{ position: 'relative' }}>
                   <SyntaxLighter
@@ -187,7 +272,14 @@ export default forwardRef(
                   />
                 </div>
               ) : (
-                <code className={className} {...props}>
+                <code
+                  style={{
+                    padding: '2px 5px',
+                    color: '#d56161',
+                    background: ' #f0f4f8',
+                    borderRadius: 2,
+                  }}
+                >
                   {children}
                 </code>
               );

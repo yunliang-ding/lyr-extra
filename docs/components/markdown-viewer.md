@@ -3,7 +3,7 @@
 ## 基本使用
 
 ```tsx | react
-import { MarkdownViewer } from "lyr-extra";
+import { MarkdownViewer } from 'lyr-extra';
 
 export default () => {
   return (
@@ -15,7 +15,7 @@ export default () => {
 > 区块信息
 1. 描述1
 2. 描述2
-3. 描述3
+3. 描述3（\`强调说明\`）
 ## 代码块
 \`\`\`\jsx
 export default () => {
@@ -46,18 +46,18 @@ yarn add lyr-component
 ## 渲染 React 组件
 
 ```tsx | react
-import { MarkdownViewer } from "lyr-extra";
+import { MarkdownViewer } from 'lyr-extra';
 
-const user = { name: "zhangsan", age: 12 };
+const user = { name: 'zhangsan', age: 12 };
 
 export default () => {
   return (
     <MarkdownViewer
       source={{
-        "user.ts": `export default ${JSON.stringify(user, null, 2)}`,
+        'user.ts': `export default ${JSON.stringify(user, null, 2)}`,
       }}
       require={{
-        "user.ts": user,
+        'user.ts': user,
       }}
       content={`
 ## 渲染组件
@@ -76,10 +76,10 @@ export default () => {
 ## 展示 React 组件
 
 ```tsx | react
-import { MarkdownViewer } from "lyr-extra";
+import { MarkdownViewer } from 'lyr-extra';
 
 export default () => {
-  const user = { name: "zhangsan", age: 12 };
+  const user = { name: 'zhangsan', age: 12 };
   return (
     <MarkdownViewer
       content={`
@@ -95,12 +95,63 @@ export default () => {
 };
 ```
 
+## 渲染 API 组件类型
+
+```tsx | react
+import { MarkdownViewer } from 'lyr-extra';
+
+export default () => {
+  return (
+    <MarkdownViewer
+      types={{
+        '/src/demo/type.tsx': [
+          {
+            name: 'leastOne',
+            required: false,
+            type: 'boolean',
+            defaultValue: 'false',
+            description: '最少一条',
+          },
+          {
+            name: 'value',
+            required: true,
+            type: 'any[]',
+            defaultValue: '[]',
+            description: '数据源',
+          },
+          {
+            name: 'onChange',
+            required: false,
+            type: 'Function',
+            defaultValue: '() => null',
+            description: '改变的钩子',
+          },
+          {
+            name: 'removeConfirm',
+            required: false,
+            type: 'boolean',
+            defaultValue: 'false',
+            description: '是否开启删除确认',
+          },
+        ],
+      }}
+      content={`
+## 类型描述
+\`\`\`API
+/src/demo/type.tsx
+\`\`\`
+`}
+    />
+  );
+};
+```
+
 ## 切换代码主题
 
 ```tsx | react
-import { MarkdownViewer } from "lyr-extra";
+import { MarkdownViewer } from 'lyr-extra';
 
-const user = { name: "zhangsan", age: 12 };
+const user = { name: 'zhangsan', age: 12 };
 
 export default () => {
   const mdRef = React.useRef({});
@@ -108,7 +159,7 @@ export default () => {
     <div>
       <button
         onClick={() => {
-          mdRef.current.setTheme("dark");
+          mdRef.current.setTheme('dark');
         }}
       >
         dark 主题
@@ -116,7 +167,7 @@ export default () => {
       &nbsp; &nbsp;&nbsp;
       <button
         onClick={() => {
-          mdRef.current.setTheme("light");
+          mdRef.current.setTheme('light');
         }}
       >
         light 主题
@@ -124,10 +175,10 @@ export default () => {
       <MarkdownViewer
         ref={mdRef}
         source={{
-          "user.ts": `export default ${JSON.stringify(user, null, 2)}`,
+          'user.ts': `export default ${JSON.stringify(user, null, 2)}`,
         }}
         require={{
-          "user.ts": user,
+          'user.ts': user,
         }}
         content={`
 ## 依赖脚本

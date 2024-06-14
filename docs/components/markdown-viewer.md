@@ -31,12 +31,6 @@ yarn add lyr-component
 \`\`\`\less
 @import "@arco-design/web-react/dist/css/arco.css";
 \`\`\`
-## 数据表格
-|学号|姓名|年龄|地址|
-|----|----|----|----|
-|1|张三|20|地址地址地址|
-|2|李四|18|地址地址地址|
-|3|王五|23|地址地址地址|
 `}
     />
   );
@@ -47,25 +41,67 @@ yarn add lyr-component
 
 ```tsx | react
 import { MarkdownViewer } from 'lyr-extra';
+import * as ArcoDesign from '@arco-design/web-react';
 
-const user = { name: 'zhangsan', age: 12 };
+const treeData = [
+  {
+    title: 'root',
+    key: '0-0',
+    children: [
+      {
+        title: 'src',
+        key: '0-0-2',
+        children: [
+          {
+            title: 'components',
+            key: '0-0-2-1',
+            children: [
+              {
+                title: 'loading.tsx',
+                key: '0-0-2-1-0',
+              },
+            ],
+          },
+          {
+            title: 'app.tsx',
+            key: '0-0-2-2',
+          },
+          {
+            title: 'app.less',
+            key: '0-0-2-3',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'lyr.config.ts',
+    key: '0-1',
+  },
+];
 
 export default () => {
   return (
     <MarkdownViewer
       source={{
-        'user.ts': `export default ${JSON.stringify(user, null, 2)}`,
+        'treeData.ts': `export default ${JSON.stringify(treeData, null, 2)}`,
       }}
       require={{
-        'user.ts': user,
+        '@arco-design/web-react': ArcoDesign,
+        'treeData.ts': treeData,
       }}
       content={`
 ## 渲染组件
 \`\`\`\jsx | react | var(--color-fill-2)
-import userInfo from "user.ts";
+import { Tree } from '@arco-design/web-react';
+import treeData from "treeData.ts";
 
 export default () => {
-  return <div className='app'>{userInfo.name}</div>
+  return <Tree
+    treeData={treeData}
+    autoExpandParent
+    showLine
+  />
 }
 `}
     />
@@ -193,7 +229,7 @@ export default () => {
 }
 \`\`\`
 
-## 渲染组件
+## 自动展开代码
 \`\`\`\jsx | reactExpand | var(--color-fill-2)
 import userInfo from "user.ts";
 

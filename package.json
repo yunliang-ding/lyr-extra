@@ -2,7 +2,7 @@
   "name": "lyr-extra",
   "description": "功能特性额外的",
   "author": "yunliang-ding",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "start": "lyr-docs dev",
     "build": "rollup -c",
@@ -18,6 +18,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/yunliang-ding/lyr-extra"
+  },
+  "allowPackages": {
+    "urllib": {
+      "version": "*"
+    }
   },
   "peerDependencies": {
     "react": ">=17.0.2",

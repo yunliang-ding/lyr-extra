@@ -39,7 +39,6 @@ export default ({
                     }, 500);
                   }}
                   style={{ height: 260 }}
-                  theme={codeTheme === 'dark' ? 'vs-dark' : 'vs'}
                   mode="function"
                 />
               </Tabs.TabPane>

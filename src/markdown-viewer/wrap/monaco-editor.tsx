@@ -1,6 +1,5 @@
 import { Tabs } from '@arco-design/web-react';
 import { CodeEditor } from 'lyr-code-editor';
-import { babelParse } from '@/index';
 
 export default ({
   tabs,
@@ -39,6 +38,7 @@ export default ({
                     }, 500);
                   }}
                   style={{ height: 260 }}
+                  theme={codeTheme === 'dark' ? 'vs-dark' : 'vs'}
                   mode="function"
                 />
               </Tabs.TabPane>

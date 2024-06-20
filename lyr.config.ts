@@ -6,6 +6,7 @@ export default defineConfig({
   link: [
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco.min.css",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css",
   ],
   devScript: [
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.development.min.js",
@@ -27,6 +28,8 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-extra.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js",
   ],
   buildScript: [
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.production.min.js",

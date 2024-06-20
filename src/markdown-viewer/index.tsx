@@ -8,36 +8,15 @@ import {
 } from 'react';
 import ReactMarkDown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
-import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
-import ts from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
-import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
-import less from 'react-syntax-highlighter/dist/esm/languages/prism/less';
-import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import { babelParse } from '..';
 import ComponentWrap from './component-wrap';
-import SyntaxLighter from './syntax-lighter';
+import SyntaxHighlight from './syntax-highlight';
 import { Table, Tag } from '@arco-design/web-react';
 import './index.less';
-
-SyntaxHighlighter.registerLanguage('js', js);
-SyntaxHighlighter.registerLanguage('javascript', js);
-SyntaxHighlighter.registerLanguage('jsx', jsx);
-SyntaxHighlighter.registerLanguage('ts', ts);
-SyntaxHighlighter.registerLanguage('typescript', ts);
-SyntaxHighlighter.registerLanguage('tsx', tsx);
-SyntaxHighlighter.registerLanguage('less', less);
-SyntaxHighlighter.registerLanguage('bash', bash);
 
 export interface MarkDownViewerProps {
   /** 文件内容 */
   content: string;
-  /**
-   * 代码主题色
-   * @default dark
-   */
-  codeTheme?: string;
   /** 解析 React 组件的依赖 */
   require?: any;
   /** 依赖的源码 */
@@ -51,7 +30,6 @@ export default forwardRef(
     {
       content,
       require = {},
-      codeTheme = '',
       source = {},
       types = {},
     }: MarkDownViewerProps,
@@ -144,10 +122,6 @@ export default forwardRef(
               return <div className="markdown-viewer-pre">{children}</div>;
             },
             code({ node, inline, className, children, ...props }) {
-              const [theme, setTheme] = useState(codeTheme);
-              useEffect(() => {
-                slRef.current.push(setTheme);
-              }, []);
               // 渲染 React 组件
               if ((node?.data?.meta as string)?.startsWith?.('| react')) {
                 const style: any = {};
@@ -162,7 +136,6 @@ export default forwardRef(
                   <ComponentWrap
                     code={children[0]}
                     require={require}
-                    codeTheme={theme}
                     style={style}
                     source={source}
                     expand={(node?.data?.meta as string)?.startsWith?.(
@@ -264,8 +237,7 @@ export default forwardRef(
               }
               return !inline && match ? (
                 <div style={{ position: 'relative' }}>
-                  <SyntaxLighter
-                    codeTheme={theme}
+                  <SyntaxHighlight
                     code={code}
                     language={match[1]}
                     {...props}

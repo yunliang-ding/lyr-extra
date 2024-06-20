@@ -1,18 +1,16 @@
 import { useMemo, useState } from 'react';
 import { Tooltip } from '@arco-design/web-react';
+import MonacoEditor from './monaco-editor';
 import { babelParse } from '..';
-import Highlighter from './wrap/highlighter';
-import MonacoEditor from './wrap/monaco-editor';
 
 export default ({
   style = {},
   code,
-  codeTheme,
   source = {},
   expand = false,
   require,
 }) => {
-  const [openType, setOpenType] = useState(expand ? 1 : 0);
+  const [openType, setOpenType] = useState(expand ? 2 : 0);
   const [reload, setReload] = useState(Math.random());
   const [innerCode] = useState({ code });
   const [updateRequire] = useState({});
@@ -63,31 +61,7 @@ export default ({
             />
           </svg>
         </Tooltip>
-        <Tooltip content="查看代码">
-          <svg
-            viewBox="0 0 1024 1024"
-            width="18"
-            height="18"
-            style={{ cursor: 'pointer' }}
-            onClick={() => {
-              setOpenType(openType === 1 ? 0 : 1);
-            }}
-          >
-            <path
-              fill="#8a8a8a"
-              d="M153.770667 517.558857l200.387047-197.241905L302.86019 268.190476 48.761905 518.290286l254.439619 243.614476 50.590476-52.833524-200.021333-191.512381zM658.285714 320.316952L709.583238 268.190476l254.098286 250.09981L709.241905 761.904762l-50.590476-52.833524 200.021333-191.512381L658.285714 320.316952z m-112.981333-86.186666L393.99619 785.554286l70.534096 19.358476 151.30819-551.399619-70.534095-19.358476z"
-            ></path>
-          </svg>
-        </Tooltip>
       </div>
-      {openType === 1 && (
-        <Highlighter
-          code={code}
-          tabs={tabs}
-          source={source}
-          codeTheme={codeTheme}
-        />
-      )}
       {openType === 2 && (
         <MonacoEditor
           innerCode={innerCode}
@@ -95,7 +69,6 @@ export default ({
           tabs={tabs}
           source={source}
           require={require}
-          codeTheme={codeTheme}
           setReload={setReload}
         />
       )}

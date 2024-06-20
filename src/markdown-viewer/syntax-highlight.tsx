@@ -1,26 +1,15 @@
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import {
-  oneDark,
-  oneLight,
-} from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useEffect } from 'react';
 import { copyToClipBoard } from '..';
 
-export default ({ code, language, codeTheme, ...props }) => {
+export default ({ code, language }) => {
+  useEffect(() => {
+    (window as any).hljs.highlightAll();
+  }, [])
   return (
     <div style={{ position: 'relative' }}>
-      <SyntaxHighlighter
-        PreTag="div"
-        style={codeTheme === 'dark' ? oneDark : oneLight}
-        language={language}
-        className={
-          codeTheme === 'dark'
-            ? 'markdown-viewer-code markdown-viewer-code-dark'
-            : 'markdown-viewer-code'
-        }
-        {...props}
-      >
-        {code}
-      </SyntaxHighlighter>
+      <pre>
+        <code className={`markdown-viewer-code language-${language}`}>{code}</code>
+      </pre>
       <svg
         viewBox="0 0 1024 1024"
         width="16"

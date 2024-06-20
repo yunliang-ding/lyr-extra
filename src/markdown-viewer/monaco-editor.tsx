@@ -6,7 +6,6 @@ export default ({
   innerCode,
   source,
   setReload,
-  codeTheme,
   require,
   updateRequire,
 }) => {
@@ -38,7 +37,6 @@ export default ({
                     }, 500);
                   }}
                   style={{ height: 260 }}
-                  theme={codeTheme === 'dark' ? 'vs-dark' : 'vs'}
                   mode="function"
                 />
               </Tabs.TabPane>
@@ -57,7 +55,6 @@ export default ({
             }, 500);
           }}
           style={{ height: 260 }}
-          theme={codeTheme === 'dark' ? 'vs-dark' : 'vs'}
           mode="function"
         />
       )}

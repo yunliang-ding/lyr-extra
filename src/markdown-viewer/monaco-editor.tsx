@@ -1,5 +1,6 @@
-import { Tabs } from '@arco-design/web-react';
 import { CodeEditor } from 'lyr-code-editor';
+import { useState } from 'react';
+import Tabs from './tabs';
 
 export default ({
   tabs,
@@ -9,55 +10,47 @@ export default ({
   require,
   updateRequire,
 }) => {
+  const [selectedTab, setSelectedTab] = useState(tabs[0]);
   return (
-    <div className="markdown-viewer-code-wrap-footer">
-      {tabs.length > 1 ? (
-        <Tabs size="mini">
-          {tabs.map((tab: any, index: number) => {
-            return (
-              <Tabs.TabPane key={tab} title={tab} style={{ padding: 0 }}>
-                <CodeEditor
-                  require={require}
-                  value={String(
-                    index === 0 ? innerCode.code : source[tab],
-                  ).replace(/\n$/, '')}
-                  onChange={(value: string, parseResult: any) => {
-                    if (index === 0) {
-                      innerCode.code = value;
-                    } else {
-                      try {
-                        updateRequire[tab] = parseResult;
-                      } catch (error) {
-                        console.log(error);
-                      }
-                    }
-                    // render 一次
-                    setTimeout(() => {
-                      setReload(Math.random());
-                    }, 500);
-                  }}
-                  style={{ height: 260 }}
-                  mode="function"
-                />
-              </Tabs.TabPane>
-            );
-          })}
-        </Tabs>
-      ) : (
-        <CodeEditor
-          require={require}
-          value={String(innerCode.code).replace(/\n$/, '')}
-          onChange={(value: string) => {
-            innerCode.code = value;
-            // render 一次
-            setTimeout(() => {
-              setReload(Math.random());
-            }, 500);
-          }}
-          style={{ height: 260 }}
-          mode="function"
-        />
-      )}
+    <div className="markdown-viewer-code-wrap-footer monaco-component show-file-icons">
+      <Tabs
+        tabs={tabs}
+        selectedTab={selectedTab}
+        onClick={(tab) => {
+          setSelectedTab(tab);
+        }}
+      />
+      {tabs.map((tab, index) => {
+        return (
+          <CodeEditor
+            require={require}
+            style={{
+              display: tab === selectedTab ? 'block' : 'none',
+              height: 300,
+            }}
+            value={String(index === 0 ? innerCode.code : source[tab]).replace(
+              /\n$/,
+              '',
+            )}
+            onChange={(value: string, parseResult: any) => {
+              if (index === 0) {
+                innerCode.code = value;
+              } else {
+                try {
+                  updateRequire[tab] = parseResult;
+                } catch (error) {
+                  console.log(error);
+                }
+              }
+              // render 一次
+              setTimeout(() => {
+                setReload(Math.random());
+              }, 500);
+            }}
+            mode="function"
+          />
+        );
+      })}
     </div>
   );
 };

@@ -1,24 +1,21 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Tooltip } from '@arco-design/web-react';
 import MonacoEditor from './monaco-editor';
 import { babelParse } from '..';
 
-export default ({
-  style = {},
-  code,
-  source = {},
-  expand = false,
-  require,
-}) => {
-  const [openType, setOpenType] = useState(expand ? 2 : 0);
+export default ({ style = {}, code, source = {}, expand = false, require }) => {
+  const [expandEditor, setExpandEditor] = useState(expand);
+  const [reset, setReset] = useState(Math.random());
   const [reload, setReload] = useState(Math.random());
-  const [innerCode] = useState({ code });
+  const [innerCode] = useState({ value: code });
+  const [innerSourceCode] = useState({ value: source });
   const [updateRequire] = useState({});
   const tabs = useMemo(() => ['index.tsx'], []);
   const Comp = useMemo(
-    () =>
-      babelParse({
-        code: innerCode.code,
+    () => {
+    console.log(innerCode.value)
+      return babelParse({
+        code: innerCode.value,
         require: {
           ...require,
           ...updateRequire,
@@ -30,9 +27,18 @@ export default ({
             }
           }
         },
-      }),
+      })
+    },
     [reload],
   );
+  useEffect(() => {
+    innerCode.value = code;
+    innerSourceCode.value = source;
+    tabs.forEach((tab) => {
+      delete updateRequire[tab];
+    });
+    setReload(Math.random());
+  }, [reset]);
   let VNode = null;
   try {
     VNode = Comp();
@@ -41,7 +47,7 @@ export default ({
   }
   return (
     <div className="markdown-viewer-code-wrap">
-      <div className="markdown-viewer-code-wrap-body" style={style}>
+      <div className="markdown-viewer-code-wrap-body" style={style} key={reload}>
         {VNode}
       </div>
       <div className="markdown-viewer-code-wrap-extra">
@@ -52,7 +58,7 @@ export default ({
             height="16"
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              setOpenType(openType === 2 ? 0 : 2);
+              setExpandEditor(!expandEditor);
             }}
           >
             <path
@@ -62,14 +68,15 @@ export default ({
           </svg>
         </Tooltip>
       </div>
-      {openType === 2 && (
+      {expandEditor && (
         <MonacoEditor
-          innerCode={innerCode}
-          updateRequire={updateRequire}
           tabs={tabs}
-          source={source}
+          code={innerCode}
+          sourceCode={innerSourceCode}
+          updateRequire={updateRequire}
           require={require}
           setReload={setReload}
+          setReset={setReset}
         />
       )}
     </div>

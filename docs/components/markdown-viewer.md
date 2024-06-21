@@ -185,5 +185,7 @@ export interface MarkDownViewerProps {
   require?: any;
   /** 依赖的源码 */
   source?: any;
+  /** 扩展按钮 */
+  extraRender?: (params: any) => ReactNode;
 }
 ```

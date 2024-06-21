@@ -1,6 +1,6 @@
 ## 基本使用
 
-```tsx | reactExpand
+```tsx | react
 import { asyncLoadScript, asyncLoadLink } from 'lyr-extra';
 import { Button } from '@arco-design/web-react';
 
@@ -24,7 +24,7 @@ export default () => {
 
 ## 批量加载
 
-```tsx | reactExpand
+```tsx | react
 import { asyncLoadScript, asyncLoadLink } from 'lyr-extra';
 import { Button } from '@arco-design/web-react';
 

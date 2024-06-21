@@ -5,6 +5,7 @@ import {
   useMemo,
   useState,
   useRef,
+  ReactNode,
 } from 'react';
 import ReactMarkDown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -22,7 +23,9 @@ export interface MarkDownViewerProps {
   /** 依赖的源码 */
   source?: any;
   /** 类型数据源 */
-  types?: any;
+  typesAPI?: any;
+  /** 扩展按钮 */
+  extraRender?: (params: any) => ReactNode;
 }
 
 export default forwardRef(
@@ -31,7 +34,8 @@ export default forwardRef(
       content,
       require = {},
       source = {},
-      types = {},
+      typesAPI = {},
+      extraRender = () => null,
     }: MarkDownViewerProps,
     ref,
   ) => {
@@ -134,6 +138,7 @@ export default forwardRef(
                 }
                 return (
                   <ComponentWrap
+                    extraRender={extraRender}
                     code={children[0]}
                     require={require}
                     style={style}
@@ -162,7 +167,7 @@ export default forwardRef(
               // 渲染API表格
               if (match?.[1] === 'API') {
                 const data =
-                  types[(children[0] as string).replaceAll('\n', '')];
+                  typesAPI[(children[0] as string).replaceAll('\n', '')];
                 return (
                   <Table
                     pagination={false}
@@ -222,12 +227,16 @@ export default forwardRef(
                         title: '是否必选',
                         dataIndex: 'required',
                         width: 100,
-                        align: "right",
+                        align: 'right',
                         render(required) {
                           return required ? (
-                            <Tag color="#35cd4b" size="small">是</Tag>
+                            <Tag color="#35cd4b" size="small">
+                              是
+                            </Tag>
                           ) : (
-                            <Tag color="#fdbc40" size="small">否</Tag>
+                            <Tag color="#fdbc40" size="small">
+                              否
+                            </Tag>
                           );
                         },
                       },
@@ -237,11 +246,7 @@ export default forwardRef(
               }
               return !inline && match ? (
                 <div style={{ position: 'relative' }}>
-                  <SyntaxHighlight
-                    code={code}
-                    language={match[1]}
-                    {...props}
-                  />
+                  <SyntaxHighlight code={code} language={match[1]} {...props} />
                 </div>
               ) : (
                 <code

@@ -12,6 +12,9 @@ export { default as docxReplaceBatch } from './docx-replace';
 export { default as babelParse } from './babel-parse';
 export { default as babelParseCode } from './babel-parse/parse';
 export { default as MarkdownViewer } from './markdown-viewer';
+export { default as asyncLoadScript } from './async-load/script';
+export { default as asyncLoadLink } from './async-load/link';
+
 export const encode = (str) => {
   try {
     return btoa(encodeURIComponent(str));

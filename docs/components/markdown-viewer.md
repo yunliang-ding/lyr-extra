@@ -43,62 +43,55 @@ yarn add lyr-component
 import { MarkdownViewer } from 'lyr-extra';
 import * as ArcoDesign from '@arco-design/web-react';
 
-const treeData = [
-  {
-    title: 'root',
-    key: '0-0',
-    children: [
-      {
-        title: 'src',
-        key: '0-0-2',
-        children: [
-          {
-            title: 'components',
-            key: '0-0-2-1',
-            children: [
-              {
-                title: 'loading.tsx',
-                key: '0-0-2-1-0',
-              },
-            ],
-          },
-          {
-            title: 'app.tsx',
-            key: '0-0-2-2',
-          },
-          {
-            title: 'app.less',
-            key: '0-0-2-3',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'lyr.config.ts',
-    key: '0-1',
-  },
-];
-
 export default () => {
   return (
     <MarkdownViewer
-      source={{
-        'treeData.ts': `export default ${JSON.stringify(treeData, null, 2)}`,
-      }}
       require={{
         '@arco-design/web-react': ArcoDesign,
-        'treeData.ts': treeData,
       }}
       content={`
 ## 渲染组件
 \`\`\`\jsx | react | var(--color-fill-2)
 import { Tree } from '@arco-design/web-react';
-import treeData from "treeData.ts";
 
 export default () => {
   return <Tree
-    treeData={treeData}
+    treeData={[
+      {
+        title: 'root',
+        key: '0-0',
+        children: [
+          {
+            title: 'src',
+            key: '0-0-2',
+            children: [
+              {
+                title: 'components',
+                key: '0-0-2-1',
+                children: [
+                  {
+                    title: 'loading.tsx',
+                    key: '0-0-2-1-0',
+                  },
+                ],
+              },
+              {
+                title: 'app.tsx',
+                key: '0-0-2-2',
+              },
+              {
+                title: 'app.less',
+                key: '0-0-2-3',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'lyr.config.ts',
+        key: '0-1',
+      },
+    ]}
     autoExpandParent
     showLine
   />

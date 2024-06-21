@@ -2,7 +2,7 @@
   "name": "lyr-extra",
   "description": "功能特性额外的",
   "author": "yunliang-ding",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "scripts": {
     "start": "lyr-docs dev",
     "build": "rollup -c",
@@ -29,8 +29,7 @@
     "react-dom": ">=17.0.2",
     "html2canvas": "1.4.1",
     "jszip": "3.10.1",
-    "@arco-design/web-react": ">=2.62.1",
-    "lyr-code-editor": ">=1.0.2"
+    "@arco-design/web-react": ">=2.62.1"
   },
   "devDependencies": {
     "react": "17.0.2",
@@ -45,8 +44,7 @@
     "file-saver": "^2.0.5",
     "react-markdown": "8.0.7",
     "remark-gfm": "3.0.1",
-    "lyr-docs": "0.0.50",
-    "lyr-code-editor": "1.0.2",
+    "lyr-docs": "0.0.56",
     "rollup-plugin-replace": "2.2.0",
     "@rollup/plugin-json": "6.1.0",
     "typescript": "5.3.2",

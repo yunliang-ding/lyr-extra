@@ -7,7 +7,7 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco.min.css",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.css",
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/monaco-file-icon.css',
-    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.atom-one-dark.min.css",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.atom-one-light.min.css",
   ],
   devScript: [
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.development.min.js",
@@ -24,7 +24,6 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/babel-standalone.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prettier-standalone.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prettier-parser-typescript.min.js",
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-code-editor.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js",
@@ -48,7 +47,6 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/babel-standalone.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prettier-standalone.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prettier-parser-typescript.min.js",
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-code-editor.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js",
@@ -61,7 +59,6 @@ export default defineConfig({
       externals: {
         html2canvas: "html2canvas",
         jszip: "JSZip",
-        "lyr-code-editor": "lyrCodeEditor",
       },
     };
   },
@@ -78,6 +75,10 @@ export default defineConfig({
       label: "组件",
       path: "/components",
       children: [
+        {
+          label: "asyncLoad",
+          path: "/components/async-load",
+        },
         {
           label: "BigNumber",
           path: "/components/big-number",

@@ -30,7 +30,6 @@ export default defineConfig({
         "react-dom": "ReactDOM",
         "react/jsx-runtime": "jsxRuntime",
         "@arco-design/web-react": "arco",
-        "lyr-code-editor": "lyrCodeEditor",
         html2canvas: "html2canvas",
         jszip: "JSZip",
       },

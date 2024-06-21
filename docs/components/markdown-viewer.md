@@ -132,7 +132,7 @@ import { MarkdownViewer } from 'lyr-extra';
 export default () => {
   return (
     <MarkdownViewer
-      types={{
+      typesAPI={{
         '/src/demo/type.tsx': [
           {
             name: 'leastOne',
@@ -185,6 +185,8 @@ export interface MarkDownViewerProps {
   require?: any;
   /** 依赖的源码 */
   source?: any;
+  /** api类型数据源 */
+  typesAPI?: any;
   /** 扩展按钮 */
   extraRender?: (params: any) => ReactNode;
 }

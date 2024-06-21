@@ -22,7 +22,7 @@ export interface MarkDownViewerProps {
   require?: any;
   /** 依赖的源码 */
   source?: any;
-  /** 类型数据源 */
+  /** api类型数据源 */
   typesAPI?: any;
   /** 扩展按钮 */
   extraRender?: (params: any) => ReactNode;
@@ -187,6 +187,7 @@ export default forwardRef(
                       {
                         title: '类型',
                         dataIndex: 'type',
+                        width: 120,
                         render(type) {
                           return (
                             <code

@@ -13,7 +13,7 @@ export default ({
           style={{
             display: 'flex',
             alignItems: 'center',
-            width: 'calc(100% - 200px)',
+            width: 'calc(100% - 40px)',
             overflow: 'auto',
             height: '100%',
           }}
@@ -43,7 +43,7 @@ export default ({
           style={{
             display: 'flex',
             alignItems: 'center',
-            width: '200px',
+            width: 40,
             overflow: 'hidden',
             height: '100%',
             justifyContent: 'flex-end',

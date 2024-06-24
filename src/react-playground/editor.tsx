@@ -14,7 +14,10 @@ export default ({
   const refArr = tabs.map(() => useRef({}));
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
   return (
-    <div className="monaco-component show-file-icons">
+    <div
+      className="monaco-component show-file-icons"
+      style={{ width: '100%', height: '100%' }}
+    >
       <Tabs
         tabs={tabs}
         resetCode={() => {
@@ -36,11 +39,11 @@ export default ({
             codeRef={refArr[index]}
             require={{
               ...require,
-              ...updateRequire
+              ...updateRequire,
             }}
             style={{
               display: tab === selectedTab ? 'block' : 'none',
-              height: "calc(100vh - 35px)",
+              height: 'calc(100% - 35px)',
             }}
             value={String(
               index === 0 ? code.value : sourceCode.value[tab],
@@ -53,7 +56,7 @@ export default ({
                 try {
                   updateRequire[tab] = parseResult;
                 } catch (error) {
-                  console.log("onChangeError", error);
+                  console.log('onChangeError', error);
                 }
               }
               setReload(Math.random()); // render

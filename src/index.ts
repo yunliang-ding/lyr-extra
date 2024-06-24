@@ -14,7 +14,7 @@ export { default as babelParseCode } from './babel-parse/parse';
 export { default as MarkdownViewer } from './markdown-viewer';
 export { default as asyncLoadScript } from './async-load/script';
 export { default as asyncLoadLink } from './async-load/link';
-export { default as Playground } from './playground';
+export { default as ReactPlayground } from './react-playground';
 
 export const encode = (str) => {
   try {

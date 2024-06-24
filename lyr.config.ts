@@ -116,8 +116,8 @@ export default defineConfig({
           path: "/components/markdown-viewer",
         },
         {
-          label: "Playground",
-          path: "/components/playground",
+          label: "ReactPlayground",
+          path: "/components/react-playground",
         },
       ],
     },

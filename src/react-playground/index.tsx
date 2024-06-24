@@ -1,17 +1,9 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { ReactNode, useEffect, useState } from 'react';
 import { ResizeBox } from '@arco-design/web-react';
 import { babelParse } from 'lyr-extra';
 import Editor from './editor';
 import './index.less';
-
-interface PlayGroundProps {
-  code: string;
-  require: any;
-  dependencies: {
-    [key: string]: string;
-  };
-}
 
 const initRequire = (
   dependencies: { [key: string]: string },
@@ -50,7 +42,22 @@ class RenderComponent extends React.PureComponent {
   }
 }
 
-export default ({ code, dependencies = {}, require = {} }: PlayGroundProps) => {
+export interface PlayGroundProps {
+  code: string;
+  require: any;
+  preview?: boolean;
+  style?: CSSProperties;
+  dependencies: {
+    [key: string]: string;
+  };
+}
+
+export default ({
+  style = {},
+  code,
+  dependencies = {},
+  require = {},
+}: PlayGroundProps) => {
   const tabs = ['index.tsx', ...Object.keys(dependencies).map((key) => key)];
   const [spin, setSpin] = useState(true);
   const [reload, setReload] = useState(Math.random());
@@ -70,16 +77,17 @@ export default ({ code, dependencies = {}, require = {} }: PlayGroundProps) => {
     });
   }, []);
   return (
-    <div className="react-playground">
+    <div className="react-playground" style={style}>
       <ResizeBox.Split
         direction={'horizontal'}
         style={{
-          width: '100vw',
-          height: '100vh',
+          width: '100%',
+          height: '100%',
           border: '1px solid var(--color-border)',
         }}
-        max={0.7}
-        min={0.3}
+        size={0.6}
+        max={0.6}
+        min={0.4}
         panes={[
           !spin && (
             <Editor
@@ -94,7 +102,7 @@ export default ({ code, dependencies = {}, require = {} }: PlayGroundProps) => {
           ),
           <div
             key={reload}
-            style={{ padding: 16, background: '#fff', height: '100vh' }}
+            style={{ padding: 16, background: '#fff', height: "100%" }}
           >
             <RenderComponent
               code={innerCode.value}

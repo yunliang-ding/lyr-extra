@@ -14,7 +14,7 @@ export default () => {
       code={`import { Input } from "@arco-design/web-react";
 
 export default () => {
-  return <Input />
+  return <Input placeholder="请输入信息" />
 }
 `}
     />

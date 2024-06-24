@@ -22,7 +22,7 @@ const initRequire = (
 class RenderComponent extends React.PureComponent {
   props: any;
   state = { hasError: false, error: '' };
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: string) {
     return { hasError: true, error };
   }
   render(): ReactNode {
@@ -45,7 +45,7 @@ class RenderComponent extends React.PureComponent {
 export interface PlayGroundProps {
   code: string;
   require: any;
-  preview?: boolean;
+  previewOnly?: boolean;
   style?: CSSProperties;
   dependencies: {
     [key: string]: string;
@@ -57,6 +57,7 @@ export default ({
   code,
   dependencies = {},
   require = {},
+  previewOnly = false,
 }: PlayGroundProps) => {
   const tabs = ['index.tsx', ...Object.keys(dependencies).map((key) => key)];
   const [spin, setSpin] = useState(true);
@@ -64,19 +65,20 @@ export default ({
   const [updateRequire] = useState(initRequire(dependencies, require));
   const [innerCode] = useState({ value: code });
   const [innerSourceCode] = useState({ value: dependencies });
-  const [reset, setReset] = useState(Math.random());
-  useEffect(() => {
-    innerCode.value = code;
-    innerSourceCode.value = dependencies;
-    Object.assign(updateRequire, initRequire(dependencies, require));
-    setReload(Math.random());
-  }, [reset]);
   useEffect(() => {
     setTimeout(() => {
       setSpin(false);
     });
   }, []);
-  return (
+  return previewOnly ? (
+    <RenderComponent
+      code={innerCode.value}
+      require={{
+        ...require,
+        ...updateRequire,
+      }}
+    />
+  ) : (
     <div className="react-playground" style={style}>
       <ResizeBox.Split
         direction={'horizontal'}
@@ -97,12 +99,11 @@ export default ({
               updateRequire={updateRequire}
               require={require}
               setReload={setReload}
-              setReset={setReset}
             />
           ),
           <div
             key={reload}
-            style={{ padding: 16, background: '#fff', height: "100%" }}
+            style={{ padding: 16, background: '#fff', height: '100%' }}
           >
             <RenderComponent
               code={innerCode.value}

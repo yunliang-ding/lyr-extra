@@ -29,10 +29,11 @@
     "react-dom": ">=17.0.2",
     "html2canvas": "1.4.1",
     "jszip": "3.10.1",
-    "@arco-design/web-react": ">=2.62.1"
+    "@arco-design/web-react": ">=2.62.1",
+    "lyr-code-editor": "1.0.4"
   },
   "devDependencies": {
-    "lyr-docs": "0.0.61",
+    "lyr-docs": "0.0.64",
     "bignumber.js": "9.1.0",
     "html2canvas": "1.4.1",
     "react-to-print": "2.13.0",
@@ -41,7 +42,8 @@
     "docxtemplater": "^3.34.3",
     "file-saver": "^2.0.5",
     "react-markdown": "8.0.7",
-    "remark-gfm": "3.0.1"
+    "remark-gfm": "3.0.1",
+    "lyr-code-editor": "1.0.4"
   },
   "license": "MIT",
   "publishConfig": {

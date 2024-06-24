@@ -115,6 +115,10 @@ export default defineConfig({
           label: "MarkdownViewer",
           path: "/components/markdown-viewer",
         },
+        {
+          label: "Playground",
+          path: "/components/playground",
+        },
       ],
     },
   ],

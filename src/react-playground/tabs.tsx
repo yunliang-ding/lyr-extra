@@ -1,11 +1,7 @@
-export default ({
-  tabs = [],
-  selectedTab,
-  onClick,
-}) => {
+export default ({ tabs = [], selectedTab, onClick, style = {} }) => {
   return (
     <>
-      <div className="react-playground-tabs">
+      <div className="react-playground-tabs" style={style}>
         <div
           style={{
             display: 'flex',
@@ -28,8 +24,8 @@ export default ({
                   onClick(tab);
                 }}
               >
-                <i className="file-icon javascriptreact-lang-file-icon" />
-                <span style={{ color: 'var(--vscode-icon-foreground)' }}>
+                <i className="file-icon typescriptreact-lang-file-icon" />
+                <span>
                   {tab}
                 </span>
               </div>

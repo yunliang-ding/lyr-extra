@@ -31,6 +31,7 @@ import * as ArcoDesign from '@arco-design/web-react';
 export default () => {
   return (
     <ReactPlayground
+      showLogo
       style={{ width: '100%', height: 400 }}
       require={{
         '@arco-design/web-react': ArcoDesign,
@@ -60,4 +61,10 @@ export default () => {
     />
   );
 };
+```
+
+## API
+
+```API
+/src/react-playground/type.tsx
 ```

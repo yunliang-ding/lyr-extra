@@ -1,7 +1,8 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { ReactNode, useEffect, useState } from 'react';
 import { ResizeBox } from '@arco-design/web-react';
-import { babelParse } from 'lyr-extra';
+import { PlayGroundProps } from './type';
+import { babelParse } from '..';
 import Editor from './editor';
 import './index.less';
 
@@ -42,22 +43,13 @@ class RenderComponent extends React.PureComponent {
   }
 }
 
-export interface PlayGroundProps {
-  code: string;
-  require: any;
-  previewOnly?: boolean;
-  style?: CSSProperties;
-  dependencies: {
-    [key: string]: string;
-  };
-}
-
 export default ({
   style = {},
   code,
   dependencies = {},
   require = {},
   previewOnly = false,
+  showLogo = false,
 }: PlayGroundProps) => {
   const tabs = ['index.tsx', ...Object.keys(dependencies).map((key) => key)];
   const [spin, setSpin] = useState(true);
@@ -93,6 +85,7 @@ export default ({
         panes={[
           !spin && (
             <Editor
+              showLogo={showLogo}
               tabs={tabs}
               code={innerCode}
               sourceCode={innerSourceCode}

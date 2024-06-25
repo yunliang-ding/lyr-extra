@@ -33,7 +33,7 @@
     "lyr-code-editor": "1.0.4"
   },
   "devDependencies": {
-    "lyr-docs": "0.0.66",
+    "lyr-docs": "0.0.68",
     "bignumber.js": "9.1.0",
     "html2canvas": "1.4.1",
     "react-to-print": "2.13.0",

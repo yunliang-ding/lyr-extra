@@ -33,11 +33,9 @@ export default ({
           }}
         >
           <i className="file-icon javascriptreact-lang-file-icon" />
-          <strong
-            style={{ fontFamily: 'monospace', fontWeight: 700, fontSize: 10 }}
-          >
+          <i style={{ fontFamily: 'monospace', fontWeight: 700, fontSize: 10 }}>
             PLAYGROUND
-          </strong>
+          </i>
         </span>
       )}
       <Tabs

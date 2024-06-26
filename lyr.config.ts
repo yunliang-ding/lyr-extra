@@ -12,8 +12,6 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-console.min.css",
   ],
   devScript: [
-    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-object-viewer.min.js",
-    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-console.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.development.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react-dom.development.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/router.development.js",
@@ -33,6 +31,8 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.javascript.min.js",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-object-viewer.min.js",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-console.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-extra.min.js",
   ],
   buildScript: [
@@ -56,6 +56,8 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.javascript.min.js",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-object-viewer.min.js",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-console.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-extra.min.js",
   ],
   webpackConfig: () => {

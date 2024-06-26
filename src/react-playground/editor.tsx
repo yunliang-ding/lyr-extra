@@ -16,7 +16,7 @@ export default ({
   return (
     <div
       className="monaco-component show-file-icons"
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: '100%', height: '100%', background: "#252526" }}
     >
       {showLogo && (
         <span

@@ -79,7 +79,7 @@ export default ({
           height: '100%',
           border: '1px solid var(--color-border)',
         }}
-        size={0.6}
+        size={0.5}
         max={0.6}
         min={0.4}
         panes={[

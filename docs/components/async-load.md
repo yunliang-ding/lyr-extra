@@ -2,11 +2,12 @@
 
 ```tsx | react
 import { asyncLoadScript, asyncLoadLink } from 'lyr-extra';
-import { Button } from '@arco-design/web-react';
+import { Button } from 'lyr-component';
 
 export default () => {
   return (
     <Button
+      spin
       onClick={async () => {
         await asyncLoadScript(
           'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.development.min.js',
@@ -26,11 +27,12 @@ export default () => {
 
 ```tsx | react
 import { asyncLoadScript, asyncLoadLink } from 'lyr-extra';
-import { Button } from '@arco-design/web-react';
+import { Button } from 'lyr-component';
 
 export default () => {
   return (
     <Button
+      spin
       onClick={async () => {
         await asyncLoadScript([
           'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.development.min.js',

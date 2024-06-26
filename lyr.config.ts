@@ -8,8 +8,12 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.css",
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/monaco-file-icon.css',
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.atom-one-light.min.css",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-object-viewer.min.css",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-console.min.css",
   ],
   devScript: [
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-object-viewer.min.js",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-console.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.development.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react-dom.development.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/router.development.js",
@@ -65,6 +69,7 @@ export default defineConfig({
   serverPath: "/apis",
   docsRequire: {
     ArcoDesign: "@arco-design/web-react",
+    lyrComponent: "lyr-component",
   },
   menus: [
     {

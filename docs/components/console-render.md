@@ -20,14 +20,18 @@
 ## 基本使用
 
 ```tsx | react
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { ConsoleRender } from 'lyr-extra';
 import { Button } from '@arco-design/web-react';
 
 export default () => {
-  const { listener, destory, clear } = ConsoleRender.create({
-    theme: 'light',
-  });
+  const { listener, destory, clear } = useMemo(
+    () =>
+      ConsoleRender.create({
+        theme: 'light',
+      }),
+    [],
+  );
   useEffect(() => {
     listener(document.getElementById('console-container'));
     console.log(100, 'test', new Date(), Object, () => {}, null, undefined);

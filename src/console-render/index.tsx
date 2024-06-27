@@ -22,7 +22,6 @@ export default {
             theme,
             ...reset,
           });
-          console.log(instance);
           /** 修饰打印 */
           console.log = function (...p) {
             originConsoleLog(...p);

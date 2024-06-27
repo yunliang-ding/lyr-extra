@@ -15,6 +15,8 @@ export interface PlayGroundProps {
   };
   /** 是否展示logo */
   showLogo?: boolean;
+  /** 是否展示控制台 */
+  showConsole?: boolean
 }
 
 

@@ -1,8 +1,9 @@
-import React from 'react';
-import { ReactNode, useEffect, useState } from 'react';
-import { ResizeBox } from '@arco-design/web-react';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { ReactNode, useState } from 'react';
+import { Button, ResizeBox, Tabs } from '@arco-design/web-react';
 import { PlayGroundProps } from './type';
-import { babelParse } from '..';
+import { IconRefresh, IconDelete } from '@arco-design/web-react/icon';
+import { babelParse, ConsoleRender } from '..';
 import Editor from './editor';
 import './index.less';
 
@@ -50,17 +51,32 @@ export default ({
   require = {},
   previewOnly = false,
   showLogo = false,
+  showConsole = false,
 }: PlayGroundProps) => {
-  const tabs = ['index.tsx', ...Object.keys(dependencies).map((key) => key)];
-  const [spin, setSpin] = useState(true);
+  const divRef: any = useRef({});
+  const [load, setLoad] = useState(false);
   const [reload, setReload] = useState(Math.random());
+  const [activeTab, setActiveTab] = useState('0');
   const [updateRequire] = useState(initRequire(dependencies, require));
   const [innerCode] = useState({ value: code });
   const [innerSourceCode] = useState({ value: dependencies });
+  const tabs = useMemo(
+    () => ['index.tsx', ...Object.keys(dependencies).map((key) => key)],
+    [dependencies],
+  );
+  const { listener, destory, clear } = useMemo(
+    () =>
+      ConsoleRender.create({
+        theme: 'light',
+      }),
+    [],
+  );
   useEffect(() => {
-    setTimeout(() => {
-      setSpin(false);
-    });
+    listener(divRef.current);
+    return destory;
+  }, []);
+  useEffect(() => {
+    setLoad(true);
   }, []);
   return previewOnly ? (
     <RenderComponent
@@ -83,28 +99,85 @@ export default ({
         max={0.6}
         min={0.4}
         panes={[
-          !spin && (
-            <Editor
-              showLogo={showLogo}
-              tabs={tabs}
-              code={innerCode}
-              sourceCode={innerSourceCode}
-              updateRequire={updateRequire}
-              require={require}
-              setReload={setReload}
-            />
-          ),
-          <div
-            key={reload}
-            style={{ padding: 16, background: '#fff', height: '100%' }}
-          >
-            <RenderComponent
-              code={innerCode.value}
-              require={{
-                ...require,
-                ...updateRequire,
+          <Editor
+            showLogo={showLogo}
+            tabs={tabs}
+            code={innerCode}
+            sourceCode={innerSourceCode}
+            updateRequire={updateRequire}
+            require={require}
+            setReload={setReload}
+          />,
+          <div style={{ background: '#fff', height: '100%' }}>
+            <div
+              style={{
+                width: '100%',
+                height: 40,
               }}
-            />
+            >
+              <Tabs
+                onChange={setActiveTab}
+                activeTab={activeTab}
+                extra={
+                  activeTab === '0' ? (
+                    <Button
+                      style={{ marginRight: 8 }}
+                      icon={<IconRefresh />}
+                      onClick={() => {
+                        setReload(Math.random());
+                      }}
+                      size="small"
+                    />
+                  ) : (
+                    <Button
+                      style={{ marginRight: 8 }}
+                      icon={<IconDelete />}
+                      onClick={clear}
+                      size="small"
+                    />
+                  )
+                }
+              >
+                <Tabs.TabPane title="预览" key="0" />
+                {showConsole && <Tabs.TabPane title="控制台" key="1" />}
+              </Tabs>
+            </div>
+            <div
+              style={{
+                height: 'calc(100% - 40px)',
+                width: '100%',
+              }}
+            >
+              <div
+                key={reload}
+                style={{
+                  padding: 16,
+                  height: '100%',
+                  overflow: 'auto',
+                  display: activeTab === '0' ? 'block' : 'none',
+                }}
+              >
+                {useMemo(() => {
+                  return load ? (
+                    <RenderComponent
+                      code={innerCode.value}
+                      require={{
+                        ...require,
+                        ...updateRequire,
+                      }}
+                    />
+                  ) : null;
+                }, [reload, load])}
+              </div>
+              <div
+                ref={divRef}
+                style={{
+                  height: '100%',
+                  overflow: 'auto',
+                  display: activeTab === '1' ? 'block' : 'none',
+                }}
+              />
+            </div>
           </div>,
         ]}
       />

@@ -1,10 +1,22 @@
 import { useEffect } from 'react';
 import { copyToClipBoard } from '..';
+import { createHighlighter } from 'shiki'
 
 export default ({ code, language }) => {
   useEffect(() => {
+    getCodeHtml();
     (window as any).hljs.highlightAll();
   }, [])
+  const getCodeHtml = async () => {
+    const highlighter = await createHighlighter({
+      themes: ['dark-plus'],
+      langs: ['javascript'],
+    })
+    console.log(highlighter.codeToHtml('const a = 1', {
+      theme: 'dark-plus',
+      lang: 'javascript',
+    }))
+  }
   return (
     <div style={{ position: 'relative' }}>
       <pre>

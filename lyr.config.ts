@@ -10,8 +10,10 @@ export default defineConfig({
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.atom-one-light.min.css",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-object-viewer.min.css",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/luna-console.min.css",
+    "https://cdn.jsdelivr.net/npm/shiki@1.1.6/dist/themes/material-theme-light.min.css"
   ],
   devScript: [
+    "https://unpkg.com/shiki@1.10.0/dist/index.mjs",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.development.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react-dom.development.min.js",
     "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/router.development.js",

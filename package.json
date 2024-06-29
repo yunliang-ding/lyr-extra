@@ -43,7 +43,8 @@
     "file-saver": "^2.0.5",
     "react-markdown": "8.0.7",
     "remark-gfm": "3.0.1",
-    "lyr-code-editor": "1.0.4"
+    "lyr-code-editor": "1.0.4",
+    "shiki":"1.10.0"
   },
   "license": "MIT",
   "publishConfig": {

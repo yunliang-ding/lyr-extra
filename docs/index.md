@@ -22,12 +22,6 @@
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jszip.min.js"></script>
 <!-- window.Babel -->
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/babel-standalone.min.js"></script>
-<!-- markdown-viewer 依赖 -->
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.atom-one-dark.min.css"
-/>
-<script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.min.js"></script>
-<script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/highlight.javascript.min.js"></script>
+<!-- markdown-viewer 代码高亮 -->
+<script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/shiki.min.js"></script>
 ```

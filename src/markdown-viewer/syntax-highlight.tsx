@@ -7,7 +7,7 @@ const RenderCode = (props) => {
     (async () => {
       setCode(
         await (window as any).shiki?.codeToHtml(props.code, {
-          theme: props.theme,
+          theme: 'one-dark-pro',
           lang: props.language,
         }),
       );
@@ -23,15 +23,10 @@ const RenderCode = (props) => {
   );
 };
 
-export default ({ code, language, onMount, theme }) => {
-  console.log(theme)
-  const [_theme, setTheme] = useState(theme);
-  useEffect(() => {
-    onMount(setTheme);
-  }, []);
+export default ({ code, language }) => {
   return (
     <div style={{ position: 'relative' }}>
-      <RenderCode code={code} language={language} theme={_theme} />
+      <RenderCode code={code} language={language} />
       <svg
         viewBox="0 0 1024 1024"
         width="16"

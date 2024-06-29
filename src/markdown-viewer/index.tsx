@@ -26,7 +26,6 @@ export interface MarkDownViewerProps {
   typesAPI?: any;
   /** 扩展按钮 */
   extraRender?: (params: any) => ReactNode;
-  theme?: 'dark-plus' | 'light-plus';
 }
 
 export default forwardRef(
@@ -36,32 +35,19 @@ export default forwardRef(
       require = {},
       source = {},
       typesAPI = {},
-      theme = 'dark-plus',
       extraRender = () => null,
     }: MarkDownViewerProps,
     ref,
   ) => {
-    const slRef: any = useRef([]);
-    const [spin, setSpin] = useState(true);
     const navs: any = useMemo(() => [], [content]);
-    useEffect(() => {
-      setTimeout(() => {
-        setSpin(false);
-      }, 100);
-    }, []);
     useImperativeHandle(ref, () => {
       return {
-        setTheme: (theme: string) => {
-          slRef.current.forEach((fn: any) => {
-            fn?.(theme);
-          });
-        },
         getNavs: () => {
           return navs;
         },
       };
     });
-    return spin ? null : (
+    return (
       <div className="markdown-viewer" style={{ position: 'relative' }}>
         <ReactMarkDown
           remarkPlugins={[remarkGfm]}
@@ -144,8 +130,6 @@ export default forwardRef(
                     code={children[0]}
                     require={require}
                     style={style}
-                    slRef={slRef}
-                    theme={theme}
                     source={source}
                     expand={(node?.data?.meta as string)?.startsWith?.(
                       '| reactExpand',
@@ -251,14 +235,7 @@ export default forwardRef(
               }
               return !inline && match ? (
                 <div style={{ position: 'relative' }}>
-                  <SyntaxHighlight
-                    code={code}
-                    language={match[1]}
-                    theme={theme}
-                    onMount={(setTheme) => {
-                      slRef.current.push(setTheme);
-                    }}
-                  />
+                  <SyntaxHighlight code={code} language={match[1]} />
                 </div>
               ) : (
                 <code

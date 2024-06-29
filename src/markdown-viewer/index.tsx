@@ -142,6 +142,7 @@ export default forwardRef(
                     code={children[0]}
                     require={require}
                     style={style}
+                    slRef={slRef}
                     source={source}
                     expand={(node?.data?.meta as string)?.startsWith?.(
                       '| reactExpand',
@@ -247,7 +248,13 @@ export default forwardRef(
               }
               return !inline && match ? (
                 <div style={{ position: 'relative' }}>
-                  <SyntaxHighlight code={code} language={match[1]} {...props} />
+                  <SyntaxHighlight
+                    code={code}
+                    language={match[1]}
+                    onMount={(setTheme) => {
+                      slRef.current.push(setTheme);
+                    }}
+                  />
                 </div>
               ) : (
                 <code

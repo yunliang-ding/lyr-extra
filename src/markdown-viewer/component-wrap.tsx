@@ -7,6 +7,7 @@ export default ({
   style = {},
   extraRender,
   code,
+  slRef,
   source = {},
   expand = false,
   require,
@@ -67,6 +68,9 @@ export default ({
                   <SyntaxHighlight
                     code={index === 0 ? code : source[tab]}
                     language="jsx"
+                    onMount={(setTheme) => {
+                      slRef.current.push(setTheme);
+                    }}
                   />
                 </Tabs.TabPane>
               );

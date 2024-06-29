@@ -1,27 +1,36 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { copyToClipBoard } from '..';
-import { createHighlighter } from 'shiki'
 
-export default ({ code, language }) => {
+const RenderCode = (props) => {
+  const [code, setCode] = useState('');
   useEffect(() => {
-    getCodeHtml();
-    (window as any).hljs.highlightAll();
-  }, [])
-  const getCodeHtml = async () => {
-    const highlighter = await createHighlighter({
-      themes: ['dark-plus'],
-      langs: ['javascript'],
-    })
-    console.log(highlighter.codeToHtml('const a = 1', {
-      theme: 'dark-plus',
-      lang: 'javascript',
-    }))
-  }
+    (async () => {
+      setCode(
+        await (window as any).shiki?.codeToHtml(props.code, {
+          theme: props.theme,
+          lang: props.language,
+        }),
+      );
+    })();
+  }, [props.theme]);
+  return (
+    <div
+      className="markdown-viewer-code"
+      dangerouslySetInnerHTML={{
+        __html: code,
+      }}
+    />
+  );
+};
+
+export default ({ code, language, onMount }) => {
+  const [theme, setTheme] = useState('light-plus');
+  useEffect(() => {
+    onMount(setTheme);
+  }, []);
   return (
     <div style={{ position: 'relative' }}>
-      <pre>
-        <code className={`markdown-viewer-code language-${language}`}>{code}</code>
-      </pre>
+      <RenderCode code={code} language={language} theme={theme} />
       <svg
         viewBox="0 0 1024 1024"
         width="16"

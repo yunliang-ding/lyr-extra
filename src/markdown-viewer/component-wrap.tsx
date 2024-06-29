@@ -11,6 +11,7 @@ export default ({
   source = {},
   expand = false,
   require,
+  theme,
 }) => {
   const needSource = {};
   const [expandCode, setExpandCode] = useState(expand);
@@ -68,6 +69,7 @@ export default ({
                   <SyntaxHighlight
                     code={index === 0 ? code : source[tab]}
                     language="jsx"
+                    theme={theme}
                     onMount={(setTheme) => {
                       slRef.current.push(setTheme);
                     }}

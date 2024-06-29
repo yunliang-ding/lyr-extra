@@ -23,14 +23,15 @@ const RenderCode = (props) => {
   );
 };
 
-export default ({ code, language, onMount }) => {
-  const [theme, setTheme] = useState('light-plus');
+export default ({ code, language, onMount, theme }) => {
+  console.log(theme)
+  const [_theme, setTheme] = useState(theme);
   useEffect(() => {
     onMount(setTheme);
   }, []);
   return (
     <div style={{ position: 'relative' }}>
-      <RenderCode code={code} language={language} theme={theme} />
+      <RenderCode code={code} language={language} theme={_theme} />
       <svg
         viewBox="0 0 1024 1024"
         width="16"

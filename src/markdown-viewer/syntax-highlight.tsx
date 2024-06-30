@@ -7,13 +7,17 @@ const RenderCode = (props) => {
     (async () => {
       setCode(
         await (window as any).shiki?.codeToHtml(props.code, {
-          theme: 'one-dark-pro',
+          theme: 'dark-plus',
           lang: props.language,
         }),
       );
     })();
   }, [props.theme]);
-  return (
+  return code === '' ? (
+    <div className="markdown-viewer-code">
+      <pre className='pre-code'>{props.code}</pre>
+    </div>
+  ) : (
     <div
       className="markdown-viewer-code"
       dangerouslySetInnerHTML={{

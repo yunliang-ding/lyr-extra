@@ -31,6 +31,7 @@ export default defineConfig({
         "react/jsx-runtime": "jsxRuntime",
         "@arco-design/web-react": "arco",
         "lyr-code-editor": "lyrCodeEditor",
+        "react-markdown": "ReactMarkdown.default",
         html2canvas: "html2canvas",
         jszip: "JSZip",
       },

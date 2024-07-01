@@ -1,18 +1,10 @@
-import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useMemo,
-  useState,
-  useRef,
-  ReactNode,
-} from 'react';
-import ReactMarkDown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import { forwardRef, useImperativeHandle, useMemo, ReactNode } from 'react';
 import { babelParse } from '..';
 import ComponentWrap from './component-wrap';
 import SyntaxHighlight from './syntax-highlight';
 import { Table, Tag } from '@arco-design/web-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import './index.less';
 
 export interface MarkDownViewerProps {
@@ -47,9 +39,10 @@ export default forwardRef(
         },
       };
     });
+    console.log(ReactMarkdown);
     return (
       <div className="markdown-viewer" style={{ position: 'relative' }}>
-        <ReactMarkDown
+        <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
             a({ children, href }) {
@@ -258,7 +251,7 @@ export default forwardRef(
           }}
         >
           {content}
-        </ReactMarkDown>
+        </ReactMarkdown>
       </div>
     );
   },

@@ -4,7 +4,7 @@
 
 ```tsx | react
 import { downloadFile, docxReplace } from "lyr-extra";
-import { Button, Input } from "@arco-design/web-react";
+import { Button } from "@arco-design/web-react";
 
 const data = {
   field1: "zhangsan",
@@ -37,7 +37,7 @@ export default () => {
         </Button>
         <Button onClick={onDownloadDemo}>下载文件模版</Button>
       </div>
-      <Input
+      <input
         type="file"
         accept=".docx"
         onChange={(e) => {

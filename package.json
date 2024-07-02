@@ -34,7 +34,7 @@
     "react-markdown": "8.0.7"
   },
   "devDependencies": {
-    "lyr-docs": "0.0.84",
+    "lyr-docs": "0.0.85",
     "bignumber.js": "9.1.0",
     "html2canvas": "1.4.1",
     "react-to-print": "2.13.0",

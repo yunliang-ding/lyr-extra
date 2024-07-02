@@ -39,7 +39,6 @@ export default forwardRef(
         },
       };
     });
-    console.log(ReactMarkdown);
     return (
       <div className="markdown-viewer" style={{ position: 'relative' }}>
         <ReactMarkdown

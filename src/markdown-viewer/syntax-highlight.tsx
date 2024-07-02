@@ -15,7 +15,9 @@ const RenderCode = (props) => {
     })();
   }, [props.theme]);
   return code === '' ? (
-    <Spin />
+    <div className="markdown-viewer-code">
+      <pre className="pre-code">{props.code}</pre>
+    </div>
   ) : (
     <div
       className="markdown-viewer-code"

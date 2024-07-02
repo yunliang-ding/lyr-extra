@@ -1,9 +1,8 @@
-import { Spin } from '@arco-design/web-react';
 import { useEffect, useState } from 'react';
 import { copyToClipBoard } from '..';
 
 const RenderCode = (props) => {
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState(undefined);
   useEffect(() => {
     (async () => {
       setCode(
@@ -14,7 +13,7 @@ const RenderCode = (props) => {
       );
     })();
   }, [props.theme]);
-  return code === '' ? (
+  return code === undefined ? (
     <div className="markdown-viewer-code">
       <pre className="pre-code">{props.code}</pre>
     </div>

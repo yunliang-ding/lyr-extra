@@ -1,3 +1,4 @@
+import { Spin } from '@arco-design/web-react';
 import { useEffect, useState } from 'react';
 import { copyToClipBoard } from '..';
 
@@ -7,16 +8,14 @@ const RenderCode = (props) => {
     (async () => {
       setCode(
         await (window as any).shiki?.codeToHtml(props.code, {
-          theme: 'dark-plus',
+          theme: 'one-dark-pro',
           lang: props.language,
         }),
       );
     })();
   }, [props.theme]);
   return code === '' ? (
-    <div className="markdown-viewer-code">
-      <pre className='pre-code'>{props.code}</pre>
-    </div>
+    <Spin />
   ) : (
     <div
       className="markdown-viewer-code"

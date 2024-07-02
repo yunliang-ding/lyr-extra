@@ -16,6 +16,8 @@
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react-dom.production.min.js"></script>
 <!-- window.jsxRuntime -->
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/jsx-runtime.polyfill.js"></script>
+<!-- window.arco -->
+<script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco.min.js"></script>
 <!-- window.html2canvas -->
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/html2canvas.min.js"></script>
 <!-- window.JSZip -->
@@ -26,4 +28,6 @@
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react-markdown.min.js"></script>
 <!-- markdown-viewer 代码高亮 -->
 <script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/shiki.min.js"></script>
+<!-- window.lyrCodeEditor 代码演示台 -->
+<script src="https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-code-editor.min.js"></script>
 ```
